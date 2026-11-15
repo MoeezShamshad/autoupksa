@@ -1154,6 +1154,10 @@ html[dir="rtl"] .lucide-chevron-right {
   transform: scaleX(-1);
 }
 
+html[dir="rtl"] .product-carousel-arrow .lucide-arrow-right {
+  transform: none;
+}
+
 html[dir="rtl"] .font-mono,
 html[dir="rtl"] [href^="tel:"],
 html[dir="rtl"] [data-ltr="true"] {

@@ -16,10 +16,8 @@ import pChemxT1 from "@/assets/products/product-chemx-t1.webp";
 import pO2Solvent from "@/assets/products/product-o2-solvent.webp";
 import pG4Glass from "@/assets/products/product-g4-glass.webp";
 import pF55Wax from "@/assets/products/product-f55-wax.webp";
-import pWaterlessWash from "@/assets/products/product-waterless-wash.webp";
 import pColourWaxShampoo from "@/assets/products/product-colour-wax-shampoo.webp";
 import pColourWaxShampooRose from "@/assets/products/product-colour-wax-shampoo-rose.webp";
-import pPreWashShampoo from "@/assets/products/product-pre-wash-shampoo.webp";
 import pC6Bottle from "@/assets/products/imgi_10_adbaf30f-77cd-4723-9725-0c340de48414-500x500-ZbPENDcUWk8hs1lVpz5ILjSwIj7F3MXrAmSFQu36.webp";
 import pO2Bottle from "@/assets/products/imgi_11_4f1f3ac3-aebb-400c-b0de-e1ae1de0caab-500x500-HQgb89xy4fBVsvZiFmNggqEvhcjHG8v9KooUCtYb.webp";
 import pWaterlessBottle from "@/assets/products/imgi_18_2277741b-cccd-4f7d-9444-1c89c9fcd57b-500x500-TzKStWMTy3Q1JNG5b5oLuuPts1SQG5WVFrGp4hXk.webp";
@@ -28,7 +26,7 @@ import pPreWashBottle from "@/assets/products/imgi_20_6c5faa3b-8ddb-464d-b3b2-92
 import pIronRemover from "@/assets/products/imgi_22_eb0c09eb-18c9-475e-a8e5-5723d8f937c2-500x500-Bxm4ILMLbzCpg0ZXqFjYrs9UERkf4sGuQOCr7EkN.webp";
 import pShampooWaxBottle from "@/assets/products/imgi_30_220e1edb-cfd6-43ba-8003-5813d686f78e-500x500-WVvvvjZ7GPmdgUBUwOPjSOeWmvEMiLGLNZngKVZm.webp";
 import pD2Bottle from "@/assets/products/imgi_35_38190e6b-4e92-439b-b543-9f91846c6d0a-500x500-MtQDKaypgVMaWVQcgLYzkOx6ta6zUpUkOb0OAySO.webp";
-import { NEW_PRODUCT_PHOTOS } from "@/lib/media";
+import { NEW_PRODUCT_PHOTOS, PRODUCT_PHOTOS } from "@/lib/media";
 
 export type Service = { slug: string; title: string; description: string; image: string };
 
@@ -121,7 +119,7 @@ export const PRODUCTS: Product[] = [
     usage:
       "Remove accumulated dirt using a water pump first. Mix 1 litre of LifeLines shampoo with 100 litres of water for hand washing, or 1 litre with 150 litres for in-pump use. After spraying, leave for 3 minutes, then rinse and dry with a towel.",
     image: pColourWaxShampoo,
-    featured: 1,
+    featured: 4,
   },
   {
     slug: "lifelines-colour-wax-shampoo-rose",
@@ -140,33 +138,33 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: "lifelines-pre-wash-shampoo",
-    name: "Pre Wash Car Shampoo",
-    packageType: "other-commercial",
+    name: "Pre Wash Shampoo 20 Litres",
+    packageType: "gallon",
     code: undefined,
     category: "Car Shampoo",
     short: "High-performance pre-wash for automatic and manual car wash systems.",
     description:
       "LifeLines Pre Wash Car Shampoo is a high-performance shampoo designed for use in automatic car wash systems and manual car wash systems. It effectively removes dirt, oil and road films, leaving the surface clean and ready for further treatment. High lubrication to reduce friction; easy to rinse; suitable for all types of vehicles.",
-    variants: ["20 KG"],
+    variants: ["20 L"],
     usage:
       "Automatic car wash: 40–50 ml per car. Manual: 1 litre of shampoo to 100 litres of water. Dilute, spray onto the car, leave for no more than 2 minutes to react with dirt, then rinse thoroughly with water.",
-    image: pPreWashShampoo,
-    featured: 3,
+    image: PRODUCT_PHOTOS.preWash20Litres,
+    featured: 1,
   },
   {
     slug: "lifelines-waterless-car-wash",
-    name: "Waterless Car Wash",
+    name: "Waterless Car Cleaner",
     packageType: "gallon",
     code: undefined,
     category: "Car Shampoo",
     short: "Wash your car without water — cleans, shines and protects in one step.",
     description:
-      "LifeLines Waterless Car Wash Shampoo is a distinct and unique formula that has a high ability to break up dirt and remove it with ease. The formula also contains Wax to preserve the car's paint and give it a distinctive shine. Reduces water use and waste. Environmentally friendly.",
+      "LifeLines Waterless Car Cleaner is a distinct and unique formula that has a high ability to break up dirt and remove it with ease. The formula also contains Wax to preserve the car's paint and give it a distinctive shine. Reduces water use and waste. Environmentally friendly.",
     variants: ["20 L"],
     usage:
       "Spray the product directly on the surface of the car from the outside, leave for 30 seconds, then wipe with a microfiber towel (preferably wet).",
-    image: pWaterlessWash,
-    featured: 4,
+    image: PRODUCT_PHOTOS.waterlessCarCleaner,
+    featured: 3,
   },
   {
     slug: "lifelines-chemx-c2",
@@ -375,7 +373,9 @@ export const PRODUCTS: Product[] = [
 ];
 
 export const RETAIL_PRODUCTS = PRODUCTS.filter((product) => product.packageType === "retail");
-export const GALLON_PRODUCTS = PRODUCTS.filter((product) => product.packageType === "gallon");
+export const GALLON_PRODUCTS = PRODUCTS.filter((product) => product.packageType === "gallon").sort(
+  (a, b) => a.featured - b.featured,
+);
 export const OTHER_COMMERCIAL_PRODUCTS = PRODUCTS.filter(
   (product) => product.packageType === "other-commercial",
 );

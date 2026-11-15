@@ -25,6 +25,13 @@ import newChemxC2 from "@/assets/new products/WhatsApp Image 2026-11-01 at 12.00
 import newO2 from "@/assets/new products/WhatsApp Image 2026-11-01 at 12.00.46 AM (1).jpeg";
 import newChemxD2 from "@/assets/new products/WhatsApp Image 2026-11-01 at 12.00.46 AM (2).jpeg";
 import newF55 from "@/assets/new products/WhatsApp Image 2026-11-01 at 12.00.46 AM.jpeg";
+import preWash20Litres from "@/assets/Pre Wash Shampoo 20 Litres.jpeg";
+import waterlessCarCleaner from "@/assets/waterless Car Cleaner.jpeg";
+
+export const PRODUCT_PHOTOS = {
+  preWash20Litres,
+  waterlessCarCleaner,
+};
 
 export const NEW_PRODUCT_PHOTOS: Record<string, string> = {
   "lifelines-chemx-c6-25l": newChemxC6,
@@ -41,8 +48,8 @@ const gallonCardPhotos: Record<string, string | undefined> = {
     gallonCardAssets["../assets/galon/WhatsApp Image 2026-10-21 at 11.47.48 AM.webp"],
   "lifelines-colour-wax-shampoo-rose":
     gallonCardAssets["../assets/galon/WhatsApp Image 2026-10-21 at 11.58.57 AM (1).webp"],
-  "lifelines-waterless-car-wash":
-    gallonCardAssets["../assets/galon/WhatsApp Image 2026-10-21 at 11.58.57 AM (2).webp"],
+  "lifelines-pre-wash-shampoo": PRODUCT_PHOTOS.preWash20Litres,
+  "lifelines-waterless-car-wash": PRODUCT_PHOTOS.waterlessCarCleaner,
   "lifelines-f55-wax": newF55,
   "lifelines-o2-solvent": newO2,
   "lifelines-g4-glass": newG4,

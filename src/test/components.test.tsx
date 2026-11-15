@@ -9,6 +9,7 @@ import { StickyWhatsApp } from "@/components/StickyWhatsApp";
 import { Footer } from "@/components/Footer";
 import { PolishSection } from "@/components/PolishSection";
 import { PaymentPartners } from "@/components/PaymentPartners";
+import { GALLON_PRODUCTS } from "@/lib/catalog";
 import { LocaleProvider, useLocale } from "@/lib/i18n";
 
 // Mock @tanstack/react-router Link
@@ -45,6 +46,37 @@ function Wrapper({ children, locale = "en" }: { children: React.ReactNode; local
 }
 
 describe("B2B Components Functionality Verification", () => {
+  it("shows the corrected commercial shampoo cards with their supplied photos", () => {
+    const featuredProducts = GALLON_PRODUCTS.slice(0, 3);
+    const [preWash, , waterlessCleaner] = featuredProducts;
+
+    if (!preWash || !waterlessCleaner) {
+      throw new Error("Expected three featured commercial products");
+    }
+
+    expect(featuredProducts.map((product) => product.name)).toEqual([
+      "Pre Wash Shampoo 20 Litres",
+      "Colour Wax Shampoo — Rose",
+      "Waterless Car Cleaner",
+    ]);
+
+    render(
+      <Wrapper>
+        {featuredProducts.map((product) => (
+          <ProfessionalGallonCard key={product.slug} product={product} />
+        ))}
+      </Wrapper>,
+    );
+
+    expect(screen.getByRole("heading", { name: "Pre Wash Shampoo 20 Litres" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Waterless Car Cleaner" })).toBeInTheDocument();
+    expect(screen.getByAltText("Pre Wash Shampoo 20 Litres")).toHaveAttribute("src", preWash.image);
+    expect(screen.getByAltText("Waterless Car Cleaner")).toHaveAttribute(
+      "src",
+      waterlessCleaner.image,
+    );
+  });
+
   it("renders the six requested payment partners with localized copy", () => {
     const brands = ["Tabby", "Tamara", "Neo", "Emkan", "MIS Pay", "Madfu"];
     const { unmount } = render(
