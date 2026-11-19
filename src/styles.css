@@ -1154,6 +1154,10 @@ html[dir="rtl"] .lucide-chevron-right {
   transform: scaleX(-1);
 }
 
+html[dir="rtl"] .product-carousel-arrow .lucide-arrow-right {
+  transform: none;
+}
+
 html[dir="rtl"] .font-mono,
 html[dir="rtl"] [href^="tel:"],
 html[dir="rtl"] [data-ltr="true"] {
@@ -1208,7 +1212,7 @@ html[dir="rtl"] [data-ltr="true"] {
   box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.7);
 }
 
-/* Universal 5-column responsive card grid for both Services and Products */
+/* Keep product cards readable on desktop; only add a fifth column on wider screens. */
 .card-grid-5,
 .service-grid,
 .product-grid-5 {
@@ -1240,7 +1244,7 @@ html[dir="rtl"] [data-ltr="true"] {
     gap: 1rem;
   }
 }
-@media (min-width: 1280px) {
+@media (min-width: 1536px) {
   .card-grid-5,
   .service-grid,
   .product-grid-5 {

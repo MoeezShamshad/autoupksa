@@ -46,7 +46,7 @@ export const Route = createFileRoute("/products/$slug")({
 
 function ProductPage() {
   const { product: p } = Route.useLoaderData();
-  const { add } = useCart();
+  const { add, setOpen } = useCart();
   const { locale } = useLocale();
   const [variant, setVariant] = useState(p.variants[0]);
   const [qty, setQty] = useState(1);
@@ -239,6 +239,7 @@ function ProductPage() {
                       ? `تمت إضافة ${translateText(p.name, locale)} إلى قائمة عرض السعر`
                       : `${p.name} added to wholesale quote list`,
                   );
+                  setOpen(true);
                 }}
               >
                 Add to Quote List

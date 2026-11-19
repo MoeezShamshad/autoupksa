@@ -138,7 +138,7 @@ export function ProductCard({
                     ? `تمت إضافة ${translateText(p.name, locale)} إلى قائمة عرض السعر (${qty})`
                     : `${p.name} added to quote list (${qty})`,
               );
-              if (action === "cart") setOpen(true);
+              setOpen(true);
               setQty(1);
             }}
           >
@@ -148,8 +148,8 @@ export function ProductCard({
                 ? "أضف إلى السلة"
                 : "Add to Cart"
               : locale === "ar"
-                ? "استفسر"
-                : "Inquire"}
+                ? "أضف إلى قائمة السعر"
+                : "Add to Quote List"}
           </Button>
         </div>
       </div>

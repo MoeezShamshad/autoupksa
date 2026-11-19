@@ -1,6 +1,16 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Building2, Copy, Landmark, MapPin, ReceiptText } from "lucide-react";
+import {
+  Building2,
+  Copy,
+  Facebook,
+  Ghost,
+  Instagram,
+  Landmark,
+  MapPin,
+  Music2,
+  ReceiptText,
+} from "lucide-react";
 import arabicLogo from "@/assets/autoup-final-logo.webp";
 import whatsappIcon from "@/assets/products/download (41).svg";
 import { PAYMENT_METHODS } from "@/components/PaymentPartners";
@@ -8,8 +18,12 @@ import { SITE } from "@/lib/site";
 import { useLocale } from "@/lib/i18n";
 
 const BUSINESS_PHONE = "+966548843368";
-const BUSINESS_WHATSAPP_URL = `https://wa.me/${BUSINESS_PHONE.replace("+", "")}`;
+const BUSINESS_PHONE_NUMBER = BUSINESS_PHONE.replace(/[\D]/g, "");
+const BUSINESS_PHONE_LOCAL = "0548843368";
+const BUSINESS_WHATSAPP_URL = `https://wa.me/${BUSINESS_PHONE_NUMBER}`;
+const BUSINESS_PHONE_TEL = `tel:+${BUSINESS_PHONE_NUMBER}`;
 const BUSINESS_IBAN = "SA1305000068207583708000";
+const BUSINESS_PHONE_DISPLAY = SITE.phoneDisplay;
 
 export function Footer() {
   const { locale } = useLocale();
@@ -68,22 +82,31 @@ export function Footer() {
                 {isArabic ? "قسم المبيعات" : "Sales Department"}
               </h3>
 
-              <a
-                href={BUSINESS_WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="autoup-footer__contact-link flex min-h-11 items-center justify-start gap-3 px-1 py-2 text-white/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-              >
-                <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white">
-                  <img
-                    src={whatsappIcon}
-                    alt=""
-                    aria-hidden="true"
-                    className="size-4 object-contain"
-                  />
-                </span>
-                <span>{isArabic ? "تواصل عبر واتساب" : "Chat on WhatsApp"}</span>
-              </a>
+              <div className="space-y-1">
+                <a
+                  href={BUSINESS_WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="autoup-footer__contact-link flex min-h-11 items-center justify-start gap-3 px-1 py-2 text-white/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                >
+                  <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white">
+                    <img
+                      src={whatsappIcon}
+                      alt=""
+                      aria-hidden="true"
+                      className="size-4 object-contain"
+                    />
+                  </span>
+                  <span>{BUSINESS_PHONE_DISPLAY}</span>
+                </a>
+                <a
+                  href={BUSINESS_PHONE_TEL}
+                  aria-label={BUSINESS_PHONE_LOCAL}
+                  className="flex items-center justify-start gap-2 px-1 py-1 text-sm font-medium text-white/85 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                >
+                  <span>{BUSINESS_PHONE_LOCAL}</span>
+                </a>
+              </div>
 
               <div className="flex items-center justify-start gap-3 pt-1 text-sm leading-6 text-white/65">
                 <MapPin aria-hidden="true" className="size-4 shrink-0 text-primary" />
@@ -147,6 +170,29 @@ export function Footer() {
                 ? "مورد متخصص لمنتجات العناية الاحترافية بالسيارات، ومواد التنظيف المركزة، وحلول التوريد التجاري."
                 : "A specialist supplier of professional automotive care products, concentrated cleaners, and commercial supply solutions."}
             </p>
+            <div
+              className="mt-1 flex items-center gap-2"
+              aria-label={
+                isArabic ? "تابع AutoUp على التواصل الاجتماعي" : "Follow AutoUp on social media"
+              }
+            >
+              {[
+                { label: "Facebook", icon: Facebook },
+                { label: "Instagram", icon: Instagram },
+                { label: "Snapchat", icon: Ghost },
+                { label: "TikTok", icon: Music2 },
+              ].map(({ label, icon: Icon }) => (
+                <span
+                  key={label}
+                  role="img"
+                  aria-label={label}
+                  title={label}
+                  className="flex size-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-white/80 transition-colors hover:border-primary/50 hover:bg-primary/15 hover:text-white"
+                >
+                  <Icon aria-hidden="true" className="size-4" />
+                </span>
+              ))}
+            </div>
           </section>
         </div>
       </div>

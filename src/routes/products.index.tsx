@@ -39,11 +39,20 @@ function ProductsPage() {
   const { q = "", cat = "All Products" } = Route.useSearch();
   const navigate = useNavigate({ from: "/products/" });
   const [sort, setSort] = useState("featured");
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
+  const hasPricedProducts = PRODUCTS.some((product) => typeof product.price === "number");
   const list = useMemo(() => {
     const term = q.toLowerCase();
+    const minValue = Number(minPrice);
+    const maxValue = Number(maxPrice);
+    const min = minPrice.trim() && Number.isFinite(minValue) ? minValue : undefined;
+    const max = maxPrice.trim() && Number.isFinite(maxValue) ? maxValue : undefined;
     const r = PRODUCTS.filter(
       (p) =>
         (cat === "All Products" || p.category === cat) &&
+        (min === undefined || (typeof p.price === "number" && p.price >= min)) &&
+        (max === undefined || (typeof p.price === "number" && p.price <= max)) &&
         (!term ||
           p.name.toLowerCase().includes(term) ||
           translateText(p.name, locale).toLowerCase().includes(term) ||
@@ -51,10 +60,15 @@ function ProductsPage() {
           translateText(p.category, locale).toLowerCase().includes(term) ||
           (p.code && p.code.toLowerCase().includes(term))),
     );
-    return [...r].sort((a, b) =>
-      sort === "name" ? a.name.localeCompare(b.name) : a.featured - b.featured,
-    );
-  }, [q, cat, sort, locale]);
+    return [...r].sort((a, b) => {
+      if (sort === "name") return a.name.localeCompare(b.name);
+      if (sort === "price-asc")
+        return (a.price ?? Number.POSITIVE_INFINITY) - (b.price ?? Number.POSITIVE_INFINITY);
+      if (sort === "price-desc")
+        return (b.price ?? Number.NEGATIVE_INFINITY) - (a.price ?? Number.NEGATIVE_INFINITY);
+      return a.featured - b.featured;
+    });
+  }, [q, cat, sort, locale, minPrice, maxPrice]);
 
   const retailProducts = list.filter((product) => product.packageType === "retail");
   const gallonProducts = list.filter((product) => product.packageType === "gallon");
@@ -78,6 +92,9 @@ function ProductsPage() {
           <label className="relative block w-full md:max-w-sm">
             <Search className="absolute left-4 top-1/2 size-4 -translate-y-1/2 text-muted-foreground transition-colors duration-200" />
             <input
+              aria-label={
+                locale === "ar" ? "ابحث عن المنتجات أو الرموز" : "Search products or codes"
+              }
               value={q}
               onChange={(e) =>
                 navigate({
@@ -85,19 +102,70 @@ function ProductsPage() {
                   replace: true,
                 })
               }
-              placeholder="Search products or codes (e.g. ChemX, F55, G4)..."
+              placeholder={
+                locale === "ar"
+                  ? "ابحث عن المنتجات أو الرموز (مثل ChemX أو F55 أو G4)..."
+                  : "Search products or codes (e.g. ChemX, F55, G4)..."
+              }
               className="h-12 w-full rounded-full border border-input bg-card pl-11 pr-4 text-foreground placeholder:text-muted-foreground transition-all duration-200 focus:border-primary focus:shadow-[0_0_15px_rgba(59,130,246,0.35)] focus:outline-none"
             />
           </label>
-          <select
-            value={sort}
-            onChange={(e) => setSort(e.target.value)}
-            aria-label="Sort products"
-            className="h-12 rounded-full border border-input bg-card px-5 text-foreground transition-all duration-200 focus:border-primary hover:border-primary/60 focus:outline-none cursor-pointer"
-          >
-            <option value="featured">Sort: Featured</option>
-            <option value="name">Sort: Name</option>
-          </select>
+          <div className="grid w-full grid-cols-2 gap-2 sm:flex sm:w-auto">
+            <label className="sr-only" htmlFor="product-sort">
+              {locale === "ar" ? "ترتيب المنتجات" : "Sort products"}
+            </label>
+            <select
+              id="product-sort"
+              value={sort}
+              onChange={(e) => setSort(e.target.value)}
+              className="h-12 min-w-0 rounded-xl border border-input bg-card px-3 text-sm text-foreground transition-colors focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:rounded-full sm:px-5"
+            >
+              <option value="featured">{locale === "ar" ? "الأكثر تميزًا" : "Featured"}</option>
+              <option value="name">{locale === "ar" ? "الاسم" : "Name"}</option>
+              {hasPricedProducts ? (
+                <>
+                  <option value="price-asc">
+                    {locale === "ar" ? "السعر: الأقل أولًا" : "Price: low to high"}
+                  </option>
+                  <option value="price-desc">
+                    {locale === "ar" ? "السعر: الأعلى أولًا" : "Price: high to low"}
+                  </option>
+                </>
+              ) : null}
+            </select>
+            {hasPricedProducts ? (
+              <>
+                <label className="relative">
+                  <span className="sr-only">
+                    {locale === "ar" ? "أقل سعر بالريال" : "Minimum price in SAR"}
+                  </span>
+                  <input
+                    type="number"
+                    min="0"
+                    inputMode="decimal"
+                    value={minPrice}
+                    onChange={(event) => setMinPrice(event.target.value)}
+                    placeholder={locale === "ar" ? "من السعر" : "Min SAR"}
+                    className="h-12 w-full rounded-xl border border-input bg-card px-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:w-28 sm:rounded-full"
+                  />
+                </label>
+                <label className="relative">
+                  <span className="sr-only">
+                    {locale === "ar" ? "أعلى سعر بالريال" : "Maximum price in SAR"}
+                  </span>
+                  <input
+                    type="number"
+                    min="0"
+                    inputMode="decimal"
+                    value={maxPrice}
+                    onChange={(event) => setMaxPrice(event.target.value)}
+                    placeholder={locale === "ar" ? "إلى السعر" : "Max SAR"}
+                    className="h-12 w-full rounded-xl border border-input bg-card px-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:w-28 sm:rounded-full"
+                  />
+                </label>
+              </>
+            ) : null}
+          </div>
         </div>
 
         {/* Category Pills */}
@@ -105,6 +173,8 @@ function ProductsPage() {
           {CATEGORIES.map((c) => (
             <button
               key={c}
+              type="button"
+              aria-pressed={cat === c || (cat === "All Products" && c === "All Products")}
               onClick={() =>
                 navigate({
                   search: (s) => ({ ...s, cat: c === "All Products" ? undefined : c }),
@@ -118,7 +188,7 @@ function ProductsPage() {
                   : "border-input bg-card hover:border-primary/60 text-foreground",
               )}
             >
-              {c}
+              {translateText(c, locale)}
             </button>
           ))}
         </div>
@@ -126,13 +196,16 @@ function ProductsPage() {
         {list.length === 0 ? (
           <div className="py-24 text-center">
             <p className="text-muted-foreground text-base">
-              No products match your search criteria.
+              {locale === "ar"
+                ? "لا توجد منتجات تطابق معايير البحث."
+                : "No products match your search criteria."}
             </p>
             <button
+              type="button"
               onClick={() => navigate({ search: {}, replace: true })}
               className="mt-4 text-sm font-semibold text-primary hover:underline cursor-pointer"
             >
-              Reset filters
+              {locale === "ar" ? "إعادة ضبط الفلاتر" : "Reset filters"}
             </button>
           </div>
         ) : (
@@ -175,7 +248,7 @@ function ProductsPage() {
                       : "Bulk car care solutions for workshops, detailing studios, car washes and commercial businesses."}
                   </p>
                 </div>
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
                   {gallonProducts.map((product, n) => (
                     <Reveal key={product.slug} delay={(n % 3) * 80}>
                       <ProfessionalGallonCard product={product} />

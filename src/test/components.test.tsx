@@ -9,6 +9,7 @@ import { StickyWhatsApp } from "@/components/StickyWhatsApp";
 import { Footer } from "@/components/Footer";
 import { PolishSection } from "@/components/PolishSection";
 import { PaymentPartners } from "@/components/PaymentPartners";
+import { GALLON_PRODUCTS } from "@/lib/catalog";
 import { LocaleProvider, useLocale } from "@/lib/i18n";
 
 // Mock @tanstack/react-router Link
@@ -45,6 +46,37 @@ function Wrapper({ children, locale = "en" }: { children: React.ReactNode; local
 }
 
 describe("B2B Components Functionality Verification", () => {
+  it("shows the corrected commercial shampoo cards with their supplied photos", () => {
+    const featuredProducts = GALLON_PRODUCTS.slice(0, 3);
+    const [preWash, , waterlessCleaner] = featuredProducts;
+
+    if (!preWash || !waterlessCleaner) {
+      throw new Error("Expected three featured commercial products");
+    }
+
+    expect(featuredProducts.map((product) => product.name)).toEqual([
+      "Pre Wash Shampoo 20 Litres",
+      "Colour Wax Shampoo — Rose",
+      "Waterless Car Cleaner",
+    ]);
+
+    render(
+      <Wrapper>
+        {featuredProducts.map((product) => (
+          <ProfessionalGallonCard key={product.slug} product={product} />
+        ))}
+      </Wrapper>,
+    );
+
+    expect(screen.getByRole("heading", { name: "Pre Wash Shampoo 20 Litres" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Waterless Car Cleaner" })).toBeInTheDocument();
+    expect(screen.getByAltText("Pre Wash Shampoo 20 Litres")).toHaveAttribute("src", preWash.image);
+    expect(screen.getByAltText("Waterless Car Cleaner")).toHaveAttribute(
+      "src",
+      waterlessCleaner.image,
+    );
+  });
+
   it("renders the six requested payment partners with localized copy", () => {
     const brands = ["Tabby", "Tamara", "Neo", "Emkan", "MIS Pay", "Madfu"];
     const { unmount } = render(
@@ -250,7 +282,7 @@ describe("B2B Components Functionality Verification", () => {
     expect(url).toContain("https://wa.me/966548843368?text=");
     expect(target).toBe("_blank");
     expect(features).toBe("noopener,noreferrer");
-    const message = decodeURIComponent(url!.split("?text=")[1]!);
+    const message = decodeURIComponent(String(url).split("?text=")[1]!);
     expect(message).toContain("Colour Wax Shampoo (20 L)");
     expect(message).toContain("Quantity: 3");
     expect(message).toContain("Installment quote requested");
@@ -303,7 +335,7 @@ describe("B2B Components Functionality Verification", () => {
     fireEvent.click(screen.getByRole("button", { name: "اطلب عرض سعر عبر واتساب" }));
 
     const url = openWhatsApp.mock.calls[0]![0]!;
-    const message = decodeURIComponent(url.split("?text=")[1]!);
+    const message = decodeURIComponent(String(url).split("?text=")[1]!);
     expect(message).toContain("مرحباً فريق Auto Up!");
     expect(message).toContain("ملمع & عناية (20 L)");
     expect(message).toContain("الكمية: 2");
@@ -365,7 +397,7 @@ describe("B2B Components Functionality Verification", () => {
     fireEvent.click(screen.getByRole("button", { name: "Remove temporary item" }));
     fireEvent.click(screen.getByRole("button", { name: "Open cart" }));
     fireEvent.click(screen.getByRole("button", { name: "Request Quote via WhatsApp" }));
-    const message = decodeURIComponent(openWhatsApp.mock.calls[0]![0]!.split("?text=")[1]!);
+    const message = decodeURIComponent(String(openWhatsApp.mock.calls[0]![0]).split("?text=")[1]!);
     expect(message).toContain("Kept Product");
     expect(message).not.toContain("Temporary Product");
 
@@ -455,11 +487,13 @@ describe("B2B Components Functionality Verification", () => {
     fireEvent.click(increaseBtn);
     expect(screen.getByText("2")).toBeInTheDocument();
 
-    // Inquire button
+    // Add to quote list
     const initialCount = cartCount;
-    const inquireBtn = screen.getByRole("button", { name: /inquire|استفسر/i });
-    expect(inquireBtn).toBeInTheDocument();
-    fireEvent.click(inquireBtn);
+    const addToQuoteButton = screen.getByRole("button", {
+      name: /add to quote list|أضف إلى قائمة السعر/i,
+    });
+    expect(addToQuoteButton).toBeInTheDocument();
+    fireEvent.click(addToQuoteButton);
     expect(screen.getByTestId("cart-count").textContent).toBe(String(initialCount + 2));
   });
 

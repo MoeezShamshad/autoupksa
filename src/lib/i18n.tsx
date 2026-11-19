@@ -505,8 +505,10 @@ const EN_TO_AR: Record<string, string> = {
   "Switch language to Arabic": "التبديل إلى العربية",
   "Colour Wax Shampoo": "شامبو الشمع الملون",
   "Colour Wax Shampoo — Rose": "شامبو الشمع الملون — الورد",
+  "Pre Wash Shampoo 20 Litres": "شامبو ما قبل الغسيل 20 لترًا",
   "Pre Wash Car Shampoo": "شامبو ما قبل الغسيل",
   "Waterless Car Wash": "غسيل سيارات دون ماء",
+  "Waterless Car Cleaner": "منظف سيارات دون ماء",
   "ChemX C2": "ChemX C2",
   "ChemX C6 Chemical Degreaser": "مزيل الشحوم الكيميائي ChemX C6",
   "F55 Final Touch Wax": "شمع اللمسة النهائية F55",
@@ -544,8 +546,8 @@ const EN_TO_AR: Record<string, string> = {
     "يحافظ شامبو الشمع الملون من LifeLines برائحة الورد على طلاء السيارة ويمنحه لمعاناً جذاباً يدوم طويلاً. تركيبة مركزة خالية من الفوسفات ومتعادلة الحموضة، تزيل الأوساخ وتجف بسرعة.",
   "LifeLines Pre Wash Car Shampoo is a high-performance shampoo designed for use in automatic car wash systems and manual car wash systems. It effectively removes dirt, oil and road films, leaving the surface clean and ready for further treatment. High lubrication to reduce friction; easy to rinse; suitable for all types of vehicles.":
     "شامبو ما قبل الغسيل من LifeLines عالي الأداء ومناسب لأنظمة غسيل السيارات الآلية واليدوية. يزيل الأوساخ والزيوت وطبقة الطريق بفاعلية، ويترك السطح نظيفاً وجاهزاً للمعالجة التالية. يوفر انزلاقاً يساعد على تقليل الاحتكاك، وسهل الشطف ومناسب لجميع أنواع المركبات.",
-  "LifeLines Waterless Car Wash Shampoo is a distinct and unique formula that has a high ability to break up dirt and remove it with ease. The formula also contains Wax to preserve the car's paint and give it a distinctive shine. Reduces water use and waste. Environmentally friendly.":
-    "شامبو الغسيل دون ماء من LifeLines بتركيبة مميزة تساعد على تفكيك الأوساخ وإزالتها بسهولة. يحتوي أيضاً على الشمع للمساعدة في حماية طلاء السيارة ومنحها لمعاناً مميزاً. يقلل استهلاك المياه والهدر، وهو خيار ملائم للبيئة.",
+  "LifeLines Waterless Car Cleaner is a distinct and unique formula that has a high ability to break up dirt and remove it with ease. The formula also contains Wax to preserve the car's paint and give it a distinctive shine. Reduces water use and waste. Environmentally friendly.":
+    "منظف السيارات دون ماء من LifeLines بتركيبة مميزة تساعد على تفكيك الأوساخ وإزالتها بسهولة. يحتوي أيضاً على الشمع للمساعدة في حماية طلاء السيارة ومنحها لمعاناً مميزاً. يقلل استهلاك المياه والهدر، وهو خيار ملائم للبيئة.",
   "LifeLines ChemX C2 is a Chemical All-Purpose Cleaner. It cleans engines, rims, linings, interior seats, leather and car floors according to the recommended dilution. An advanced American formula that preserves paint and car interior according to the manufacturer's recommended instructions.":
     "منظف ChemX C2 من LifeLines متعدد الاستخدامات؛ ينظف المحركات والجنوط والبطانات والمقاعد الداخلية والجلد وأرضيات السيارات وفق نسب التخفيف الموصى بها. تركيبة أمريكية متطورة، تُستخدم بما يتوافق مع تعليمات الشركة المصنّعة للمحافظة على الطلاء والمقصورة.",
   "LifeLines F55 Final Touch provides an exceptional final shine to cars after washing. Leaves the car's surface glossy and radiant while reducing dust and stain adhesion. Delivers instant shine. Easy to use after washing. Leaves no residue or unwanted marks. Protects the paint and reduces dust adhesion.":
