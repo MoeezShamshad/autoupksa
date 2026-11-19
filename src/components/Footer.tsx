@@ -7,6 +7,7 @@ import {
   Ghost,
   Instagram,
   Landmark,
+  Linkedin,
   MapPin,
   Music2,
   ReceiptText,
@@ -177,20 +178,35 @@ export function Footer() {
               }
             >
               {[
-                { label: "Facebook", icon: Facebook },
-                { label: "Instagram", icon: Instagram },
-                { label: "Snapchat", icon: Ghost },
-                { label: "TikTok", icon: Music2 },
-              ].map(({ label, icon: Icon }) => (
-                <span
+                {
+                  label: "Facebook",
+                  href: "https://web.facebook.com/autoupdealers",
+                  icon: Facebook,
+                },
+                {
+                  label: "Instagram",
+                  href: "https://www.instagram.com/auto.up2030/",
+                  icon: Instagram,
+                },
+                {
+                  label: "LinkedIn",
+                  href: "https://www.linkedin.com/company/autoup2030/home/?viewAsMember=true",
+                  icon: Linkedin,
+                },
+                { label: "TikTok", href: "https://www.tiktok.com/@autoup2030", icon: Music2 },
+                { label: "Snapchat", href: "https://www.snapchat.com/@autoup26", icon: Ghost },
+              ].map(({ label, href, icon: Icon }) => (
+                <a
                   key={label}
-                  role="img"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   title={label}
-                  className="flex size-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-white/80 transition-colors hover:border-primary/50 hover:bg-primary/15 hover:text-white"
+                  className="flex size-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-white/80 transition-colors hover:border-primary/50 hover:bg-primary/15 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 >
                   <Icon aria-hidden="true" className="size-4" />
-                </span>
+                </a>
               ))}
             </div>
           </section>

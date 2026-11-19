@@ -538,6 +538,18 @@ describe("B2B Components Functionality Verification", () => {
     for (const brand of ["Tabby", "Tamara", "Neo", "Emkan", "MIS Pay", "Madfu"]) {
       expect(screen.getByRole("img", { name: brand })).toBeInTheDocument();
     }
+    const socialLinks: [string, string][] = [
+      ["Facebook", "https://web.facebook.com/autoupdealers"],
+      ["Instagram", "https://www.instagram.com/auto.up2030/"],
+      ["LinkedIn", "https://www.linkedin.com/company/autoup2030/home/?viewAsMember=true"],
+      ["TikTok", "https://www.tiktok.com/@autoup2030"],
+      ["Snapchat", "https://www.snapchat.com/@autoup26"],
+    ];
+    for (const [name, href] of socialLinks) {
+      expect(screen.getByRole("link", { name })).toHaveAttribute("href", href);
+      expect(screen.getByRole("link", { name })).toHaveAttribute("target", "_blank");
+      expect(screen.getByRole("link", { name })).toHaveAttribute("rel", "noopener noreferrer");
+    }
   });
 
   it("copies the business IBAN and displays a success message", async () => {
