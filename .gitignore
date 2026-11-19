@@ -12,6 +12,7 @@ dist
 dist-ssr
 .output
 .data/
+admin-credentials.txt
 .vinxi
 .tanstack/**
 .nitro

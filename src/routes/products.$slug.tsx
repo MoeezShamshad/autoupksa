@@ -14,6 +14,7 @@ import {
 } from "@/lib/installments";
 import { useLocale, translateText } from "@/lib/i18n";
 import { gallonProductPhoto } from "@/lib/media";
+import { useCatalogVersion } from "@/lib/catalog-provider";
 
 import { cn } from "@/lib/utils";
 
@@ -45,6 +46,7 @@ export const Route = createFileRoute("/products/$slug")({
 });
 
 function ProductPage() {
+  useCatalogVersion();
   const { product: p } = Route.useLoaderData();
   const { add, setOpen } = useCart();
   const { locale } = useLocale();

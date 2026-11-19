@@ -18,6 +18,7 @@ import {
   Wand2,
 } from "lucide-react";
 import { useEffect, useMemo, useState, type FormEvent } from "react";
+import { toast } from "sonner";
 
 import adminLogo from "@/assets/autoup-final-logo.webp";
 
@@ -38,11 +39,18 @@ type AdminSection = (typeof ADMIN_MENU)[number];
 
 type AdminProduct = {
   id: string;
+  slug: string;
   name: string;
   nameAr: string;
   sku: string;
   category: string;
   packageSize: string;
+  catalogVariants: string[];
+  packageType: "retail" | "gallon" | "other-commercial";
+  code: string;
+  short: string;
+  usage: string;
+  featured: number;
   price: number;
   stock: number;
   status: "draft" | "published";
@@ -86,11 +94,18 @@ function readAdminProfile(): ProfileState {
 function createEmptyProduct(): AdminProduct {
   return {
     id: crypto.randomUUID(),
+    slug: "",
     name: "",
     nameAr: "",
     sku: "AUTO-" + Math.random().toString(36).slice(2, 7).toUpperCase(),
     category: "Car Shampoo",
     packageSize: "20 L",
+    catalogVariants: ["20 L"],
+    packageType: "other-commercial",
+    code: "",
+    short: "",
+    usage: "",
+    featured: 0,
     price: 0,
     stock: 0,
     status: "draft",
@@ -266,6 +281,9 @@ function AdminApp() {
   const [showProductModal, setShowProductModal] = useState(false);
   const [editingProductId, setEditingProductId] = useState<string | null>(null);
   const [productDraft, setProductDraft] = useState<AdminProduct>(() => createEmptyProduct());
+  const [productError, setProductError] = useState("");
+  const [imageUploadError, setImageUploadError] = useState("");
+  const [isUploadingImage, setIsUploadingImage] = useState(false);
   const [showCategoryModal, setShowCategoryModal] = useState(false);
   const [categoryDraft, setCategoryDraft] = useState<AdminCategory>({
     id: crypto.randomUUID(),
@@ -282,8 +300,7 @@ function AdminApp() {
       .then((response) => (response.ok ? response.json() : null))
       .then((payload) => {
         if (!payload) return;
-        if (Array.isArray(payload.products) && payload.products.length)
-          setProducts(payload.products);
+        if (Array.isArray(payload.products)) setProducts(payload.products);
         if (Array.isArray(payload.categories)) setCategories(payload.categories);
         if (Array.isArray(payload.activity)) {
           setNotifications(
@@ -300,7 +317,7 @@ function AdminApp() {
         }
         if (payload.admin) setProfile(payload.admin);
       })
-      .catch(() => undefined);
+      .catch((error) => console.error("Unable to load admin panel data.", error));
   }, []);
 
   const filteredProducts = useMemo(() => {
@@ -433,6 +450,8 @@ function AdminApp() {
   }
 
   function openProductModal(product?: AdminProduct) {
+    setProductError("");
+    setImageUploadError("");
     if (product) {
       setEditingProductId(product.id);
       setProductDraft({ ...product });
@@ -443,41 +462,62 @@ function AdminApp() {
     setShowProductModal(true);
   }
 
-  function saveProduct(event: FormEvent) {
+  async function saveProduct(event: FormEvent) {
     event.preventDefault();
     if (!productDraft.name.trim() || !productDraft.sku.trim()) return;
     const payload = editingProductId
       ? { ...productDraft, id: editingProductId }
       : { ...productDraft, id: "" };
-    fetch("/api/admin/products", {
+    payload.catalogVariants = productDraft.packageSize
+      .split(",")
+      .map((item) => item.trim())
+      .filter(Boolean);
+    try {
+      const saved = await persistProduct(payload);
+      setProducts((current) => {
+        const existing = current.findIndex((product) => product.id === saved.id);
+        if (existing >= 0)
+          return current.map((product) => (product.id === saved.id ? saved : product));
+        return [saved, ...current];
+      });
+      setShowProductModal(false);
+      setSection("Products");
+    } catch (error) {
+      setProductError(error instanceof Error ? error.message : "Unable to save product.");
+    }
+  }
+
+  async function persistProduct(product: AdminProduct): Promise<AdminProduct> {
+    const response = await fetch("/api/admin/products", {
       method: "POST",
       headers: { "content-type": "application/json" },
       credentials: "same-origin",
-      body: JSON.stringify(payload),
-    })
-      .then((response) => (response.ok ? response.json() : null))
-      .then((saved) => {
-        if (!saved) return;
-        setProducts((current) => {
-          const existing = current.findIndex((product) => product.id === saved.id);
-          if (existing >= 0)
-            return current.map((product) => (product.id === saved.id ? saved : product));
-          return [saved, ...current];
-        });
-        setShowProductModal(false);
-        setSection("Products");
-      });
+      body: JSON.stringify(product),
+    });
+    const payload = (await response.json()) as AdminProduct | { error?: string };
+    if (!response.ok) {
+      throw new Error(
+        "error" in payload ? payload.error || "Unable to save product." : "Unable to save product.",
+      );
+    }
+    return payload as AdminProduct;
   }
 
-  function duplicateProduct(product: AdminProduct) {
+  async function duplicateProduct(product: AdminProduct) {
     const duplicate = {
       ...product,
-      id: crypto.randomUUID(),
+      id: "",
+      slug: "",
       sku: `${product.sku}-COPY`,
       name: `${product.name} Copy`,
       updatedAt: new Date().toISOString(),
     };
-    setProducts((current) => [duplicate, ...current]);
+    try {
+      const saved = await persistProduct(duplicate);
+      setProducts((current) => [saved, ...current]);
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Unable to duplicate product.");
+    }
   }
 
   function deleteProduct(id: string) {
@@ -486,19 +526,32 @@ function AdminApp() {
       headers: { "content-type": "application/json" },
       credentials: "same-origin",
       body: JSON.stringify({ id }),
-    }).then((response) => {
-      if (response.ok) setProducts((current) => current.filter((product) => product.id !== id));
-    });
+    })
+      .then((response) => {
+        if (response.ok) {
+          setProducts((current) => current.filter((product) => product.id !== id));
+        } else {
+          toast.error("Unable to delete product.");
+        }
+      })
+      .catch((error) => {
+        toast.error(error instanceof Error ? error.message : "Unable to delete product.");
+      });
   }
 
-  function togglePublish(productId: string, nextStatus: "published" | "draft") {
-    setProducts((current) =>
-      current.map((product) =>
-        product.id === productId
-          ? { ...product, status: nextStatus, updatedAt: new Date().toISOString() }
-          : product,
-      ),
-    );
+  async function togglePublish(productId: string, nextStatus: "published" | "draft") {
+    const product = products.find((item) => item.id === productId);
+    if (!product) return;
+    try {
+      const saved = await persistProduct({
+        ...product,
+        status: nextStatus,
+        updatedAt: new Date().toISOString(),
+      });
+      setProducts((current) => current.map((item) => (item.id === saved.id ? saved : item)));
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Unable to update product status.");
+    }
   }
 
   function saveCategory(event: FormEvent) {
@@ -536,11 +589,33 @@ function AdminApp() {
     setCategories((current) => current.filter((item) => item.id !== id));
   }
 
-  function handleImageUpload(file: File | null, callback: (value: string) => void) {
+  async function handleImageUpload(file: File | null, callback: (value: string) => void) {
     if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => callback(String(reader.result ?? ""));
-    reader.readAsDataURL(file);
+    setImageUploadError("");
+    if (file.size === 0 || file.size > 4 * 1024 * 1024) {
+      setImageUploadError("Choose an image smaller than 4 MB.");
+      return;
+    }
+    setIsUploadingImage(true);
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      const response = await fetch("/api/admin/media", {
+        method: "POST",
+        credentials: "same-origin",
+        body: formData,
+      });
+      const payload = (await response.json()) as { url?: string; error?: string };
+      if (!response.ok || !payload.url) {
+        throw new Error(payload.error || "Unable to upload image.");
+      }
+      callback(payload.url);
+    } catch (error) {
+      setImageUploadError(error instanceof Error ? error.message : "Unable to upload image.");
+      toast.error(error instanceof Error ? error.message : "Unable to upload image.");
+    } finally {
+      setIsUploadingImage(false);
+    }
   }
 
   function renderDashboard() {
@@ -868,15 +943,21 @@ function AdminApp() {
                   <td className="px-4 py-3">
                     <button
                       type="button"
-                      onClick={() =>
-                        setProducts((current) =>
-                          current.map((item) =>
-                            item.id === product.id
-                              ? { ...item, stock: Math.max(0, item.stock + 1) }
-                              : item,
-                          ),
-                        )
-                      }
+                      onClick={async () => {
+                        try {
+                          const saved = await persistProduct({
+                            ...product,
+                            stock: Math.max(0, product.stock + 1),
+                          });
+                          setProducts((current) =>
+                            current.map((item) => (item.id === saved.id ? saved : item)),
+                          );
+                        } catch (error) {
+                          toast.error(
+                            error instanceof Error ? error.message : "Unable to update stock.",
+                          );
+                        }
+                      }}
                       className="rounded-lg border border-slate-200 px-2 py-1 text-xs hover:bg-slate-100"
                     >
                       +1 stock
@@ -1438,6 +1519,11 @@ function AdminApp() {
               </button>
             </div>
             <form onSubmit={saveProduct} className="space-y-5">
+              {productError ? (
+                <p role="alert" className="rounded-xl bg-red-50 px-3 py-2 text-sm text-red-700">
+                  {productError}
+                </p>
+              ) : null}
               <div className="grid gap-4 md:grid-cols-2">
                 <input
                   value={productDraft.name}
@@ -1461,6 +1547,23 @@ function AdminApp() {
                     setProductDraft((current) => ({ ...current, sku: event.target.value }))
                   }
                   placeholder="SKU"
+                  className="rounded-xl border border-slate-200 px-3 py-2.5 text-sm"
+                />
+                <input
+                  value={productDraft.slug}
+                  disabled={Boolean(editingProductId)}
+                  onChange={(event) =>
+                    setProductDraft((current) => ({ ...current, slug: event.target.value }))
+                  }
+                  placeholder="Product URL slug"
+                  className="rounded-xl border border-slate-200 px-3 py-2.5 text-sm"
+                />
+                <input
+                  value={productDraft.code}
+                  onChange={(event) =>
+                    setProductDraft((current) => ({ ...current, code: event.target.value }))
+                  }
+                  placeholder="Product code"
                   className="rounded-xl border border-slate-200 px-3 py-2.5 text-sm"
                 />
                 <select
@@ -1521,9 +1624,41 @@ function AdminApp() {
                   <option value="published">Published</option>
                   <option value="draft">Draft</option>
                 </select>
+                <select
+                  value={productDraft.packageType}
+                  onChange={(event) =>
+                    setProductDraft((current) => ({
+                      ...current,
+                      packageType: event.target.value as AdminProduct["packageType"],
+                    }))
+                  }
+                  className="rounded-xl border border-slate-200 px-3 py-2.5 text-sm"
+                >
+                  <option value="retail">Retail</option>
+                  <option value="gallon">Gallon</option>
+                  <option value="other-commercial">Other commercial</option>
+                </select>
               </div>
 
               <div className="grid gap-4 md:grid-cols-2">
+                <textarea
+                  value={productDraft.short}
+                  onChange={(event) =>
+                    setProductDraft((current) => ({ ...current, short: event.target.value }))
+                  }
+                  rows={2}
+                  placeholder="Short description"
+                  className="rounded-xl border border-slate-200 px-3 py-2.5 text-sm"
+                />
+                <textarea
+                  value={productDraft.usage}
+                  onChange={(event) =>
+                    setProductDraft((current) => ({ ...current, usage: event.target.value }))
+                  }
+                  rows={2}
+                  placeholder="Usage instructions"
+                  className="rounded-xl border border-slate-200 px-3 py-2.5 text-sm"
+                />
                 <textarea
                   value={productDraft.description}
                   onChange={(event) =>
@@ -1556,6 +1691,7 @@ function AdminApp() {
                   <input
                     type="file"
                     accept="image/*"
+                    disabled={isUploadingImage}
                     className="hidden"
                     onChange={(event) =>
                       handleImageUpload(event.target.files?.[0] ?? null, (image) =>
@@ -1564,6 +1700,14 @@ function AdminApp() {
                     }
                   />
                 </label>
+                {isUploadingImage ? (
+                  <p className="mt-2 text-xs text-slate-500">Uploading image...</p>
+                ) : null}
+                {imageUploadError ? (
+                  <p role="alert" className="mt-2 text-xs text-red-600">
+                    {imageUploadError}
+                  </p>
+                ) : null}
                 {productDraft.image ? (
                   <img
                     src={productDraft.image}

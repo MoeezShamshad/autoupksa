@@ -19,10 +19,7 @@ vi.mock("@supabase/supabase-js", () => ({
           }),
         }),
       }),
-      upsert: async (
-        row: { state: unknown },
-        options?: { ignoreDuplicates?: boolean },
-      ) => {
+      upsert: async (row: { state: unknown }, options?: { ignoreDuplicates?: boolean }) => {
         if (!options?.ignoreDuplicates || !database.state) {
           database.state = row.state as { [key: string]: unknown };
         }
@@ -33,6 +30,7 @@ vi.mock("@supabase/supabase-js", () => ({
 }));
 
 import { handleAdminApi } from "../lib/admin-api";
+import { applyManagedCatalogProducts, PRODUCTS } from "../lib/catalog";
 
 const testPassword = "S3cure-test-password!";
 
@@ -78,9 +76,75 @@ describe("admin API", () => {
     );
 
     expect(stateResponse?.status).toBe(200);
-    await expect(stateResponse?.json()).resolves.toMatchObject({
-      admin: { email: "admin@example.com" },
-    });
+    const state = (await stateResponse?.json()) as {
+      admin: { email: string };
+      products: Array<{ id: string; image: string; sku: string; status: string }>;
+    };
+    expect(state.admin.email).toBe("admin@example.com");
+    expect(state.products).toHaveLength(PRODUCTS.length);
+    expect(new Set(state.products.map((product) => product.id)).size).toBe(PRODUCTS.length);
+    expect(new Set(state.products.map((product) => product.sku.toLowerCase())).size).toBe(
+      PRODUCTS.length,
+    );
+    expect(state.products.every((product) => product.image && product.status === "published")).toBe(
+      true,
+    );
+  });
+
+  it("backfills existing public products into an already initialized admin state", async () => {
+    database.state = {
+      version: 1,
+      catalogSeeded: false,
+      products: [],
+      categories: [],
+      inquiries: [],
+      activity: [],
+      settings: {},
+      admin: {
+        name: "AutoUp Admin",
+        email: "admin@example.com",
+        role: "Super Admin",
+        passwordHash: "placeholder",
+        passwordSalt: "placeholder",
+        sessionVersion: 1,
+      },
+    };
+
+    const response = await handleAdminApi(
+      new Request("https://example.com/api/catalog"),
+      "/api/catalog",
+    );
+
+    expect(response?.status).toBe(200);
+    const payload = (await response?.json()) as { products: Array<{ id: string }> };
+    expect(payload.products).toHaveLength(PRODUCTS.length);
+    expect(database.state?.["catalogSeeded"]).toBe(true);
+  });
+
+  it("applies saved product names and images to the public catalog", () => {
+    const product = PRODUCTS[0];
+    if (!product) throw new Error("Expected a catalog product.");
+    const original = { ...product };
+
+    applyManagedCatalogProducts([
+      {
+        id: product.slug,
+        slug: product.slug,
+        name: "Updated catalog name",
+        sku: "UPDATED-SKU",
+        category: product.category,
+        packageType: product.packageType,
+        catalogVariants: product.variants,
+        packageSize: product.variants.join(", "),
+        description: product.description,
+        image: "https://example.com/updated-product.webp",
+        price: 99,
+      },
+    ]);
+
+    expect(product.name).toBe("Updated catalog name");
+    expect(product.image).toBe("https://example.com/updated-product.webp");
+    Object.assign(product, original);
   });
 
   it("does not initialize an admin account with a built-in password", async () => {

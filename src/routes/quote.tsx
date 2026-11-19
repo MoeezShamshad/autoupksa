@@ -21,6 +21,7 @@ import { toast } from "sonner";
 import { useLocale, translateText } from "@/lib/i18n";
 import { isTwentyLitreVariant } from "@/lib/installments";
 import { Reveal } from "@/components/Reveal";
+import { useCatalogVersion } from "@/lib/catalog-provider";
 
 export const Route = createFileRoute("/quote")({
   validateSearch: z.object({
@@ -120,6 +121,7 @@ const ARABIC_CITIES: Record<string, string> = {
 };
 
 function QuotePage() {
+  useCatalogVersion();
   const { product } = Route.useSearch();
   const { items, setQty, remove, add } = useCart();
   const { locale } = useLocale();

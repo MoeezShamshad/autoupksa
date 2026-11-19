@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { z } from "zod";
 import { ArrowLeft, Building2, MessageCircle, ShieldCheck, Wrench } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,6 +7,7 @@ import { Reveal } from "@/components/Reveal";
 import { GALLON_PRODUCTS } from "@/lib/catalog";
 import { useLocale } from "@/lib/i18n";
 import { buildInstallationPaymentInquiryMessage, whatsappUrl } from "@/lib/site";
+import { useCatalogVersion } from "@/lib/catalog-provider";
 
 export const Route = createFileRoute("/quote/installation")({
   validateSearch: z.object({ product: z.string().optional() }),
@@ -27,14 +28,12 @@ const field =
   "h-12 w-full rounded-xl border border-input bg-card px-4 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary";
 
 function InstallationInquiryPage() {
+  useCatalogVersion();
   const { locale } = useLocale();
   const { product } = Route.useSearch();
-  const defaultProduct = useMemo(
-    () =>
-      (product ? GALLON_PRODUCTS.find((item) => item.slug === product) : GALLON_PRODUCTS[0]) ??
-      GALLON_PRODUCTS[0],
-    [product],
-  );
+  const defaultProduct =
+    (product ? GALLON_PRODUCTS.find((item) => item.slug === product) : GALLON_PRODUCTS[0]) ??
+    GALLON_PRODUCTS[0];
 
   const [form, setForm] = useState({
     name: "",
