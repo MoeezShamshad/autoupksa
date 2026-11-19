@@ -282,7 +282,7 @@ describe("B2B Components Functionality Verification", () => {
     expect(url).toContain("https://wa.me/966548843368?text=");
     expect(target).toBe("_blank");
     expect(features).toBe("noopener,noreferrer");
-    const message = decodeURIComponent(url!.split("?text=")[1]!);
+    const message = decodeURIComponent(String(url).split("?text=")[1]!);
     expect(message).toContain("Colour Wax Shampoo (20 L)");
     expect(message).toContain("Quantity: 3");
     expect(message).toContain("Installment quote requested");
@@ -335,7 +335,7 @@ describe("B2B Components Functionality Verification", () => {
     fireEvent.click(screen.getByRole("button", { name: "اطلب عرض سعر عبر واتساب" }));
 
     const url = openWhatsApp.mock.calls[0]![0]!;
-    const message = decodeURIComponent(url.split("?text=")[1]!);
+    const message = decodeURIComponent(String(url).split("?text=")[1]!);
     expect(message).toContain("مرحباً فريق Auto Up!");
     expect(message).toContain("ملمع & عناية (20 L)");
     expect(message).toContain("الكمية: 2");
@@ -397,7 +397,7 @@ describe("B2B Components Functionality Verification", () => {
     fireEvent.click(screen.getByRole("button", { name: "Remove temporary item" }));
     fireEvent.click(screen.getByRole("button", { name: "Open cart" }));
     fireEvent.click(screen.getByRole("button", { name: "Request Quote via WhatsApp" }));
-    const message = decodeURIComponent(openWhatsApp.mock.calls[0]![0]!.split("?text=")[1]!);
+    const message = decodeURIComponent(String(openWhatsApp.mock.calls[0]![0]).split("?text=")[1]!);
     expect(message).toContain("Kept Product");
     expect(message).not.toContain("Temporary Product");
 
@@ -487,11 +487,13 @@ describe("B2B Components Functionality Verification", () => {
     fireEvent.click(increaseBtn);
     expect(screen.getByText("2")).toBeInTheDocument();
 
-    // Inquire button
+    // Add to quote list
     const initialCount = cartCount;
-    const inquireBtn = screen.getByRole("button", { name: /inquire|استفسر/i });
-    expect(inquireBtn).toBeInTheDocument();
-    fireEvent.click(inquireBtn);
+    const addToQuoteButton = screen.getByRole("button", {
+      name: /add to quote list|أضف إلى قائمة السعر/i,
+    });
+    expect(addToQuoteButton).toBeInTheDocument();
+    fireEvent.click(addToQuoteButton);
     expect(screen.getByTestId("cart-count").textContent).toBe(String(initialCount + 2));
   });
 

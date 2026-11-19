@@ -139,7 +139,9 @@ function QuotePage() {
     Record<string, { enabled: boolean; months: 3 | 5 }>
   >({});
   const [errors, setErrors] = useState<
-    Partial<Record<"name" | "companyName" | "phone" | "city" | "email" | "items", string>>
+    Partial<
+      Record<"name" | "companyName" | "phone" | "city" | "country" | "email" | "items", string>
+    >
   >({});
   const [review, setReview] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -202,7 +204,7 @@ function QuotePage() {
     : f.country
       ? "Other"
       : "";
-  const selectedCities = CITIES[selectedCountry] ?? CITIES.Other;
+  const selectedCities = CITIES[selectedCountry] ?? CITIES["Other"] ?? [];
   const selectedCity = selectedCities.includes(f.city) ? f.city : f.city ? "Other" : "";
   const otherCountryValue =
     f.country === "Other" ? f.countryOther : selectedCountry === "Other" ? f.country : "";

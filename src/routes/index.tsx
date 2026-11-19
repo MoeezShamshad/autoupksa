@@ -129,7 +129,6 @@ const CATEGORY_CARDS = [
     desc: "Concentrated foam shampoos and pre-washes formulated for automatic and manual wash systems.",
     image: "editorial-10",
     containerSize: "20L & 20KG",
-    itemCount: "4 Products",
   },
   {
     title: "Cleaning Chemicals",
@@ -137,7 +136,6 @@ const CATEGORY_CARDS = [
     desc: "Heavy-duty all-purpose cleaners (ChemX C2) for engines, rims, linings, and high-grime components.",
     image: "editorial-16",
     containerSize: "25L Drum",
-    itemCount: "ChemX Series",
   },
   {
     title: "Car Wax & Polish",
@@ -145,7 +143,6 @@ const CATEGORY_CARDS = [
     desc: "Post-wash final touch shine waxes (F55) delivering instant gloss, zero residue, and dust repellency.",
     image: "detail-2",
     containerSize: "20L Container",
-    itemCount: "F55 Final Touch",
   },
   {
     title: "Interior Cleaners",
@@ -153,7 +150,6 @@ const CATEGORY_CARDS = [
     desc: "Dashboard and trim polishes (ChemX D2) engineered for vinyl, leather, and interior plastics.",
     image: "detail-1",
     containerSize: "20KG Drum",
-    itemCount: "ChemX D2",
   },
   {
     title: "Exterior Cleaners",
@@ -161,7 +157,6 @@ const CATEGORY_CARDS = [
     desc: "Solvent tire dressings (O2, ChemX T1) and ammonia-free streakless glass polishes (G4).",
     image: "editorial-12",
     containerSize: "20L & 20KG",
-    itemCount: "Tire & Glass Care",
   },
 ];
 
@@ -407,7 +402,10 @@ function Index() {
                         <span className="rounded-full bg-primary/20 border border-primary/40 px-2 py-0.5 text-[0.62rem] font-bold uppercase tracking-wider text-primary">
                           {c.containerSize}
                         </span>
-                        <span className="text-[0.68rem] text-white/60">{c.itemCount}</span>
+                        <span className="text-[0.68rem] text-white/60">
+                          {PRODUCTS.filter((product) => product.category === c.cat).length}{" "}
+                          {locale === "ar" ? "منتجات" : "products"}
+                        </span>
                       </div>
                       <h3 className="text-xl font-bold text-white tracking-tight">{c.title}</h3>
                       <p className="mt-1 text-xs text-white/75 line-clamp-2 max-w-sm">{c.desc}</p>

@@ -160,7 +160,7 @@ export const PRODUCTS: Product[] = [
     short: "Wash your car without water — cleans, shines and protects in one step.",
     description:
       "LifeLines Waterless Car Cleaner is a distinct and unique formula that has a high ability to break up dirt and remove it with ease. The formula also contains Wax to preserve the car's paint and give it a distinctive shine. Reduces water use and waste. Environmentally friendly.",
-    variants: ["20 L"],
+    variants: ["20 KG"],
     usage:
       "Spray the product directly on the surface of the car from the outside, leave for 30 seconds, then wipe with a microfiber towel (preferably wet).",
     image: PRODUCT_PHOTOS.waterlessCarCleaner,
@@ -178,7 +178,7 @@ export const PRODUCTS: Product[] = [
     variants: ["25 L"],
     usage:
       "First, clean the engines, rims and liners. Dilute 1 litre of the product to 5 litres of water. Spray, leave for a maximum of two minutes, then rinse thoroughly. For interior seats, leather and floors: use appropriate special brushes for tough dirt. For velvet chairs, fabrics and floor mats: dilute 1 litre of product in 10 litres of water.",
-    image: NEW_PRODUCT_PHOTOS["lifelines-chemx-c2"],
+    image: NEW_PRODUCT_PHOTOS["lifelines-chemx-c2"] ?? pChemxC2,
     featured: 5,
   },
   {
@@ -192,7 +192,7 @@ export const PRODUCTS: Product[] = [
       "LifeLines ChemX C6 chemical degreaser in a 25 L commercial container. Follow the directions printed on the product label.",
     variants: ["25 L"],
     usage: "Follow the dilution and use directions printed on the product label.",
-    image: NEW_PRODUCT_PHOTOS["lifelines-chemx-c6-25l"],
+    image: NEW_PRODUCT_PHOTOS["lifelines-chemx-c6-25l"] ?? pC6Bottle,
     featured: 19,
   },
   {
@@ -207,7 +207,7 @@ export const PRODUCTS: Product[] = [
     variants: ["20 L"],
     usage:
       "After washing or during drying, spray an appropriate amount of product onto a clean, soft cloth. Wipe the car's surface in a circular motion for a perfect shine.",
-    image: NEW_PRODUCT_PHOTOS["lifelines-f55-wax"],
+    image: NEW_PRODUCT_PHOTOS["lifelines-f55-wax"] ?? pF55Wax,
     featured: 6,
   },
   {
@@ -222,7 +222,7 @@ export const PRODUCTS: Product[] = [
     variants: ["20 KG"],
     usage:
       "Shake the container before each use. Dilute 1:1 or use as-is for best results. For optimal results, apply the product evenly with a sponge and allow it to dry.",
-    image: NEW_PRODUCT_PHOTOS["lifelines-chemx-d2"],
+    image: NEW_PRODUCT_PHOTOS["lifelines-chemx-d2"] ?? pChemxD2,
     featured: 7,
   },
   {
@@ -237,7 +237,7 @@ export const PRODUCTS: Product[] = [
     variants: ["20 KG"],
     usage:
       "For best results, apply to a dry and clean surface. Spray evenly at all surfaces and let the product dry away from dust.",
-    image: NEW_PRODUCT_PHOTOS["lifelines-chemx-t1"],
+    image: NEW_PRODUCT_PHOTOS["lifelines-chemx-t1"] ?? pChemxT1,
     featured: 8,
   },
   {
@@ -252,7 +252,7 @@ export const PRODUCTS: Product[] = [
     variants: ["20 L"],
     usage:
       "1. Clean the tires thoroughly and ensure they are completely dry. 2. Spray the product onto the tire. 3. Spread it evenly using a sponge. For external use only. Flammable — keep away from heat and sparks.",
-    image: NEW_PRODUCT_PHOTOS["lifelines-o2-solvent"],
+    image: NEW_PRODUCT_PHOTOS["lifelines-o2-solvent"] ?? pO2Solvent,
     featured: 9,
   },
   {
@@ -267,7 +267,7 @@ export const PRODUCTS: Product[] = [
     variants: ["20 L"],
     usage:
       "1. Spray the polish directly onto the glass. 2. Wipe the glass with a soft, dry cloth in circular motions. 3. For best results, avoid direct sunlight during application. Avoid contact with eyes and skin.",
-    image: NEW_PRODUCT_PHOTOS["lifelines-g4-glass"],
+    image: NEW_PRODUCT_PHOTOS["lifelines-g4-glass"] ?? pG4Glass,
     featured: 10,
   },
   {

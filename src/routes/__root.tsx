@@ -6,6 +6,7 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  useLocation,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
@@ -141,19 +142,21 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const location = useLocation();
+  const showSiteChrome = !location.pathname.startsWith("/admin");
 
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <LocaleProvider>
         <CartProvider>
-          <Header />
+          {showSiteChrome ? <Header /> : null}
           <main>
             <Outlet />
           </main>
-          <Footer />
-          <CartDrawer />
-          <StickyWhatsApp />
+          {showSiteChrome ? <Footer /> : null}
+          {showSiteChrome ? <CartDrawer /> : null}
+          {showSiteChrome ? <StickyWhatsApp /> : null}
           <Toaster position="bottom-right" theme="dark" richColors />
         </CartProvider>
       </LocaleProvider>
