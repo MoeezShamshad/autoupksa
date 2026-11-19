@@ -381,3 +381,79 @@ export const OTHER_COMMERCIAL_PRODUCTS = PRODUCTS.filter(
 );
 
 export const productBySlug = (slug: string) => PRODUCTS.find((p) => p.slug === slug);
+
+export type ManagedCatalogProduct = {
+  id: string;
+  slug?: string;
+  name: string;
+  sku: string;
+  code?: string;
+  category: string;
+  packageType?: Product["packageType"];
+  catalogVariants?: string[];
+  packageSize: string;
+  short?: string;
+  description: string;
+  usage?: string;
+  image: string;
+  price: number;
+  featured?: number;
+};
+
+export function applyManagedCatalogProducts(managedProducts: ManagedCatalogProduct[]) {
+  const knownSlugs = new Set(PRODUCTS.map((product) => product.slug));
+
+  for (const managed of managedProducts) {
+    const slug = managed.slug || managed.id;
+    const product = PRODUCTS.find((item) => item.slug === slug);
+    const category = CATEGORIES.find(
+      (item) => item !== "All Products" && item === managed.category,
+    );
+    const variants = managed.catalogVariants?.length
+      ? managed.catalogVariants
+      : managed.packageSize
+          .split(",")
+          .map((item) => item.trim())
+          .filter(Boolean);
+
+    if (product) {
+      Object.assign(product, {
+        name: managed.name,
+        code: managed.code,
+        category: category || product.category,
+        packageType: managed.packageType || product.packageType,
+        short: managed.short || managed.description,
+        description: managed.description,
+        variants,
+        usage: managed.usage || managed.description,
+        image: managed.image,
+        price: managed.price > 0 ? managed.price : undefined,
+        featured: managed.featured ?? product.featured,
+      });
+      continue;
+    }
+
+    if (!slug || knownSlugs.has(slug)) continue;
+    const newProduct: Product = {
+      slug,
+      name: managed.name,
+      code: managed.code,
+      packageType: managed.packageType || "other-commercial",
+      category: category || "Cleaning Chemicals",
+      short: managed.short || managed.description,
+      description: managed.description,
+      variants,
+      usage: managed.usage || managed.description,
+      image: managed.image,
+      price: managed.price > 0 ? managed.price : undefined,
+      featured: managed.featured ?? PRODUCTS.length,
+    };
+    PRODUCTS.push(newProduct);
+    knownSlugs.add(slug);
+    if (newProduct.packageType === "retail") RETAIL_PRODUCTS.push(newProduct);
+    else if (newProduct.packageType === "gallon") GALLON_PRODUCTS.push(newProduct);
+    else OTHER_COMMERCIAL_PRODUCTS.push(newProduct);
+  }
+
+  GALLON_PRODUCTS.sort((a, b) => a.featured - b.featured);
+}

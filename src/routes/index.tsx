@@ -31,6 +31,7 @@ import { useLocale } from "@/lib/i18n";
 import { ProductCarousel } from "@/components/ProductCarousel";
 import { PolishSection } from "@/components/PolishSection";
 import { PaymentPartners } from "@/components/PaymentPartners";
+import { useCatalogVersion } from "@/lib/catalog-provider";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -277,6 +278,7 @@ const B2B_FAQ = [
    MAIN HOMEPAGE COMPONENT
    ========================================================================= */
 function Index() {
+  useCatalogVersion();
   const { locale } = useLocale();
   return (
     <div className="flex flex-col">

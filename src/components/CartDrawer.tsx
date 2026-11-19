@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { useLocale, translateText } from "@/lib/i18n";
 import { isTwentyLitreVariant } from "@/lib/installments";
 import { PRODUCTS } from "@/lib/catalog";
+import { useCatalogVersion } from "@/lib/catalog-provider";
 import { whatsappUrl } from "@/lib/site";
 
 function buildCartCheckoutMessage(items: ReturnType<typeof useCart>["items"], locale: "ar" | "en") {
@@ -76,6 +77,7 @@ function buildCartCheckoutMessage(items: ReturnType<typeof useCart>["items"], lo
 }
 
 export function CartDrawer() {
+  useCatalogVersion();
   const { items, open, setOpen, setQty, remove, clear, count } = useCart();
   const { locale } = useLocale();
 

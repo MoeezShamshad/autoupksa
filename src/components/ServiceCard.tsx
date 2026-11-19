@@ -10,6 +10,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { PRODUCTS, type Service } from "@/lib/catalog";
+import { useCatalogVersion } from "@/lib/catalog-provider";
 import { useCart } from "@/lib/cart";
 
 const SERVICE_RECOMMENDATIONS: Record<string, string> = {
@@ -67,6 +68,7 @@ const SERVICE_BENEFITS: Record<string, string[]> = {
 };
 
 export function ServiceCard({ s, index }: { s: Service; index: number }) {
+  useCatalogVersion();
   const { add } = useCart();
   const recSlug = SERVICE_RECOMMENDATIONS[s.slug] ?? "foam-car-shampoo";
   const recProduct = PRODUCTS.find((p) => p.slug === recSlug) ?? PRODUCTS[0]!;

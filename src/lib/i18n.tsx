@@ -648,14 +648,30 @@ const EN_TO_AR: Record<string, string> = {
 
 const AR_TO_EN = new Map(Object.entries(EN_TO_AR).map(([english, arabic]) => [arabic, english]));
 const STORAGE_KEY = "autoup-language";
+let managedTranslations = new Map<string, string>();
 const LocaleContext = createContext<{ locale: Locale; setLocale: (locale: Locale) => void } | null>(
   null,
 );
 
+export function setManagedProductTranslations(
+  products: Array<{ name: string; nameAr?: string; description?: string; descriptionAr?: string }>,
+) {
+  const translations = new Map<string, string>();
+  for (const product of products) {
+    if (product.nameAr) translations.set(product.name.replace(/\s+/g, " ").trim(), product.nameAr);
+    if (product.descriptionAr && product.description) {
+      translations.set(product.description.replace(/\s+/g, " ").trim(), product.descriptionAr);
+    }
+  }
+  managedTranslations = translations;
+}
+
 export function translateText(text: string, locale: Locale) {
   const normalized = text.replace(/\s+/g, " ").trim();
   const english = AR_TO_EN.get(normalized) ?? normalized;
-  return locale === "ar" ? (EN_TO_AR[english] ?? english) : english;
+  return locale === "ar"
+    ? (managedTranslations.get(english) ?? EN_TO_AR[english] ?? english)
+    : english;
 }
 
 function translateDom(locale: Locale) {

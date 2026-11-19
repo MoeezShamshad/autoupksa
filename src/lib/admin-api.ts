@@ -1,13 +1,23 @@
 import { randomBytes, scryptSync, timingSafeEqual, createHmac } from "node:crypto";
 import { createClient } from "@supabase/supabase-js";
 
+import { CATEGORIES, PRODUCTS } from "./catalog";
+import { translateText } from "./i18n";
+
 export type AdminProduct = {
   id: string;
+  slug?: string;
   name: string;
   nameAr: string;
   sku: string;
   category: string;
   packageSize: string;
+  catalogVariants?: string[];
+  packageType?: "retail" | "gallon" | "other-commercial";
+  code?: string;
+  short?: string;
+  usage?: string;
+  featured?: number;
   price: number;
   salePrice?: number;
   stock: number;
@@ -31,6 +41,7 @@ export type AdminProduct = {
 
 type AdminState = {
   version: number;
+  catalogSeeded?: boolean;
   products: AdminProduct[];
   categories: Array<{
     id: string;
@@ -85,6 +96,58 @@ function verifyPassword(password: string, salt: string, hash: string) {
   return actual.length === expected.length && timingSafeEqual(actual, expected);
 }
 
+function catalogProducts(): AdminProduct[] {
+  return PRODUCTS.map((product) => {
+    const packageSize = product.variants.join(", ");
+    const sku = product.code
+      ? `${product.code.replace(/[^a-z0-9]+/gi, "-")}-${packageSize.replace(/[^a-z0-9]+/gi, "")}`
+      : product.slug;
+    return {
+      id: product.slug,
+      slug: product.slug,
+      name: product.name,
+      nameAr: translateText(product.name, "ar"),
+      sku,
+      category: product.category,
+      packageSize,
+      catalogVariants: product.variants,
+      packageType: product.packageType,
+      code: product.code || "",
+      short: product.short,
+      usage: product.usage,
+      featured: product.featured,
+      price: product.price ?? 0,
+      stock: 0,
+      status: "published",
+      image: product.image,
+      updatedAt: new Date().toISOString(),
+      brand: "LifeLines",
+      description: product.description,
+      descriptionAr: translateText(product.description, "ar"),
+      variants: product.variants.map((variant, index) => ({
+        id: `${product.slug}-${index + 1}`,
+        name: product.name,
+        sku,
+        packageSize: variant,
+        price: product.price ?? 0,
+        stock: 0,
+      })),
+    };
+  });
+}
+
+function catalogCategories(): AdminState["categories"] {
+  return CATEGORIES.filter((category) => category !== "All Products").map((name, order) => ({
+    id: name.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+    name,
+    nameAr: translateText(name, "ar"),
+    description: "",
+    image: "",
+    order,
+    active: true,
+  }));
+}
+
 async function readState(): Promise<AdminState> {
   const client = supabase();
   const { data, error } = await client
@@ -93,7 +156,30 @@ async function readState(): Promise<AdminState> {
     .eq("id", 1)
     .maybeSingle();
   if (error) throw error;
-  if (data) return data.state as AdminState;
+  if (data) {
+    const state = data.state as AdminState;
+    if (!state.catalogSeeded) {
+      const existingProductIds = new Set(
+        state.products.flatMap((product) => [product.id, product.slug].filter(Boolean)),
+      );
+      state.products.push(
+        ...catalogProducts().filter(
+          (product) => !existingProductIds.has(product.id) && !existingProductIds.has(product.slug),
+        ),
+      );
+      const existingCategories = new Set(
+        state.categories.map((category) => category.name.toLowerCase()),
+      );
+      state.categories.unshift(
+        ...catalogCategories().filter(
+          (category) => !existingCategories.has(category.name.toLowerCase()),
+        ),
+      );
+      state.catalogSeeded = true;
+      await writeState(state);
+    }
+    return state;
+  }
 
   const password = process.env["AUTOUP_ADMIN_PASSWORD"];
   const email = process.env["AUTOUP_ADMIN_EMAIL"]?.trim().toLowerCase();
@@ -106,8 +192,9 @@ async function readState(): Promise<AdminState> {
   const hashed = hashPassword(password);
   const initialState: AdminState = {
     version: 1,
-    products: [],
-    categories: [],
+    catalogSeeded: true,
+    products: catalogProducts(),
+    categories: catalogCategories(),
     inquiries: [],
     activity: [],
     settings: { currency: "SAR", whatsapp: "", language: "ar" },
@@ -185,9 +272,10 @@ function getSession(request: Request, admin: AdminState["admin"]) {
 }
 
 function signToken(email: string, expiresAt: number, sessionVersion: number) {
-  const payload = Buffer.from(JSON.stringify({ email, expiresAt, sessionVersion }), "utf8").toString(
-    "base64url",
-  );
+  const payload = Buffer.from(
+    JSON.stringify({ email, expiresAt, sessionVersion }),
+    "utf8",
+  ).toString("base64url");
   const signature = createHmac("sha256", sessionSecret()).update(payload).digest("hex");
   return `${payload}.${signature}`;
 }
@@ -219,7 +307,9 @@ async function handleAdminApiRequest(request: Request, pathname: string): Promis
       sessionSecret();
     } catch (error) {
       return json(
-        { error: error instanceof Error ? error.message : "Admin session secret is not configured." },
+        {
+          error: error instanceof Error ? error.message : "Admin session secret is not configured.",
+        },
         503,
       );
     }
@@ -267,6 +357,34 @@ async function handleAdminApiRequest(request: Request, pathname: string): Promis
   const state = await readState();
   if (!getSession(request, state.admin)) return json({ error: "Unauthorized" }, 401);
 
+  if (pathname === "/api/admin/media" && request.method === "POST") {
+    const formData = await request.formData();
+    const file = formData.get("file");
+    const allowedTypes: Record<string, string> = {
+      "image/jpeg": "jpg",
+      "image/png": "png",
+      "image/webp": "webp",
+      "image/avif": "avif",
+    };
+    if (!file || typeof file === "string" || !allowedTypes[file.type]) {
+      return json({ error: "Choose a JPEG, PNG, WebP, or AVIF image." }, 400);
+    }
+    if (file.size === 0 || file.size > 4 * 1024 * 1024) {
+      return json({ error: "Images must be smaller than 4 MB." }, 400);
+    }
+    const key = `${randomBytes(16).toString("hex")}.${allowedTypes[file.type]}`;
+    const client = supabase();
+    const { data: uploaded, error: uploadError } = await client.storage
+      .from("product-media")
+      .upload(key, Buffer.from(await file.arrayBuffer()), {
+        contentType: file.type,
+        upsert: false,
+      });
+    if (uploadError) throw uploadError;
+    const { data: publicUrl } = client.storage.from("product-media").getPublicUrl(uploaded.path);
+    return json({ url: publicUrl.publicUrl });
+  }
+
   if (pathname === "/api/admin/state" && request.method === "GET") {
     return json({
       products: state.products,
@@ -292,9 +410,22 @@ async function handleAdminApiRequest(request: Request, pathname: string): Promis
     }
     const now = new Date().toISOString();
     const existing = product.id ? state.products.findIndex((item) => item.id === product.id) : -1;
+    const existingProduct = existing >= 0 ? state.products[existing] : undefined;
+    const slug =
+      existingProduct?.slug || product.slug?.trim() || product.id || slugify(product.name);
+    if (state.products.some((item) => item.slug === slug && item.id !== product.id)) {
+      return json({ error: "Product URL already exists." }, 409);
+    }
     const saved = {
       ...product,
       id: product.id || randomBytes(8).toString("hex"),
+      slug,
+      catalogVariants: product.catalogVariants?.length
+        ? product.catalogVariants
+        : product.packageSize
+            .split(",")
+            .map((item) => item.trim())
+            .filter(Boolean),
       createdAt: existing >= 0 ? state.products[existing]?.createdAt || now : now,
       updatedAt: now,
     };
@@ -384,4 +515,14 @@ async function handleAdminApiRequest(request: Request, pathname: string): Promis
   }
 
   return json({ error: "Not found" }, 404);
+}
+
+function slugify(value: string) {
+  const slug = value
+    .normalize("NFKD")
+    .toLowerCase()
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+  return slug || randomBytes(8).toString("hex");
 }

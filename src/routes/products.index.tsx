@@ -1,5 +1,5 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { z } from "zod";
 import { ArrowRight, Search, ShieldCheck, Sparkles, Truck } from "lucide-react";
 import productsHero from "@/assets/products-hero.webp";
@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 import { useLocale, translateText } from "@/lib/i18n";
 import { ProfessionalGallonCard } from "@/components/ProfessionalGallonCard";
 import { PolishSection } from "@/components/PolishSection";
+import { useCatalogVersion } from "@/lib/catalog-provider";
 
 export const Route = createFileRoute("/products/")({
   validateSearch: z.object({ q: z.string().optional(), cat: z.string().optional() }),
@@ -35,6 +36,7 @@ export const Route = createFileRoute("/products/")({
 });
 
 function ProductsPage() {
+  useCatalogVersion();
   const { locale } = useLocale();
   const { q = "", cat = "All Products" } = Route.useSearch();
   const navigate = useNavigate({ from: "/products/" });
@@ -42,33 +44,31 @@ function ProductsPage() {
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const hasPricedProducts = PRODUCTS.some((product) => typeof product.price === "number");
-  const list = useMemo(() => {
-    const term = q.toLowerCase();
-    const minValue = Number(minPrice);
-    const maxValue = Number(maxPrice);
-    const min = minPrice.trim() && Number.isFinite(minValue) ? minValue : undefined;
-    const max = maxPrice.trim() && Number.isFinite(maxValue) ? maxValue : undefined;
-    const r = PRODUCTS.filter(
-      (p) =>
-        (cat === "All Products" || p.category === cat) &&
-        (min === undefined || (typeof p.price === "number" && p.price >= min)) &&
-        (max === undefined || (typeof p.price === "number" && p.price <= max)) &&
-        (!term ||
-          p.name.toLowerCase().includes(term) ||
-          translateText(p.name, locale).toLowerCase().includes(term) ||
-          p.category.toLowerCase().includes(term) ||
-          translateText(p.category, locale).toLowerCase().includes(term) ||
-          (p.code && p.code.toLowerCase().includes(term))),
-    );
-    return [...r].sort((a, b) => {
-      if (sort === "name") return a.name.localeCompare(b.name);
-      if (sort === "price-asc")
-        return (a.price ?? Number.POSITIVE_INFINITY) - (b.price ?? Number.POSITIVE_INFINITY);
-      if (sort === "price-desc")
-        return (b.price ?? Number.NEGATIVE_INFINITY) - (a.price ?? Number.NEGATIVE_INFINITY);
-      return a.featured - b.featured;
-    });
-  }, [q, cat, sort, locale, minPrice, maxPrice]);
+  const term = q.toLowerCase();
+  const minValue = Number(minPrice);
+  const maxValue = Number(maxPrice);
+  const min = minPrice.trim() && Number.isFinite(minValue) ? minValue : undefined;
+  const max = maxPrice.trim() && Number.isFinite(maxValue) ? maxValue : undefined;
+  const filtered = PRODUCTS.filter(
+    (p) =>
+      (cat === "All Products" || p.category === cat) &&
+      (min === undefined || (typeof p.price === "number" && p.price >= min)) &&
+      (max === undefined || (typeof p.price === "number" && p.price <= max)) &&
+      (!term ||
+        p.name.toLowerCase().includes(term) ||
+        translateText(p.name, locale).toLowerCase().includes(term) ||
+        p.category.toLowerCase().includes(term) ||
+        translateText(p.category, locale).toLowerCase().includes(term) ||
+        (p.code && p.code.toLowerCase().includes(term))),
+  );
+  const list = [...filtered].sort((a, b) => {
+    if (sort === "name") return a.name.localeCompare(b.name);
+    if (sort === "price-asc")
+      return (a.price ?? Number.POSITIVE_INFINITY) - (b.price ?? Number.POSITIVE_INFINITY);
+    if (sort === "price-desc")
+      return (b.price ?? Number.NEGATIVE_INFINITY) - (a.price ?? Number.NEGATIVE_INFINITY);
+    return a.featured - b.featured;
+  });
 
   const retailProducts = list.filter((product) => product.packageType === "retail");
   const gallonProducts = list.filter((product) => product.packageType === "gallon");

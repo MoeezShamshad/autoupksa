@@ -15,6 +15,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "sonner";
 import { CartProvider } from "@/lib/cart";
+import { CatalogProvider } from "@/lib/catalog-provider";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CartDrawer } from "@/components/CartDrawer";
@@ -148,18 +149,20 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <LocaleProvider>
-        <CartProvider>
-          {showSiteChrome ? <Header /> : null}
-          <main>
-            <Outlet />
-          </main>
-          {showSiteChrome ? <Footer /> : null}
-          {showSiteChrome ? <CartDrawer /> : null}
-          {showSiteChrome ? <StickyWhatsApp /> : null}
-          <Toaster position="bottom-right" theme="dark" richColors />
-        </CartProvider>
-      </LocaleProvider>
+      <CatalogProvider enabled={showSiteChrome}>
+        <LocaleProvider>
+          <CartProvider>
+            {showSiteChrome ? <Header /> : null}
+            <main>
+              <Outlet />
+            </main>
+            {showSiteChrome ? <Footer /> : null}
+            {showSiteChrome ? <CartDrawer /> : null}
+            {showSiteChrome ? <StickyWhatsApp /> : null}
+            <Toaster position="bottom-right" theme="dark" richColors />
+          </CartProvider>
+        </LocaleProvider>
+      </CatalogProvider>
     </QueryClientProvider>
   );
 }
