@@ -5,29 +5,25 @@ const database = vi.hoisted(() => ({
   createClientCalls: 0,
 }));
 
-vi.mock("@supabase/supabase-js", () => ({
-  createClient: () => (database.createClientCalls++, {
-    from: () => ({
-      select: () => ({
-        eq: () => ({
-          maybeSingle: async () => ({
-            data: database.state ? { state: database.state } : null,
-            error: null,
-          }),
-          single: async () => ({
-            data: database.state ? { state: database.state } : null,
-            error: null,
-          }),
-        }),
-      }),
-      upsert: async (row: { state: unknown }, options?: { ignoreDuplicates?: boolean }) => {
-        if (!options?.ignoreDuplicates || !database.state) {
-          database.state = row.state as { [key: string]: unknown };
-        }
-        return { error: null };
-      },
-    }),
-  }),
+vi.mock("@neondatabase/serverless", () => ({
+  neon: () => {
+    database.createClientCalls++;
+    return async (strings: TemplateStringsArray, ...values: unknown[]) => {
+      const query = strings.join("?").toLowerCase();
+      if (query.includes("select state")) {
+        return database.state ? [{ state: database.state }] : [];
+      }
+      if (query.includes("do nothing")) {
+        if (!database.state) database.state = JSON.parse(values[0] as string);
+        return [];
+      }
+      if (query.includes("do update")) {
+        database.state = JSON.parse(values[0] as string);
+        return [];
+      }
+      return [];
+    };
+  },
 }));
 
 import { handleAdminApi } from "../lib/admin-api";
@@ -38,8 +34,7 @@ const testPassword = "S3cure-test-password!";
 beforeEach(() => {
   database.state = null;
   database.createClientCalls = 0;
-  vi.stubEnv("SUPABASE_URL", "https://example.supabase.co");
-  vi.stubEnv("SUPABASE_SERVICE_ROLE_KEY", "test-service-role-key");
+  vi.stubEnv("DATABASE_URL", "postgres://user:pass@example.neon.tech/db");
   vi.stubEnv("ADMIN_EMAIL", "admin@example.com");
   vi.stubEnv("ADMIN_PASSWORD", testPassword);
   vi.stubEnv("ADMIN_SESSION_SECRET", "test-session-secret-".repeat(4));
@@ -71,8 +66,7 @@ describe("admin API", () => {
   });
 
   it("logs in and verifies a session without any Supabase configuration", async () => {
-    vi.stubEnv("SUPABASE_URL", "");
-    vi.stubEnv("SUPABASE_SERVICE_ROLE_KEY", "");
+    vi.stubEnv("DATABASE_URL", "");
 
     const login = await handleAdminApi(
       new Request("https://example.com/api/admin/login", {
@@ -103,8 +97,7 @@ describe("admin API", () => {
   });
 
   it("rejects invalid credentials without contacting Supabase", async () => {
-    vi.stubEnv("SUPABASE_URL", "");
-    vi.stubEnv("SUPABASE_SERVICE_ROLE_KEY", "");
+    vi.stubEnv("DATABASE_URL", "");
 
     const response = await handleAdminApi(
       new Request("https://example.com/api/admin/login", {
@@ -281,8 +274,7 @@ describe("admin API", () => {
   });
 
   it("protects admin APIs without requiring Supabase for authorization", async () => {
-    vi.stubEnv("SUPABASE_URL", "");
-    vi.stubEnv("SUPABASE_SERVICE_ROLE_KEY", "");
+    vi.stubEnv("DATABASE_URL", "");
 
     for (const [pathname, method] of [
       ["/api/admin/session", "GET"],

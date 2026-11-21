@@ -1,5 +1,6 @@
 import { createHash, randomBytes, scryptSync, timingSafeEqual, createHmac } from "node:crypto";
-import { createClient } from "@supabase/supabase-js";
+import { neon } from "@neondatabase/serverless";
+import { put } from "@vercel/blob";
 
 import { CATEGORIES, PRODUCTS } from "./catalog";
 import { translateText } from "./i18n";
@@ -71,15 +72,36 @@ type AdminCredentials = {
   sessionSecret: string;
 };
 
-function supabase() {
-  const url = process.env["SUPABASE_URL"];
-  const serviceRoleKey = process.env["SUPABASE_SERVICE_ROLE_KEY"];
-  if (!url || !serviceRoleKey) {
-    throw new Error(
-      "SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are required for persistent admin data.",
-    );
+function db() {
+  const url = process.env["DATABASE_URL"];
+  if (!url) {
+    throw new Error("DATABASE_URL is required for persistent admin data.");
   }
-  return createClient(url, serviceRoleKey);
+  return neon(url);
+}
+
+let tableReady: Promise<void> | null = null;
+function ensureTable() {
+  if (!tableReady) {
+    tableReady = (async () => {
+      const sql = db();
+      await sql`create table if not exists admin_app_state (
+        id integer primary key,
+        state jsonb not null,
+        updated_at timestamptz not null default now()
+      )`;
+    })().catch((error) => {
+      tableReady = null;
+      throw error;
+    });
+  }
+  return tableReady;
+}
+
+async function loadState(): Promise<AdminState | null> {
+  await ensureTable();
+  const rows = await db()`select state from admin_app_state where id = 1`;
+  return rows[0] ? (rows[0]["state"] as AdminState) : null;
 }
 
 function getAdminCredentials(): AdminCredentials {
@@ -160,15 +182,9 @@ function catalogCategories(): AdminState["categories"] {
 }
 
 async function readState(): Promise<AdminState> {
-  const client = supabase();
-  const { data, error } = await client
-    .from("admin_app_state")
-    .select("state")
-    .eq("id", 1)
-    .maybeSingle();
-  if (error) throw error;
+  const data = await loadState();
   if (data) {
-    const state = data.state as AdminState;
+    const state = data;
     if (!state.catalogSeeded) {
       const existingProductIds = new Set(
         state.products.flatMap((product) => [product.id, product.slug].filter(Boolean)),
@@ -218,25 +234,19 @@ async function readState(): Promise<AdminState> {
       sessionVersion: 1,
     },
   };
-  const { error: insertError } = await client
-    .from("admin_app_state")
-    .upsert({ id: 1, state: initialState }, { onConflict: "id", ignoreDuplicates: true });
-  if (insertError) throw insertError;
-
-  const { data: initialized, error: readError } = await client
-    .from("admin_app_state")
-    .select("state")
-    .eq("id", 1)
-    .single();
-  if (readError) throw readError;
-  return initialized.state as AdminState;
+  await db()`insert into admin_app_state (id, state)
+    values (1, ${JSON.stringify(initialState)}::jsonb)
+    on conflict (id) do nothing`;
+  const initialized = await loadState();
+  if (!initialized) throw new Error("Could not initialize admin data.");
+  return initialized;
 }
 
 async function writeState(state: AdminState) {
-  const { error } = await supabase()
-    .from("admin_app_state")
-    .upsert({ id: 1, state }, { onConflict: "id" });
-  if (error) throw error;
+  await ensureTable();
+  await db()`insert into admin_app_state (id, state)
+    values (1, ${JSON.stringify(state)}::jsonb)
+    on conflict (id) do update set state = excluded.state, updated_at = now()`;
 }
 
 function json(data: unknown, status = 200, headers?: HeadersInit) {
@@ -410,16 +420,12 @@ async function handleAdminApiRequest(request: Request, pathname: string): Promis
       return json({ error: "Images must be smaller than 4 MB." }, 400);
     }
     const key = `${randomBytes(16).toString("hex")}.${allowedTypes[file.type]}`;
-    const client = supabase();
-    const { data: uploaded, error: uploadError } = await client.storage
-      .from("product-media")
-      .upload(key, Buffer.from(await file.arrayBuffer()), {
-        contentType: file.type,
-        upsert: false,
-      });
-    if (uploadError) throw uploadError;
-    const { data: publicUrl } = client.storage.from("product-media").getPublicUrl(uploaded.path);
-    return json({ url: publicUrl.publicUrl });
+    const blob = await put(`product-media/${key}`, file, {
+      access: "public",
+      contentType: file.type,
+      addRandomSuffix: false,
+    });
+    return json({ url: blob.url });
   }
 
   if (pathname === "/api/admin/state" && request.method === "GET") {
