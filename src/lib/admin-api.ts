@@ -65,26 +65,34 @@ type AdminState = {
   };
 };
 
+type AdminCredentials = {
+  email: string;
+  password: string;
+  sessionSecret: string;
+};
+
 function supabase() {
   const url = process.env["SUPABASE_URL"];
   const serviceRoleKey = process.env["SUPABASE_SERVICE_ROLE_KEY"];
   if (!url || !serviceRoleKey) {
-    throw new Error("SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY must be configured.");
+    throw new Error(
+      "SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are required for persistent admin data.",
+    );
   }
-  return createClient(url, serviceRoleKey, {
-    auth: { autoRefreshToken: false, persistSession: false },
-  });
+  return createClient(url, serviceRoleKey);
 }
 
-function sessionSecret() {
-  const value = process.env["AUTOUP_ADMIN_SESSION_SECRET"];
-  if (value && value.length >= 32) return value;
-
-  const serviceRoleKey = process.env["SUPABASE_SERVICE_ROLE_KEY"];
-  if (!serviceRoleKey) {
-    throw new Error("SUPABASE_SERVICE_ROLE_KEY must be configured.");
+function getAdminCredentials(): AdminCredentials {
+  const email = process.env["ADMIN_EMAIL"]?.trim().toLowerCase();
+  const password = process.env["ADMIN_PASSWORD"];
+  const sessionSecret = process.env["ADMIN_SESSION_SECRET"];
+  if (!email || !password) {
+    throw new Error("ADMIN_EMAIL and ADMIN_PASSWORD must be configured.");
   }
-  return createHash("sha256").update(`autoup-admin-session:${serviceRoleKey}`).digest("hex");
+  if (!sessionSecret || sessionSecret.length < 32) {
+    throw new Error("ADMIN_SESSION_SECRET must contain at least 32 characters.");
+  }
+  return { email, password, sessionSecret };
 }
 
 function hashPassword(password: string) {
@@ -93,10 +101,10 @@ function hashPassword(password: string) {
   return { salt, hash };
 }
 
-function verifyPassword(password: string, salt: string, hash: string) {
-  const actual = scryptSync(password, salt, 64);
-  const expected = Buffer.from(hash, "hex");
-  return actual.length === expected.length && timingSafeEqual(actual, expected);
+function credentialVersion(credentials: AdminCredentials) {
+  return createHmac("sha256", credentials.sessionSecret)
+    .update(`${credentials.email}\0${credentials.password}`)
+    .digest("hex");
 }
 
 function catalogProducts(): AdminProduct[] {
@@ -184,11 +192,11 @@ async function readState(): Promise<AdminState> {
     return state;
   }
 
-  const password = process.env["AUTOUP_ADMIN_PASSWORD"];
-  const email = process.env["AUTOUP_ADMIN_EMAIL"]?.trim().toLowerCase();
+  const password = process.env["ADMIN_PASSWORD"];
+  const email = process.env["ADMIN_EMAIL"]?.trim().toLowerCase();
   if (!password || !email) {
     throw new Error(
-      "AUTOUP_ADMIN_EMAIL and AUTOUP_ADMIN_PASSWORD are required to initialize the admin account.",
+      "ADMIN_EMAIL and ADMIN_PASSWORD are required to initialize the admin account.",
     );
   }
 
@@ -241,7 +249,7 @@ function json(data: unknown, status = 200, headers?: HeadersInit) {
   });
 }
 
-function getSession(request: Request, admin: AdminState["admin"]) {
+function getSession(request: Request, credentials: AdminCredentials) {
   const cookie = request.headers.get("cookie") || "";
   const token = cookie
     .split(";")
@@ -249,21 +257,23 @@ function getSession(request: Request, admin: AdminState["admin"]) {
     .find((item) => item.startsWith("autoup_session="))
     ?.slice("autoup_session=".length);
   if (!token) return null;
-  const [payload, signature] = token.split(".");
+  const [payload, signature, extra] = token.split(".");
+  if (extra !== undefined) return null;
   if (!payload || !signature) return null;
-  const expected = createHmac("sha256", sessionSecret()).update(payload).digest();
+  const expected = createHmac("sha256", credentials.sessionSecret).update(payload).digest();
   const supplied = Buffer.from(signature, "hex");
   if (supplied.length !== expected.length || !timingSafeEqual(supplied, expected)) return null;
   try {
     const claims = JSON.parse(Buffer.from(payload, "base64url").toString("utf8")) as {
       email?: string;
       expiresAt?: number;
-      sessionVersion?: number;
+      credentialVersion?: string;
     };
     if (
-      claims.email !== admin.email ||
-      claims.sessionVersion !== admin.sessionVersion ||
+      claims.email !== credentials.email ||
+      claims.credentialVersion !== credentialVersion(credentials) ||
       typeof claims.expiresAt !== "number" ||
+      !Number.isSafeInteger(claims.expiresAt) ||
       claims.expiresAt <= Date.now()
     ) {
       return null;
@@ -274,12 +284,16 @@ function getSession(request: Request, admin: AdminState["admin"]) {
   }
 }
 
-function signToken(email: string, expiresAt: number, sessionVersion: number) {
+function signToken(credentials: AdminCredentials, expiresAt: number) {
   const payload = Buffer.from(
-    JSON.stringify({ email, expiresAt, sessionVersion }),
+    JSON.stringify({
+      email: credentials.email,
+      expiresAt,
+      credentialVersion: credentialVersion(credentials),
+    }),
     "utf8",
   ).toString("base64url");
-  const signature = createHmac("sha256", sessionSecret()).update(payload).digest("hex");
+  const signature = createHmac("sha256", credentials.sessionSecret).update(payload).digest("hex");
   return `${payload}.${signature}`;
 }
 
@@ -306,12 +320,13 @@ async function handleAdminApiRequest(request: Request, pathname: string): Promis
   }
 
   if (pathname === "/api/admin/login" && request.method === "POST") {
+    let credentials: AdminCredentials;
     try {
-      sessionSecret();
+      credentials = getAdminCredentials();
     } catch (error) {
       return json(
         {
-          error: error instanceof Error ? error.message : "Admin session secret is not configured.",
+          error: error instanceof Error ? error.message : "Admin authentication is not configured.",
         },
         503,
       );
@@ -321,30 +336,22 @@ async function handleAdminApiRequest(request: Request, pathname: string): Promis
       password?: string;
       remember?: boolean;
     };
-    const state = await readState();
     const email = (body.email || "").trim().toLowerCase();
-    if (
-      email !== state.admin.email ||
-      !verifyPassword(body.password || "", state.admin.passwordSalt, state.admin.passwordHash)
-    ) {
+    const suppliedPasswordHash = createHash("sha256").update(body.password || "").digest();
+    const configuredPasswordHash = createHash("sha256").update(credentials.password).digest();
+    if (email !== credentials.email || !timingSafeEqual(suppliedPasswordHash, configuredPasswordHash)) {
       return json({ error: "Invalid email or password." }, 401);
     }
-    const expiresAt = Date.now() + (body.remember ? 30 : 1) * 24 * 60 * 60 * 1000;
-    const token = signToken(email, expiresAt, state.admin.sessionVersion || 1);
-    state.activity.unshift({
-      id: randomBytes(8).toString("hex"),
-      action: "Admin login",
-      detail: email,
-      createdAt: new Date().toISOString(),
-    });
-    await writeState(state);
+    const maxAge = body.remember ? 30 * 24 * 60 * 60 : 24 * 60 * 60;
+    const expiresAt = Date.now() + maxAge * 1000;
+    const token = signToken(credentials, expiresAt);
     const isHttps = new URL(request.url).protocol === "https:";
     const secure = isHttps ? "; Secure" : "";
     return json(
-      { admin: { name: state.admin.name, email: state.admin.email, role: state.admin.role } },
+      { admin: { name: "AutoUp Admin", email: credentials.email, role: "Super Admin" } },
       200,
       {
-        "Set-Cookie": `autoup_session=${token}; Path=/; HttpOnly; SameSite=Strict; Max-Age=${body.remember ? 2592000 : 86400}${secure}`,
+        "Set-Cookie": `autoup_session=${token}; Path=/; HttpOnly; SameSite=Strict; Max-Age=${maxAge}${secure}`,
       },
     );
   }
@@ -357,8 +364,35 @@ async function handleAdminApiRequest(request: Request, pathname: string): Promis
     });
   }
 
+  if (!pathname.startsWith("/api/admin/")) return json({ error: "Not found" }, 404);
+
+  let credentials: AdminCredentials;
+  try {
+    credentials = getAdminCredentials();
+  } catch (error) {
+    return json(
+      {
+        error: error instanceof Error ? error.message : "Admin authentication is not configured.",
+      },
+      503,
+    );
+  }
+  if (!getSession(request, credentials)) return json({ error: "Unauthorized" }, 401);
+
+  if (pathname === "/api/admin/session" && request.method === "GET") {
+    return json({
+      admin: { name: "AutoUp Admin", email: credentials.email, role: "Super Admin" },
+    });
+  }
+
+  if (pathname === "/api/admin/password" && request.method === "POST") {
+    return json(
+      { error: "Set ADMIN_PASSWORD in your deployment environment to change the admin password." },
+      409,
+    );
+  }
+
   const state = await readState();
-  if (!getSession(request, state.admin)) return json({ error: "Unauthorized" }, 401);
 
   if (pathname === "/api/admin/media" && request.method === "POST") {
     const formData = await request.formData();
@@ -395,7 +429,7 @@ async function handleAdminApiRequest(request: Request, pathname: string): Promis
       inquiries: state.inquiries,
       activity: state.activity,
       settings: state.settings,
-      admin: { name: state.admin.name, email: state.admin.email, role: state.admin.role },
+      admin: { name: state.admin.name, email: credentials.email, role: state.admin.role },
     });
   }
 
@@ -474,36 +508,14 @@ async function handleAdminApiRequest(request: Request, pathname: string): Promis
     return json(category);
   }
 
-  if (pathname === "/api/admin/password" && request.method === "POST") {
-    const body = (await request.json()) as { currentPassword?: string; newPassword?: string };
-    if (
-      !verifyPassword(
-        body.currentPassword || "",
-        state.admin.passwordSalt,
-        state.admin.passwordHash,
-      )
-    )
-      return json({ error: "Current password is incorrect." }, 400);
-    if ((body.newPassword || "").length < 8)
-      return json({ error: "New password must be at least 8 characters." }, 400);
-    const hashed = hashPassword(body.newPassword || "");
-    state.admin.passwordHash = hashed.hash;
-    state.admin.passwordSalt = hashed.salt;
-    state.admin.sessionVersion = (state.admin.sessionVersion || 1) + 1;
-    state.activity.unshift({
-      id: randomBytes(8).toString("hex"),
-      action: "Password changed",
-      detail: state.admin.email,
-      createdAt: new Date().toISOString(),
-    });
-    await writeState(state);
-    return json({ success: true });
-  }
-
   if (pathname === "/api/admin/account" && request.method === "POST") {
     const body = (await request.json()) as { name?: string; email?: string };
+    const requestedEmail = (body.email || credentials.email).trim().toLowerCase();
+    if (requestedEmail !== credentials.email) {
+      return json({ error: "The admin email is managed by the ADMIN_EMAIL environment variable." }, 400);
+    }
     state.admin.name = (body.name || state.admin.name).trim();
-    state.admin.email = (body.email || state.admin.email).trim().toLowerCase();
+    state.admin.email = credentials.email;
     state.activity.unshift({
       id: randomBytes(8).toString("hex"),
       action: "Account updated",

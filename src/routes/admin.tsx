@@ -1,4 +1,4 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, Outlet, useLocation, useNavigate } from "@tanstack/react-router";
 import {
   BarChart3,
   Bell,
@@ -117,7 +117,7 @@ function createEmptyProduct(): AdminProduct {
   };
 }
 
-function AdminLoginScreen() {
+export function AdminLoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(true);
@@ -126,7 +126,7 @@ function AdminLoginScreen() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    fetch("/api/admin/state")
+    fetch("/api/admin/session")
       .then((response) => {
         if (response.ok) window.location.assign("/admin");
       })
@@ -251,13 +251,14 @@ function AdminLoginScreen() {
   );
 }
 
-function AdminApp() {
+function AdminApp({ initialAdmin }: { initialAdmin: ProfileState }) {
   const [section, setSection] = useState<AdminSection>("Overview");
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [products, setProducts] = useState<AdminProduct[]>([]);
   const [categories, setCategories] = useState<AdminCategory[]>([]);
   const [notifications, setNotifications] = useState<NotificationItem[]>([]);
-  const [profile, setProfile] = useState<ProfileState>(() => readAdminProfile());
+  const [profile, setProfile] = useState<ProfileState>(() => initialAdmin);
+  const [dataError, setDataError] = useState("");
   const [search, setSearch] = useState("");
   const [showNotifications, setShowNotifications] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
@@ -297,7 +298,20 @@ function AdminApp() {
 
   useEffect(() => {
     fetch("/api/admin/state", { credentials: "same-origin" })
-      .then((response) => (response.ok ? response.json() : null))
+      .then((response) => {
+        if (response.status === 401) {
+          window.location.assign("/admin/login");
+          return null;
+        }
+        if (!response.ok) {
+          setDataError(
+            "Admin data storage is unavailable. Product and media tools need a database connection.",
+          );
+          return null;
+        }
+        setDataError("");
+        return response.json();
+      })
       .then((payload) => {
         if (!payload) return;
         if (Array.isArray(payload.products)) setProducts(payload.products);
@@ -317,7 +331,12 @@ function AdminApp() {
         }
         if (payload.admin) setProfile(payload.admin);
       })
-      .catch((error) => console.error("Unable to load admin panel data.", error));
+      .catch((error) => {
+        console.error("Unable to load admin panel data.", error);
+        setDataError(
+          "Admin data storage is unavailable. Product and media tools need a database connection.",
+        );
+      });
   }, []);
 
   const filteredProducts = useMemo(() => {
@@ -388,13 +407,12 @@ function AdminApp() {
 
   function saveAccountSettings(event: FormEvent) {
     event.preventDefault();
-    const nextEmail = profile.email.trim();
-    if (!profile.name.trim() || !nextEmail) return;
+    if (!profile.name.trim()) return;
     fetch("/api/admin/account", {
       method: "POST",
       headers: { "content-type": "application/json" },
       credentials: "same-origin",
-      body: JSON.stringify({ name: profile.name.trim(), email: nextEmail }),
+      body: JSON.stringify({ name: profile.name.trim() }),
     })
       .then((response) => (response.ok ? response.json() : null))
       .then((payload) => {
@@ -1108,13 +1126,14 @@ function AdminApp() {
               />
               <input
                 value={profile.email}
-                onChange={(event) =>
-                  setProfile((current) => ({ ...current, email: event.target.value }))
-                }
-                className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm"
+                readOnly
+                className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm text-slate-500"
                 placeholder="Email address"
                 type="email"
               />
+              <p className="text-xs text-slate-500">
+                Admin email is managed by the ADMIN_EMAIL environment variable.
+              </p>
               <button
                 type="submit"
                 className="rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-slate-800"
@@ -1128,6 +1147,9 @@ function AdminApp() {
         {settingsView === "password" ? (
           <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
             <h3 className="text-lg font-semibold text-slate-900">Change Password</h3>
+            <p className="mt-2 text-sm text-slate-600">
+              Admin password is managed by the ADMIN_PASSWORD environment variable.
+            </p>
             <form className="mt-4 space-y-4" onSubmit={changePassword}>
               <input
                 type="password"
@@ -1500,7 +1522,17 @@ function AdminApp() {
           </div>
         </header>
 
-        <main className="p-4 sm:p-6">{renderSection()}</main>
+        <main className="p-4 sm:p-6">
+          {dataError ? (
+            <div
+              role="alert"
+              className="mb-4 rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-900"
+            >
+              {dataError}
+            </div>
+          ) : null}
+          {renderSection()}
+        </main>
       </div>
 
       {showProductModal ? (
@@ -1807,12 +1839,37 @@ function AdminApp() {
 
 export const Route = createFileRoute("/admin")({
   component: function AdminRoute() {
+    const location = useLocation();
+    const navigate = useNavigate();
     const [authenticated, setAuthenticated] = useState<boolean | null>(null);
+    const [adminProfile, setAdminProfile] = useState<ProfileState | null>(null);
     useEffect(() => {
-      fetch("/api/admin/state", { credentials: "same-origin" })
-        .then((response) => setAuthenticated(response.ok))
-        .catch(() => setAuthenticated(false));
-    }, []);
+      if (location.pathname === "/admin/login") return;
+      let active = true;
+      fetch("/api/admin/session", { credentials: "same-origin" })
+        .then(async (response) => {
+          if (!active) return;
+          if (response.status === 401) {
+            void navigate({ to: "/admin/login", replace: true });
+            return;
+          }
+          if (!response.ok) {
+            void navigate({ to: "/admin/login", replace: true });
+            return;
+          }
+          const payload = (await response.json()) as { admin?: ProfileState };
+          if (!active) return;
+          setAdminProfile(payload.admin ?? readAdminProfile());
+          setAuthenticated(true);
+        })
+        .catch(() => {
+          if (active) void navigate({ to: "/admin/login", replace: true });
+        });
+      return () => {
+        active = false;
+      };
+    }, [location.pathname, navigate]);
+    if (location.pathname === "/admin/login") return <Outlet />;
     if (authenticated === null) {
       return (
         <div
@@ -1823,6 +1880,10 @@ export const Route = createFileRoute("/admin")({
         </div>
       );
     }
-    return authenticated ? <AdminApp /> : <AdminLoginScreen />;
+    return authenticated ? (
+      <AdminApp initialAdmin={adminProfile ?? readAdminProfile()} />
+    ) : (
+      <AdminLoginScreen />
+    );
   },
 });

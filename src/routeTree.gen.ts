@@ -16,6 +16,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as QuoteRouteImport } from './routes/quote'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as AdminLoginRouteImport } from './routes/admin.login'
 import { Route as ProductsIndexRouteImport } from './routes/products.index'
 import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
 import { Route as QuoteInstallationRouteImport } from './routes/quote.installation'
@@ -55,6 +56,11 @@ const ServicesRoute = ServicesRouteImport.update({
   path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => AdminRoute,
+} as any)
 const ProductsIndexRoute = ProductsIndexRouteImport.update({
   id: '/products/',
   path: '/products/',
@@ -74,11 +80,12 @@ const QuoteInstallationRoute = QuoteInstallationRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
+  '/admin': typeof AdminRouteWithChildren
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/quote': typeof QuoteRouteWithChildren
   '/services': typeof ServicesRoute
+  '/admin/login': typeof AdminLoginRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/quote/installation': typeof QuoteInstallationRoute
   '/products/': typeof ProductsIndexRoute
@@ -86,11 +93,12 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
+  '/admin': typeof AdminRouteWithChildren
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/quote': typeof QuoteRouteWithChildren
   '/services': typeof ServicesRoute
+  '/admin/login': typeof AdminLoginRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/quote/installation': typeof QuoteInstallationRoute
   '/products': typeof ProductsIndexRoute
@@ -99,11 +107,12 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
+  '/admin': typeof AdminRouteWithChildren
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/quote': typeof QuoteRouteWithChildren
   '/services': typeof ServicesRoute
+  '/admin/login': typeof AdminLoginRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/quote/installation': typeof QuoteInstallationRoute
   '/products/': typeof ProductsIndexRoute
@@ -118,6 +127,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/quote'
     | '/services'
+    | '/admin/login'
     | '/products/$slug'
     | '/quote/installation'
     | '/products/'
@@ -130,6 +140,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/quote'
     | '/services'
+    | '/admin/login'
     | '/products/$slug'
     | '/quote/installation'
     | '/products'
@@ -142,6 +153,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/quote'
     | '/services'
+    | '/admin/login'
     | '/products/$slug'
     | '/quote/installation'
     | '/products/'
@@ -150,7 +162,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  AdminRoute: typeof AdminRoute
+  AdminRoute: typeof AdminRouteWithChildren
   ContactRoute: typeof ContactRoute
   GalleryRoute: typeof GalleryRoute
   QuoteRoute: typeof QuoteRouteWithChildren
@@ -210,6 +222,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/products/': {
       id: '/products/'
       path: '/products'
@@ -234,6 +253,16 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AdminRouteChildren {
+  AdminLoginRoute: typeof AdminLoginRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminLoginRoute: AdminLoginRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
 interface QuoteRouteChildren {
   QuoteInstallationRoute: typeof QuoteInstallationRoute
 }
@@ -247,7 +276,7 @@ const QuoteRouteWithChildren = QuoteRoute._addFileChildren(QuoteRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  AdminRoute: AdminRoute,
+  AdminRoute: AdminRouteWithChildren,
   ContactRoute: ContactRoute,
   GalleryRoute: GalleryRoute,
   QuoteRoute: QuoteRouteWithChildren,
