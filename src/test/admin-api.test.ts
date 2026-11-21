@@ -40,7 +40,6 @@ beforeEach(() => {
   vi.stubEnv("SUPABASE_SERVICE_ROLE_KEY", "test-service-role-key");
   vi.stubEnv("AUTOUP_ADMIN_EMAIL", "admin@example.com");
   vi.stubEnv("AUTOUP_ADMIN_PASSWORD", testPassword);
-  vi.stubEnv("AUTOUP_ADMIN_SESSION_SECRET", "test-secret-".repeat(4));
 });
 
 afterEach(() => {
@@ -49,6 +48,21 @@ afterEach(() => {
 });
 
 describe("admin API", () => {
+  it("uses the service role key when the configured session secret is too short", async () => {
+    vi.stubEnv("AUTOUP_ADMIN_SESSION_SECRET", "too-short");
+
+    const login = await handleAdminApi(
+      new Request("https://example.com/api/admin/login", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ email: "admin@example.com", password: testPassword }),
+      }),
+      "/api/admin/login",
+    );
+
+    expect(login?.status).toBe(200);
+  });
+
   it("uses a signed session that remains valid across API requests", async () => {
     const login = await handleAdminApi(
       new Request("https://example.com/api/admin/login", {

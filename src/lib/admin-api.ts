@@ -1,4 +1,4 @@
-import { randomBytes, scryptSync, timingSafeEqual, createHmac } from "node:crypto";
+import { createHash, randomBytes, scryptSync, timingSafeEqual, createHmac } from "node:crypto";
 import { createClient } from "@supabase/supabase-js";
 
 import { CATEGORIES, PRODUCTS } from "./catalog";
@@ -78,10 +78,13 @@ function supabase() {
 
 function sessionSecret() {
   const value = process.env["AUTOUP_ADMIN_SESSION_SECRET"];
-  if (!value || value.length < 32) {
-    throw new Error("AUTOUP_ADMIN_SESSION_SECRET must contain at least 32 characters.");
+  if (value && value.length >= 32) return value;
+
+  const serviceRoleKey = process.env["SUPABASE_SERVICE_ROLE_KEY"];
+  if (!serviceRoleKey) {
+    throw new Error("SUPABASE_SERVICE_ROLE_KEY must be configured.");
   }
-  return value;
+  return createHash("sha256").update(`autoup-admin-session:${serviceRoleKey}`).digest("hex");
 }
 
 function hashPassword(password: string) {

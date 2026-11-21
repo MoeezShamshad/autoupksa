@@ -540,7 +540,7 @@ describe("B2B Components Functionality Verification", () => {
     }
     const socialLinks: [string, string][] = [
       ["Facebook", "https://web.facebook.com/autoupdealers"],
-      ["Instagram", "https://www.instagram.com/auto.up2030/"],
+      ["Instagram", "https://www.instagram.com/autoup2030?gwpx=MWc0dzNiZ3Y0ZWhwbw%3D%3D"],
       ["LinkedIn", "https://www.linkedin.com/company/autoup2030/home/?viewAsMember=true"],
       ["TikTok", "https://www.tiktok.com/@autoup2030"],
       ["Snapchat", "https://www.snapchat.com/@autoup26"],

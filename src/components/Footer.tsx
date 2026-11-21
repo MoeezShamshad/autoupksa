@@ -185,7 +185,7 @@ export function Footer() {
                 },
                 {
                   label: "Instagram",
-                  href: "https://www.instagram.com/auto.up2030/",
+                  href: "https://www.instagram.com/autoup2030?gwpx=MWc0dzNiZ3Y0ZWhwbw%3D%3D",
                   icon: Instagram,
                 },
                 {

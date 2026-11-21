@@ -43,6 +43,5 @@ This repository is configured for deployment on [Vercel](https://vercel.com):
    - `SUPABASE_SERVICE_ROLE_KEY`
    - `AUTOUP_ADMIN_EMAIL`
    - `AUTOUP_ADMIN_PASSWORD`
-   - `AUTOUP_ADMIN_SESSION_SECRET` (at least 32 random characters; generate one with `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`).
 
-The admin account is initialized on the first API request and stored in Supabase. The existing website catalog is seeded into the admin panel once, and product edits and uploaded images are saved to Supabase and served to the storefront. Change the initial password after signing in. Never use a `NEXT_PUBLIC_`/`VITE_` prefix for these values or put them in client-side code.
+The admin account is initialized on the first API request and stored in Supabase. Admin session signing uses `AUTOUP_ADMIN_SESSION_SECRET` when it is at least 32 characters; otherwise it derives a signing key from the server-only `SUPABASE_SERVICE_ROLE_KEY`, so a separate session secret is optional. The existing website catalog is seeded into the admin panel once, and product edits and uploaded images are saved to Supabase and served to the storefront. Change the initial password after signing in. Never use a `NEXT_PUBLIC_`/`VITE_` prefix for these values or put them in client-side code.
