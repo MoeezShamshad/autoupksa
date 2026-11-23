@@ -1,25 +1,39 @@
 // Central business configuration — update contact details here only.
 import { translateText, type Locale } from "@/lib/i18n";
 import { isTwentyLitreVariant } from "@/lib/installments";
+import { getWebsiteContent } from "@/lib/website-content";
 
 export const SITE = {
-  name: "AutoUp",
-  tagline: "Care in Every Mile",
-  whatsappLocal: "548843368",
-  whatsappCountryCode: "966",
-  phoneDisplay: "+966 54 884 3368",
-  email: "", // add a real email to show it on the site
-  address: {
-    ar: "حي الربيع، بريدة 52361",
-    en: "Al Rabie District, Buraydah 52361",
-  },
-  hours: [
-    "Monday to Sunday: 9:00 AM - 12:00 PM",
-    "12:00 PM - 4:00 PM (Break)",
-    "4:00 PM - 10:00 PM",
-    "Friday: 4:00 PM - 10:00 PM",
-    "Business hours to be confirmed",
-  ],
+ get name() {
+   return getWebsiteContent().settings.name;
+ },
+ get tagline() {
+   return getWebsiteContent().settings.tagline;
+ },
+ get whatsappLocal() {
+   return getWebsiteContent().settings.whatsappLocal;
+ },
+ get whatsappCountryCode() {
+   return getWebsiteContent().settings.whatsappCountryCode;
+ },
+ get phoneDisplay() {
+   return getWebsiteContent().settings.phoneDisplay;
+ },
+ get phoneLocal() {
+   return getWebsiteContent().settings.phoneLocal;
+ },
+ get email() {
+   return getWebsiteContent().settings.email;
+ },
+ get address() {
+   return getWebsiteContent().settings.address;
+ },
+ get hours() {
+   return getWebsiteContent().settings.hours;
+ },
+ get socialLinks() {
+   return getWebsiteContent().settings.socialLinks;
+ },
 };
 
 export function whatsappNumber() {

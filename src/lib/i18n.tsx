@@ -697,6 +697,7 @@ function translateDom(locale: Locale) {
   };
 
   const applyAttributes = (element: Element) => {
+    if (element.closest("[data-admin-panel]")) return;
     let states = attributeStates.get(element);
     if (!states) {
       states = new Map();
@@ -714,7 +715,9 @@ function translateDom(locale: Locale) {
   };
 
   const visit = (node: Node) => {
+    if (node instanceof Element && node.closest("[data-admin-panel]")) return;
     if (node.nodeType === Node.TEXT_NODE) {
+      if (node.parentElement?.closest("[data-admin-panel]")) return;
       if (
         !["SCRIPT", "STYLE", "NOSCRIPT"].includes((node.parentElement?.tagName ?? "").toUpperCase())
       ) {

@@ -9,6 +9,7 @@ import { isTwentyLitreVariant } from "@/lib/installments";
 import { PRODUCTS } from "@/lib/catalog";
 import { useCatalogVersion } from "@/lib/catalog-provider";
 import { whatsappUrl } from "@/lib/site";
+import { trackAnalyticsEvent } from "@/lib/analytics";
 
 function buildCartCheckoutMessage(items: ReturnType<typeof useCart>["items"], locale: "ar" | "en") {
   const arabic = locale === "ar";
@@ -218,6 +219,10 @@ export function CartDrawer() {
                 );
                 return;
               }
+              trackAnalyticsEvent(
+                "whatsapp_inquiry",
+                items.map((item) => item.slug),
+              );
               window.open(
                 whatsappUrl(buildCartCheckoutMessage(items, locale)),
                 "_blank",

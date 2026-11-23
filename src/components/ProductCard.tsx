@@ -4,6 +4,7 @@ import { FileText, Minus, Plus, ShoppingBag } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/lib/cart";
+import { trackAnalyticsEvent } from "@/lib/analytics";
 import type { Product } from "@/lib/catalog";
 import { useLocale, translateText } from "@/lib/i18n";
 
@@ -128,6 +129,7 @@ export function ProductCard({
             size="sm"
             className="product-card-action h-auto min-h-10 whitespace-normal px-1.5 py-1.5 text-[0.68rem] font-semibold leading-tight shadow-sm hover:shadow-[0_0_12px_rgba(22,119,255,0.45)]"
             onClick={() => {
+              if (action === "cart") trackAnalyticsEvent("add_to_cart", [p.slug]);
               add({ slug: p.slug, name: p.name, variant: p.variants[0], qty, image: cardImage });
               toast.success(
                 action === "cart"

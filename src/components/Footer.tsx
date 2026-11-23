@@ -18,9 +18,9 @@ import { PAYMENT_METHODS } from "@/components/PaymentPartners";
 import { SITE } from "@/lib/site";
 import { useLocale } from "@/lib/i18n";
 
-const BUSINESS_PHONE = "+966548843368";
+const BUSINESS_PHONE = `+${SITE.whatsappCountryCode}${SITE.whatsappLocal.replace(/^0/, "")}`;
 const BUSINESS_PHONE_NUMBER = BUSINESS_PHONE.replace(/[\D]/g, "");
-const BUSINESS_PHONE_LOCAL = "0548843368";
+const BUSINESS_PHONE_LOCAL = SITE.phoneLocal;
 const BUSINESS_WHATSAPP_URL = `https://wa.me/${BUSINESS_PHONE_NUMBER}`;
 const BUSINESS_PHONE_TEL = `tel:+${BUSINESS_PHONE_NUMBER}`;
 const BUSINESS_IBAN = "SA1305000068207583708000";
@@ -177,28 +177,17 @@ export function Footer() {
                 isArabic ? "تابع AutoUp على التواصل الاجتماعي" : "Follow AutoUp on social media"
               }
             >
-              {[
-                {
-                  label: "Facebook",
-                  href: "https://web.facebook.com/autoupdealers",
-                  icon: Facebook,
-                },
-                {
-                  label: "Instagram",
-                  href: "https://www.instagram.com/autoup2030?gwpx=MWc0dzNiZ3Y0ZWhwbw%3D%3D",
-                  icon: Instagram,
-                },
-                {
-                  label: "LinkedIn",
-                  href: "https://www.linkedin.com/company/autoup2030/home/?viewAsMember=true",
-                  icon: Linkedin,
-                },
-                { label: "TikTok", href: "https://www.tiktok.com/@autoup2030", icon: Music2 },
-                { label: "Snapchat", href: "https://www.snapchat.com/@autoup26", icon: Ghost },
-              ].map(({ label, href, icon: Icon }) => (
+              {SITE.socialLinks.map(({ label, url }) => {
+                const Icon =
+                  label === "Facebook" ? Facebook :
+                  label === "Instagram" ? Instagram :
+                  label === "LinkedIn" ? Linkedin :
+                  label === "TikTok" ? Music2 :
+                  Ghost;
+                return (
                 <a
                   key={label}
-                  href={href}
+                  href={url}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
@@ -207,7 +196,8 @@ export function Footer() {
                 >
                   <Icon aria-hidden="true" className="size-4" />
                 </a>
-              ))}
+                );
+              })}
             </div>
           </section>
         </div>

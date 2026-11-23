@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { HOME_SERVICES } from "@/lib/home-services";
 import { useCart } from "@/lib/cart";
+import { trackAnalyticsEvent } from "@/lib/analytics";
 import { Reveal } from "./Reveal";
 
 const SERVICE_BENEFITS: Record<string, string[]> = {
@@ -59,6 +60,7 @@ export function HomeServices() {
         <div className="service-grid mt-10">
           {HOME_SERVICES.map((s, n) => {
             const addProduct = () => {
+              trackAnalyticsEvent("add_to_cart", [s.product.slug]);
               add({
                 slug: s.product.slug,
                 name: s.product.name,

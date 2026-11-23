@@ -15,6 +15,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { PRODUCTS } from "@/lib/catalog";
 import { useCart } from "@/lib/cart";
+import { trackAnalyticsEvent } from "@/lib/analytics";
 import { buildQuoteMessage, whatsappUrl } from "@/lib/site";
 import { QUOTE_PAGE_MEDIA } from "@/lib/media";
 import { toast } from "sonner";
@@ -698,6 +699,12 @@ function QuotePage() {
                     href={whatsappUrl(formattedMessage)}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() =>
+                      trackAnalyticsEvent(
+                        "whatsapp_inquiry",
+                        items.map((item) => item.slug),
+                      )
+                    }
                     className="flex items-center justify-center gap-2"
                   >
                     <MessageCircle className="size-5 fill-white stroke-none" />

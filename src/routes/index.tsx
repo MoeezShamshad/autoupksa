@@ -32,6 +32,8 @@ import { ProductCarousel } from "@/components/ProductCarousel";
 import { PolishSection } from "@/components/PolishSection";
 import { PaymentPartners } from "@/components/PaymentPartners";
 import { useCatalogVersion } from "@/lib/catalog-provider";
+import { useWebsiteContent } from "@/lib/website-content";
+import { mediaUrl } from "@/lib/media";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -62,6 +64,8 @@ export const Route = createFileRoute("/")({
    1. HERO VIDEO COMPONENT
    ========================================================================= */
 function HeroSection() {
+  const content = useWebsiteContent();
+  const hero = content.home.hero;
   return (
     <section
       className="relative h-[92svh] min-h-[580px] max-h-[860px] overflow-hidden bg-black"
@@ -76,21 +80,20 @@ function HeroSection() {
         preload="auto"
         className="absolute inset-0 size-full object-cover"
       >
-        <source src={heroVideo} type="video/mp4" />
+        <source src={hero.video ? mediaUrl(hero.video) : heroVideo} type="video/mp4" />
       </video>
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/75 via-black/30 to-transparent" />
       <div className="absolute inset-0 z-10 flex items-center pt-12">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-xl text-left">
             <p className="text-xs font-semibold uppercase tracking-wider text-primary sm:text-sm">
-              B2B Automotive Cleaning Products
+              {hero.eyebrow}
             </p>
             <h1 className="mt-4 text-3xl font-extrabold leading-[1.1] tracking-tight text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] sm:text-5xl">
-              Professional Automotive Cleaning Products for Your Business
+              {hero.title}
             </h1>
             <p className="mt-4 max-w-lg text-sm leading-relaxed text-white/90 drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] sm:text-base">
-              Discover commercial-grade cleaning products and bulk concentrates engineered for
-              professional vehicle care.
+              {hero.description}
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-3.5">
               <Button
@@ -99,8 +102,8 @@ function HeroSection() {
                 size="lg"
                 className="group font-semibold shadow-[0_0_25px_rgba(22,119,255,0.6)] transition-all hover:shadow-[0_0_32px_rgba(22,119,255,0.85)]"
               >
-                <Link to="/products">
-                  Explore Our Products
+                <Link to={hero.primaryHref as "/products"}>
+                  {hero.primaryLabel}
                   <ArrowRight className="ml-1.5 size-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </Button>
@@ -110,7 +113,7 @@ function HeroSection() {
                 size="lg"
                 className="border-white/20 bg-white/10 font-medium text-white backdrop-blur-xl transition-all hover:border-white/40 hover:bg-white/20"
               >
-                <Link to="/quote">Request a Wholesale Quote</Link>
+                <Link to={hero.secondaryHref as "/quote"}>{hero.secondaryLabel}</Link>
               </Button>
             </div>
           </div>

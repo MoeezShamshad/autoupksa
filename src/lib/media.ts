@@ -7,6 +7,11 @@ const webpAssets = import.meta.glob<string>("../assets/**/*.webp", {
   query: "?url",
   import: "default",
 });
+const editableAssets = import.meta.glob<string>("../assets/**/*.{webp,jpg,jpeg,png,svg,mp4}", {
+  eager: true,
+  query: "?url",
+  import: "default",
+});
 const gallonCardAssets = import.meta.glob<string>("../assets/galon/*.webp", {
   eager: true,
   query: "?url",
@@ -89,6 +94,11 @@ export const POLISH_SECTION_MEDIA = [
 /** Resolve an editorial / hero / svc image by name (without extension). */
 export function photo(name: string): string {
   return webpAssets[`../assets/${name}.webp`] ?? "";
+}
+
+export function mediaUrl(path: string): string {
+  if (!path || path.startsWith("/") || /^https?:\/\//i.test(path)) return path;
+  return editableAssets[`../assets/${path}`] ?? path;
 }
 
 export const QUOTE_PAGE_MEDIA = {

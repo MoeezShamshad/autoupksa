@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import type { Product } from "@/lib/catalog";
 import { useCart } from "@/lib/cart";
+import { trackAnalyticsEvent } from "@/lib/analytics";
 import { useLocale, translateText } from "@/lib/i18n";
 import { gallonProductPhoto } from "@/lib/media";
 
@@ -12,6 +13,7 @@ export function ProfessionalGallonCard({ product }: { product: Product }) {
   const { locale } = useLocale();
 
   const addToCart = () => {
+    trackAnalyticsEvent("add_to_cart", [product.slug]);
     add({
       slug: product.slug,
       name: product.name,

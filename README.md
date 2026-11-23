@@ -43,7 +43,10 @@ This repository is configured for deployment on [Vercel](https://vercel.com):
    - `ADMIN_PASSWORD`
    - `ADMIN_SESSION_SECRET` (at least 32 random characters)
    - `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` for persistent catalog/admin data and media uploads
+   - `BLOB_READ_WRITE_TOKEN` for product image uploads and database-free analytics event storage
 
 Admin login and signed HTTP-only sessions use `ADMIN_EMAIL`, `ADMIN_PASSWORD`, and `ADMIN_SESSION_SECRET`; they do not contact Supabase. Sessions expire after one day, or 30 days when “Remember me” is selected. Changing the email or password requires updating the corresponding Vercel environment variable and redeploying.
 
 Supabase remains the persistent product/admin data store. Its credentials are not required to start the application or log in, but data-management APIs and media uploads need them to preserve and update existing records. Never use a `NEXT_PUBLIC_`/`VITE_` prefix for server-only values or put them in client-side code.
+
+Analytics are stored as individual, anonymous Vercel Blob events; they do not add a database. Add-to-cart actions and WhatsApp inquiry clicks are recorded separately. Inquiry totals measure button clicks only, not sent or delivered messages.

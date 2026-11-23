@@ -1,6 +1,7 @@
 import { MessageCircle } from "lucide-react";
 import { whatsappUrl } from "@/lib/site";
 import { useLocale } from "@/lib/i18n";
+import { trackAnalyticsEvent } from "@/lib/analytics";
 
 const DEFAULT_B2B_MESSAGE =
   "Hello AutoUp, I am interested in your automotive cleaning products for business use. Please share product availability and pricing information.";
@@ -22,6 +23,7 @@ export function StickyWhatsApp() {
         href={url}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => trackAnalyticsEvent("whatsapp_inquiry")}
         aria-label={locale === "ar" ? "تواصل مع AutoUp عبر واتساب" : "Contact AutoUp on WhatsApp"}
         className="group relative flex items-center justify-center size-14 rounded-full bg-[#25D366] text-white shadow-[0_8px_24px_rgba(37,211,102,0.45)] hover:bg-[#20ba59] hover:shadow-[0_12px_28px_rgba(37,211,102,0.6)] hover:scale-108 transition-all duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#25D366]/40 cursor-pointer"
       >

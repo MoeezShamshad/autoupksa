@@ -11,6 +11,8 @@ import { PRODUCTS } from "@/lib/catalog";
 import hero1 from "@/assets/Hero1.webp";
 import hero2 from "@/assets/Hero2.webp";
 import { useLocale, translateText } from "@/lib/i18n";
+import { useWebsiteContent } from "@/lib/website-content";
+import { mediaUrl } from "@/lib/media";
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({
@@ -339,13 +341,25 @@ const CATEGORY_TABS = ["All Images", "Vehicles", "Details", "Craft"] as const;
 
 function GalleryPage() {
   const { locale } = useLocale();
+  const websiteContent = useWebsiteContent();
   const [tab, setTab] = useState<(typeof CATEGORY_TABS)[number]>("All Images");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const filtered = useMemo(() => {
-    if (tab === "All Images") return DISPLAY_GALLERY_ITEMS;
-    return DISPLAY_GALLERY_ITEMS.filter((item) => item.category === tab);
-  }, [tab]);
+    const managedItems = websiteContent.gallery.items
+      .filter((item) => item.active !== false && item.placements?.includes("gallery"))
+      .map((item) => ({
+        id: item.id,
+        title: item.title,
+        subtitle: item.subtitle || item.description || "",
+        category: item.category as GalleryItem["category"],
+        image: mediaUrl(item.image),
+        aspect: item.aspect,
+      }));
+    const source = managedItems.length ? managedItems : DISPLAY_GALLERY_ITEMS;
+    if (tab === "All Images") return source;
+    return source.filter((item) => item.category === tab);
+  }, [tab, websiteContent]);
 
   const activeItem = lightboxIndex !== null ? filtered[lightboxIndex] : null;
 
@@ -381,8 +395,8 @@ function GalleryPage() {
               >
                 {translateText(t, locale)}{" "}
                 {t === "All Images"
-                  ? `(${DISPLAY_GALLERY_ITEMS.length})`
-                  : `(${DISPLAY_GALLERY_ITEMS.filter((i) => i.category === t).length})`}
+                  ? `(${filtered.length})`
+                  : `(${filtered.filter((i) => i.category === t).length || DISPLAY_GALLERY_ITEMS.filter((i) => i.category === t).length})`}
               </button>
             ))}
           </div>

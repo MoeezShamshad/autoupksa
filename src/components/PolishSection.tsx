@@ -11,6 +11,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { useCart } from "@/lib/cart";
+import { trackAnalyticsEvent } from "@/lib/analytics";
 import { useLocale, translateText } from "@/lib/i18n";
 import { POLISH_SECTION_MEDIA } from "@/lib/media";
 
@@ -177,8 +178,10 @@ export function PolishSection() {
 
         <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {POLISH_SECTION_MEDIA.map(({ slug, image }, index) => {
-            const title =
-              polishCardTitles[slug as keyof typeof polishCardTitles] ?? { en: slug, ar: slug };
+            const title = polishCardTitles[slug as keyof typeof polishCardTitles] ?? {
+              en: slug,
+              ar: slug,
+            };
 
             return (
               <Reveal key={slug} delay={(index % 4) * 60}>
@@ -188,6 +191,7 @@ export function PolishSection() {
                   index={index}
                   isArabic={isArabic}
                   onAdd={(quantity) => {
+                    trackAnalyticsEvent("add_to_cart", [slug]);
                     add({ slug, name: title.en, qty: quantity, image: image ?? "" });
                     toast.success(
                       locale === "ar"

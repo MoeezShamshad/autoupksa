@@ -5,6 +5,7 @@ import { ArrowLeft, Building2, MessageCircle, ShieldCheck, Wrench } from "lucide
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/Reveal";
 import { GALLON_PRODUCTS } from "@/lib/catalog";
+import { trackAnalyticsEvent } from "@/lib/analytics";
 import { useLocale } from "@/lib/i18n";
 import { buildInstallationPaymentInquiryMessage, whatsappUrl } from "@/lib/site";
 import { useCatalogVersion } from "@/lib/catalog-provider";
@@ -112,6 +113,7 @@ function InstallationInquiryPage() {
 
   const submit = () => {
     if (!validate()) return;
+    trackAnalyticsEvent("whatsapp_inquiry", selectedProduct ? [selectedProduct.slug] : []);
     window.open(whatsappUrl(message, locale), "_blank", "noopener,noreferrer");
   };
 

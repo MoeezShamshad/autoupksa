@@ -20,6 +20,11 @@ import { Route as AdminLoginRouteImport } from './routes/admin.login'
 import { Route as ProductsIndexRouteImport } from './routes/products.index'
 import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
 import { Route as QuoteInstallationRouteImport } from './routes/quote.installation'
+import { Route as AdminAccountEmailRouteImport } from './routes/admin.account.email'
+import { Route as AdminAccountPasswordRouteImport } from './routes/admin.account.password'
+import { Route as AdminAccountProfileRouteImport } from './routes/admin.account.profile'
+import { Route as AdminAccountSecurityRouteImport } from './routes/admin.account.security'
+import { Route as AdminAccountUsernameRouteImport } from './routes/admin.account.username'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -76,6 +81,31 @@ const QuoteInstallationRoute = QuoteInstallationRouteImport.update({
   path: '/installation',
   getParentRoute: () => QuoteRoute,
 } as any)
+const AdminAccountEmailRoute = AdminAccountEmailRouteImport.update({
+  id: '/account/email',
+  path: '/account/email',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAccountPasswordRoute = AdminAccountPasswordRouteImport.update({
+  id: '/account/password',
+  path: '/account/password',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAccountProfileRoute = AdminAccountProfileRouteImport.update({
+  id: '/account/profile',
+  path: '/account/profile',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAccountSecurityRoute = AdminAccountSecurityRouteImport.update({
+  id: '/account/security',
+  path: '/account/security',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAccountUsernameRoute = AdminAccountUsernameRouteImport.update({
+  id: '/account/username',
+  path: '/account/username',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -89,6 +119,11 @@ export interface FileRoutesByFullPath {
   '/products/$slug': typeof ProductsSlugRoute
   '/quote/installation': typeof QuoteInstallationRoute
   '/products/': typeof ProductsIndexRoute
+  '/admin/account/email': typeof AdminAccountEmailRoute
+  '/admin/account/password': typeof AdminAccountPasswordRoute
+  '/admin/account/profile': typeof AdminAccountProfileRoute
+  '/admin/account/security': typeof AdminAccountSecurityRoute
+  '/admin/account/username': typeof AdminAccountUsernameRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -102,6 +137,11 @@ export interface FileRoutesByTo {
   '/products/$slug': typeof ProductsSlugRoute
   '/quote/installation': typeof QuoteInstallationRoute
   '/products': typeof ProductsIndexRoute
+  '/admin/account/email': typeof AdminAccountEmailRoute
+  '/admin/account/password': typeof AdminAccountPasswordRoute
+  '/admin/account/profile': typeof AdminAccountProfileRoute
+  '/admin/account/security': typeof AdminAccountSecurityRoute
+  '/admin/account/username': typeof AdminAccountUsernameRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -116,6 +156,11 @@ export interface FileRoutesById {
   '/products/$slug': typeof ProductsSlugRoute
   '/quote/installation': typeof QuoteInstallationRoute
   '/products/': typeof ProductsIndexRoute
+  '/admin/account/email': typeof AdminAccountEmailRoute
+  '/admin/account/password': typeof AdminAccountPasswordRoute
+  '/admin/account/profile': typeof AdminAccountProfileRoute
+  '/admin/account/security': typeof AdminAccountSecurityRoute
+  '/admin/account/username': typeof AdminAccountUsernameRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -131,6 +176,11 @@ export interface FileRouteTypes {
     | '/products/$slug'
     | '/quote/installation'
     | '/products/'
+    | '/admin/account/email'
+    | '/admin/account/password'
+    | '/admin/account/profile'
+    | '/admin/account/security'
+    | '/admin/account/username'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -144,6 +194,11 @@ export interface FileRouteTypes {
     | '/products/$slug'
     | '/quote/installation'
     | '/products'
+    | '/admin/account/email'
+    | '/admin/account/password'
+    | '/admin/account/profile'
+    | '/admin/account/security'
+    | '/admin/account/username'
   id:
     | '__root__'
     | '/'
@@ -157,6 +212,11 @@ export interface FileRouteTypes {
     | '/products/$slug'
     | '/quote/installation'
     | '/products/'
+    | '/admin/account/email'
+    | '/admin/account/password'
+    | '/admin/account/profile'
+    | '/admin/account/security'
+    | '/admin/account/username'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -250,15 +310,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof QuoteInstallationRouteImport
       parentRoute: typeof QuoteRoute
     }
+    '/admin/account/email': {
+      id: '/admin/account/email'
+      path: '/account/email'
+      fullPath: '/admin/account/email'
+      preLoaderRoute: typeof AdminAccountEmailRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/account/password': {
+      id: '/admin/account/password'
+      path: '/account/password'
+      fullPath: '/admin/account/password'
+      preLoaderRoute: typeof AdminAccountPasswordRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/account/profile': {
+      id: '/admin/account/profile'
+      path: '/account/profile'
+      fullPath: '/admin/account/profile'
+      preLoaderRoute: typeof AdminAccountProfileRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/account/security': {
+      id: '/admin/account/security'
+      path: '/account/security'
+      fullPath: '/admin/account/security'
+      preLoaderRoute: typeof AdminAccountSecurityRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/account/username': {
+      id: '/admin/account/username'
+      path: '/account/username'
+      fullPath: '/admin/account/username'
+      preLoaderRoute: typeof AdminAccountUsernameRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
 
 interface AdminRouteChildren {
   AdminLoginRoute: typeof AdminLoginRoute
+  AdminAccountEmailRoute: typeof AdminAccountEmailRoute
+  AdminAccountPasswordRoute: typeof AdminAccountPasswordRoute
+  AdminAccountProfileRoute: typeof AdminAccountProfileRoute
+  AdminAccountSecurityRoute: typeof AdminAccountSecurityRoute
+  AdminAccountUsernameRoute: typeof AdminAccountUsernameRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
   AdminLoginRoute: AdminLoginRoute,
+  AdminAccountEmailRoute: AdminAccountEmailRoute,
+  AdminAccountPasswordRoute: AdminAccountPasswordRoute,
+  AdminAccountProfileRoute: AdminAccountProfileRoute,
+  AdminAccountSecurityRoute: AdminAccountSecurityRoute,
+  AdminAccountUsernameRoute: AdminAccountUsernameRoute,
 }
 
 const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)

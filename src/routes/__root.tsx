@@ -21,6 +21,7 @@ import { Footer } from "@/components/Footer";
 import { CartDrawer } from "@/components/CartDrawer";
 import { StickyWhatsApp } from "@/components/StickyWhatsApp";
 import { LocaleProvider } from "@/lib/i18n";
+import { WebsiteContentProvider } from "@/lib/website-content";
 
 function NotFoundComponent() {
   return (
@@ -150,18 +151,20 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <CatalogProvider enabled={showSiteChrome}>
-        <LocaleProvider>
-          <CartProvider>
-            {showSiteChrome ? <Header /> : null}
-            <main>
-              <Outlet />
-            </main>
-            {showSiteChrome ? <Footer /> : null}
-            {showSiteChrome ? <CartDrawer /> : null}
-            {showSiteChrome ? <StickyWhatsApp /> : null}
-            <Toaster position="bottom-right" theme="dark" richColors />
-          </CartProvider>
-        </LocaleProvider>
+        <WebsiteContentProvider enabled={showSiteChrome}>
+          <LocaleProvider>
+            <CartProvider>
+              {showSiteChrome ? <Header /> : null}
+              <main>
+                <Outlet />
+              </main>
+              {showSiteChrome ? <Footer /> : null}
+              {showSiteChrome ? <CartDrawer /> : null}
+              {showSiteChrome ? <StickyWhatsApp /> : null}
+              <Toaster position="bottom-right" theme="dark" richColors />
+            </CartProvider>
+          </LocaleProvider>
+        </WebsiteContentProvider>
       </CatalogProvider>
     </QueryClientProvider>
   );

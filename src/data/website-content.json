@@ -1,0 +1,532 @@
+{
+  "version": 1,
+  "settings": {
+    "name": "AutoUp",
+    "tagline": "Care in Every Mile",
+    "whatsappLocal": "548843368",
+    "whatsappCountryCode": "966",
+    "phoneDisplay": "+966 54 884 3368",
+    "phoneLocal": "0548843368",
+    "email": "",
+    "address": {
+      "ar": "حي الربيع، بريدة 52361",
+      "en": "Al Rabie District, Buraydah 52361"
+    },
+    "hours": [
+      "Monday to Sunday: 9:00 AM - 12:00 PM",
+      "12:00 PM - 4:00 PM (Break)",
+      "4:00 PM - 10:00 PM",
+      "Friday: 4:00 PM - 10:00 PM",
+      "Business hours to be confirmed"
+    ],
+    "socialLinks": [
+      {
+        "label": "Facebook",
+        "url": "https://web.facebook.com/autoupdealers"
+      },
+      {
+        "label": "Instagram",
+        "url": "https://www.instagram.com/autoup2030?gwpx=MWc0dzNiZ3Y0ZWhwbw%3D%3D"
+      },
+      {
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/company/autoup2030/home/?viewAsMember=true"
+      },
+      {
+        "label": "TikTok",
+        "url": "https://www.tiktok.com/@autoup2030"
+      },
+      {
+        "label": "Snapchat",
+        "url": "https://www.snapchat.com/@autoup26"
+      }
+    ]
+  },
+  "seo": {
+    "home": {
+      "title": "AutoUp — Professional Automotive Cleaning Products Supplier",
+      "description": "AutoUp supplies professional automotive cleaning products, concentrated car shampoos, waxes, and chemicals in bulk containers (20L, 25L, 20KG) to businesses."
+    },
+    "products": {
+      "title": "Automotive Cleaning Products Catalog — AutoUp B2B Supply",
+      "description": "Explore professional automotive cleaning products, concentrated car shampoos, waxes, and chemicals available in commercial 20L, 25L, and 20KG containers for businesses."
+    },
+    "about": {
+      "title": "About AutoUp — B2B Automotive Cleaning Products Supplier",
+      "description": "AutoUp is a dedicated B2B supplier of professional automotive cleaning products, concentrated shampoos, waxes, and chemicals for commercial vehicle cleaning operations."
+    },
+    "contact": {
+      "title": "Contact AutoUp — B2B Wholesale Automotive Cleaning Products",
+      "description": "Contact AutoUp for wholesale automotive cleaning products, bulk purchasing, product availability, and commercial supply quotes."
+    },
+    "gallery": {
+      "title": "Visual Showcase & Gallery — AutoUp Automotive Care",
+      "description": "Explore the AutoUp visual gallery: premium vehicle finishes, commercial product packaging, detailing craft, and surface protection transformations."
+    }
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "B2B Automotive Cleaning Products",
+      "title": "Professional Automotive Cleaning Products for Your Business",
+      "description": "Discover commercial-grade cleaning products and bulk concentrates engineered for professional vehicle care.",
+      "primaryLabel": "Explore Our Products",
+      "primaryHref": "/products",
+      "secondaryLabel": "Request a Wholesale Quote",
+      "secondaryHref": "/quote",
+      "image": "Hero1.webp",
+      "video": "hero section video/autoup-hero-faststart.mp4"
+    },
+    "productIntro": {
+      "eyebrow": "ACTUAL PRODUCT CATALOG",
+      "title": "Car Care Products",
+      "description": "Authentic everyday vehicle-care products alongside verified 20L commercial solutions.",
+      "retailTitle": "Car Care Products",
+      "retailDescription": "Professional cleaning, shining and protection products for everyday vehicle care.",
+      "commercialEyebrow": "COMMERCIAL SUPPLY",
+      "commercialTitle": "Professional 20L Gallon Solutions",
+      "commercialDescription": "Bulk solutions for workshops, detailing studios, car washes and commercial businesses."
+    },
+    "categories": {
+      "eyebrow": "COMMERCIAL CATEGORIES",
+      "title": "Product Categories",
+      "description": "Explore professional cleaning chemistry grouped by application surface and commercial wash requirements.",
+      "items": [
+        {
+          "title": "Car Shampoo",
+          "category": "Car Shampoo",
+          "description": "Concentrated foam shampoos and pre-washes formulated for automatic and manual wash systems.",
+          "image": "editorial-10.webp",
+          "containerSize": "20L & 20KG"
+        },
+        {
+          "title": "Cleaning Chemicals",
+          "category": "Cleaning Chemicals",
+          "description": "Heavy-duty all-purpose cleaners (ChemX C2) for engines, rims, linings, and high-grime components.",
+          "image": "editorial-16.webp",
+          "containerSize": "25L Drum"
+        },
+        {
+          "title": "Car Wax & Polish",
+          "category": "Car Wax & Polish",
+          "description": "Post-wash final touch shine waxes (F55) delivering instant gloss, zero residue, and dust repellency.",
+          "image": "detail-2.webp",
+          "containerSize": "20L Container"
+        },
+        {
+          "title": "Interior Cleaners",
+          "category": "Interior Cleaners",
+          "description": "Dashboard and trim polishes (ChemX D2) engineered for vinyl, leather, and interior plastics.",
+          "image": "detail-1.webp",
+          "containerSize": "20KG Drum"
+        },
+        {
+          "title": "Exterior Cleaners",
+          "category": "Exterior Cleaners",
+          "description": "Solvent tire dressings (O2, ChemX T1) and ammonia-free streakless glass polishes (G4).",
+          "image": "editorial-12.webp",
+          "containerSize": "20L & 20KG"
+        }
+      ]
+    },
+    "audiences": {
+      "eyebrow": "TARGET BUSINESS CLIENTELE",
+      "title": "Who AutoUp Supplies",
+      "description": "Our products are engineered to support commercial automotive facilities and high-volume vehicle cleaning operations across diverse business sectors.",
+      "backgroundImage": "editorial-6.webp",
+      "items": [
+        {
+          "title": "Car Wash Businesses",
+          "description": "High-throughput automatic tunnel washes and manual hand wash bays requiring high-dilution shampoo concentrates.",
+          "icon": "Droplets"
+        },
+        {
+          "title": "Automotive Detailing Studios",
+          "description": "Specialized vehicle detailers demanding high-gloss finishing waxes, tire polishes, and interior conditioners.",
+          "icon": "Sparkles"
+        },
+        {
+          "title": "Vehicle Dealerships",
+          "description": "New and pre-owned vehicle showrooms preparing cars for customer handover with showroom surface gloss.",
+          "icon": "Building"
+        },
+        {
+          "title": "Automotive Workshops",
+          "description": "Service centers and mechanical garages requiring powerful degreasing chemicals for engine bays and rims.",
+          "icon": "Warehouse"
+        },
+        {
+          "title": "Fleet & Transport Operators",
+          "description": "Commercial transport companies, taxi fleets, and rental operators maintaining fleets under rigorous daily schedules.",
+          "icon": "Truck"
+        },
+        {
+          "title": "Distributors & Resellers",
+          "description": "Regional automotive product wholesalers and procurement teams sourcing reliable commercial-grade chemicals.",
+          "icon": "Users"
+        }
+      ]
+    },
+    "advantages": {
+      "eyebrow": "COMMERCIAL ADVANTAGES",
+      "title": "Why Businesses Choose AutoUp",
+      "description": "AutoUp supplies high-efficiency cleaning chemistry that allows professional wash and detailing teams to achieve superior surface shine, reduce chemical waste, and safeguard customer vehicles.",
+      "image": "editorial-1.webp",
+      "imageAlt": "Automotive cleaning chemicals commercial supply",
+      "badge": "Heavy-Duty Containers",
+      "imageTitle": "Standard 20L, 25L & 20KG Drums",
+      "imageDescription": "Engineered specifically for business inventory, automated dosing pumps, and commercial wash bays.",
+      "items": [
+        {
+          "title": "Commercial-Grade Bulk Containers",
+          "description": "Standardized 20-litre, 25-litre, and 20-kilogram commercial containers designed specifically for high-frequency business usage.",
+          "icon": "Package"
+        },
+        {
+          "title": "High Dilution Ratios & Economy",
+          "description": "Formulations engineered for dilution rates up to 1:100 and 1:150, significantly reducing chemical cost per cleaned vehicle.",
+          "icon": "Droplets"
+        },
+        {
+          "title": "Paint-Safe & Clear-Coat Tested",
+          "description": "Formulas engineered to preserve automotive paint, protect clear coats, and safely treat delicate vinyl, leather, and glass.",
+          "icon": "ShieldCheck"
+        },
+        {
+          "title": "Direct WhatsApp Commercial Quotes",
+          "description": "Fast, itemized quotation turnarounds with verified container stock and transparent supply information directly via WhatsApp.",
+          "icon": "MessageCircle"
+        }
+      ]
+    },
+    "ordering": {
+      "eyebrow": "ORDERING PROCESS",
+      "title": "Bulk and Wholesale Inquiries",
+      "description": "We make commercial chemical procurement straightforward, fast, and transparent. Learn how businesses contact AutoUp for product availability, container volumes, and pricing.",
+      "steps": [
+        {
+          "step": "01",
+          "title": "Select Products",
+          "description": "Review our 10 verified commercial product formulas and select the container quantities needed for your operation."
+        },
+        {
+          "step": "02",
+          "title": "Submit Business Information",
+          "description": "Provide your company name, location, and estimated monthly or sample volume through our simple inquiry form."
+        },
+        {
+          "step": "03",
+          "title": "Receive Verified Quotation",
+          "description": "Our commercial representative confirms stock availability, volume pricing, and logistics options directly on WhatsApp."
+        }
+      ]
+    },
+    "about": {
+      "eyebrow": "COMPANY OVERVIEW",
+      "title": "About AutoUp",
+      "description": "AutoUp is a specialized B2B supplier of automotive cleaning products, concentrated detergents, and vehicle maintenance chemistry.",
+      "noticeTitle": "Important Note:",
+      "notice": "AutoUp sells and supplies automotive cleaning products exclusively. We do NOT provide car washing, vehicle detailing, polishing, or mobile cleaning services to consumers.",
+      "detail": "By focusing strictly on product chemistry and wholesale supply, we ensure commercial buyers receive reliable stock, authentic LifeLines packaging, and verified chemical specifications.",
+      "image": "editorial-2.webp",
+      "imageAlt": "Professional automotive cleaning products and commercial care",
+      "primaryLabel": "Read More About Us",
+      "secondaryLabel": "Contact Commercial Team"
+    },
+    "faqs": {
+      "eyebrow": "QUESTIONS & ANSWERS",
+      "title": "Frequently Asked Questions",
+      "description": "Answers regarding our commercial product inventory, container sizes, and B2B ordering procedures.",
+      "items": [
+        {
+          "question": "What products does AutoUp supply?",
+          "answer": "AutoUp supplies commercial automotive cleaning products including concentrated car shampoos (Colour Wax Shampoo, Pre-Wash), all-purpose degreasers (ChemX C2), finishing waxes (F55), dashboard conditioners (ChemX D2), tire dressings (ChemX T1, O2 Solvent), and streak-free glass polish (G4)."
+        },
+        {
+          "question": "Does AutoUp provide consumer car washing or vehicle detailing services?",
+          "answer": "No. AutoUp is strictly a B2B product supplier. We do not provide car washing, detailing, vehicle polishing, or in-person cleaning services to individual retail consumers."
+        },
+        {
+          "question": "What container sizes are available for business purchasing?",
+          "answer": "Our products are supplied in heavy-duty commercial packaging: 20-litre liquid containers, 25-litre chemical drums, and 20-kilogram containers for pre-wash concentrates and polishes."
+        },
+        {
+          "question": "How can businesses request wholesale pricing?",
+          "answer": "You can build an inquiry list on our website and click 'Request a Wholesale Quote', or message our team directly on WhatsApp. We provide itemized wholesale quotations based on your required products and order volume."
+        },
+        {
+          "question": "What are the dilution recommendations for car wash operations?",
+          "answer": "Each product features specific dilution guidelines printed on the packaging. For example, our Colour Wax Shampoo dilutes at 1 litre to 100 litres of water for manual washing and 1:150 for pump systems, delivering cost-effective operational economics."
+        },
+        {
+          "question": "Are product prices shown on the website?",
+          "answer": "Because AutoUp is a B2B supplier, wholesale pricing is customized based on order volumes and delivery locations. Pricing is verified directly through our quotation and WhatsApp inquiry flow."
+        }
+      ]
+    },
+    "cta": {
+      "eyebrow": "COMMERCIAL VEHICLE CARE",
+      "title": "Looking for Automotive Cleaning Products for Your Business?",
+      "description": "Discover automotive cleaning products for professional use. Explore our product range and contact our team for business inquiries, bulk purchasing, and supply information.",
+      "image": "detail-7.webp",
+      "imageAlt": "Automotive specialist polishing a red vehicle",
+      "primaryLabel": "Request a Quote",
+      "primaryHref": "/quote",
+      "secondaryLabel": "Explore Products",
+      "secondaryHref": "/products"
+    }
+  },
+  "pages": {
+    "products": {
+      "heroEyebrow": "B2B Commercial Catalog",
+      "heroTitle": "Professional Automotive Cleaning Products",
+      "heroDescription": "Commercial-grade concentrated shampoos, waxes, cleaners, and surface chemicals supplied in bulk containers (20L, 25L, 20KG) for business operations.",
+      "heroImage": "products-hero.webp"
+    },
+    "about": {
+      "heroEyebrow": "About AutoUp",
+      "heroTitle": "Professional Automotive Cleaning Supply for Businesses.",
+      "heroDescription": "AutoUp specializes in the wholesale supply of automotive cleaning chemicals and concentrates engineered for professional vehicle maintenance and commercial wash facilities.",
+      "heroImage": "about-hero.webp",
+      "identityEyebrow": "OUR BUSINESS IDENTITY",
+      "identityTitle": "A Dedicated Automotive Chemical & Wash Products Partner",
+      "identityDescription": "AutoUp is a product supplier — we do not offer car washing, vehicle detailing, or mobile cleaning services to individual consumers. Instead, we equip commercial operators with the professional chemical formulations, bulk shampoo concentrates, surface glazes, and protective solutions they need to run high-efficiency, premium-finish cleaning operations.",
+      "pillars": [
+        {
+          "title": "Commercial-Grade Product Range",
+          "description": "We supply concentrated car shampoos, pre-wash chemicals, tire and dashboard polishes, glass cleaners, and finishing waxes formulated for heavy-duty commercial usage.",
+          "icon": "Package"
+        },
+        {
+          "title": "Dedicated B2B Supply Focus",
+          "description": "AutoUp exclusively serves commercial businesses: car washes, detailing businesses, dealerships, workshops, distributors, and fleet operators requiring reliable bulk supply.",
+          "icon": "Building"
+        },
+        {
+          "title": "Transparent Inquiries & Direct Service",
+          "description": "Direct communication on WhatsApp and phone for bulk orders, custom container requirements, stock availability, and verified wholesale pricing.",
+          "icon": "Truck"
+        }
+      ],
+      "industriesEyebrow": "COMMERCIAL PARTNERSHIPS",
+      "industriesTitle": "Who AutoUp Supplies",
+      "industriesDescription": "Our products are trusted by businesses that demand consistent cleaning performance, high dilution yields, and surface safety across hundreds of vehicles each week.",
+      "industries": [
+        "Car wash businesses (automatic & manual systems)",
+        "Automotive detailing & paint correction centers",
+        "Automotive dealerships & showroom prep teams",
+        "Automotive service centers & mechanic workshops",
+        "Commercial transport fleets & logistics operators",
+        "Regional automotive product distributors & resellers"
+      ],
+      "bulkTitle": "Bulk Inquiries & Packaging",
+      "bulkDescription": "All core formulas are packaged in high-capacity containers (20L, 25L, 20KG) to optimize shipping, storage, and per-liter dilution economics. Contact our commercial team to request custom quotes and logistics details for your facility.",
+      "ctaTitle": "Looking for Automotive Cleaning Products for Your Business?",
+      "ctaDescription": "Explore our product range and contact our commercial team for business inquiries, bulk purchasing, and supply information."
+    },
+    "contact": {
+      "heroEyebrow": "Commercial Inquiries",
+      "heroTitle": "Contact AutoUp Commercial Supply",
+      "heroDescription": "Reach our B2B team for product availability, bulk purchasing inquiries, wholesale pricing, and container supply information.",
+      "phoneTitle": "Phone Inquiries",
+      "phoneDescription": "Commercial sales line",
+      "locationTitle": "Location",
+      "hoursTitle": "Business Hours",
+      "formEyebrow": "BUSINESS INQUIRY",
+      "formTitle": "Send a Wholesale Inquiry",
+      "formDescription": "Submit your company details and requirements to receive pricing and availability.",
+      "faqTitle": "Frequently Asked Questions",
+      "faqs": [
+        {
+          "question": "How can my business request wholesale pricing and quotations?",
+          "answer": "You can submit a wholesale quote request through our website, or contact us directly on WhatsApp with your required products, container sizes, and estimated order volumes. Our team provides fast, itemized commercial quotations."
+        },
+        {
+          "question": "What container sizes are available for commercial purchasing?",
+          "answer": "Our products are packaged in high-yield commercial volumes, including 20-litre and 25-litre drums as well as 20-kilogram containers for pre-wash concentrates and polishes, optimized for high-volume business usage."
+        },
+        {
+          "question": "What types of businesses does AutoUp supply?",
+          "answer": "AutoUp supplies commercial car wash operations (automatic and manual), vehicle detailing studios, automotive dealerships, mechanic workshops, commercial transport fleets, and regional automotive product distributors."
+        },
+        {
+          "question": "Does AutoUp provide consumer car wash or detailing services?",
+          "answer": "No. AutoUp is strictly a product manufacturer and wholesale supplier. We do not offer car washing, vehicle detailing, polishing, or mobile cleaning services to individual retail consumers."
+        },
+        {
+          "question": "How are shipping and delivery arranged?",
+          "answer": "Delivery arrangements, freight options, and regional logistics are coordinated and confirmed directly during the quotation process based on your business location and order volume."
+        }
+      ]
+    }
+  },
+  "gallery": {
+    "eyebrow": "Visual Portfolio",
+    "title": "Automotive Care & Product Gallery",
+    "description": "Explore our curated visual showcase of vehicle finishes, commercial product packaging, surface restoration, and professional car wash results.",
+    "heroImage": "detail-14.webp",
+    "categories": ["Vehicles", "Products", "Details", "Craft"],
+    "items": [
+      {
+        "id": "hero-1",
+        "title": "Commercial High-Throughput Wash",
+        "subtitle": "High-dilution foam shampoo and paint preservation",
+        "description": "High-dilution foam shampoo and paint preservation",
+        "category": "Vehicles",
+        "image": "Hero1.webp",
+        "aspect": "wide",
+        "placements": ["gallery"],
+        "active": true
+      },
+      {
+        "id": "hero-2",
+        "title": "Precision Surface Glaze & Shine",
+        "subtitle": "Showroom mirror finish on deep metallic paint",
+        "description": "Showroom mirror finish on deep metallic paint",
+        "category": "Vehicles",
+        "image": "Hero2.webp",
+        "aspect": "wide",
+        "placements": ["gallery"],
+        "active": true
+      },
+      {
+        "id": "ed-15",
+        "title": "Saddle Leather Interior",
+        "subtitle": "Conditioned with ChemX D2 vinyl and trim polish",
+        "description": "Conditioned with ChemX D2 vinyl and trim polish",
+        "category": "Details",
+        "image": "editorial-15.webp",
+        "aspect": "square",
+        "placements": ["gallery"],
+        "active": true
+      },
+      {
+        "id": "ed-16",
+        "title": "Performance Wheel & Caliper",
+        "subtitle": "ChemX C2 chemical degreaser removing baked brake dust",
+        "description": "ChemX C2 chemical degreaser removing baked brake dust",
+        "category": "Details",
+        "image": "editorial-16.webp",
+        "aspect": "tall",
+        "placements": ["gallery"],
+        "active": true
+      },
+      {
+        "id": "dt-2",
+        "title": "Paint Reflection Inspection",
+        "subtitle": "F55 final touch wax delivering hologram-free finish",
+        "description": "F55 final touch wax delivering hologram-free finish",
+        "category": "Craft",
+        "image": "detail-2.webp",
+        "aspect": "square",
+        "placements": ["gallery"],
+        "active": true
+      },
+      {
+        "id": "dt-3",
+        "title": "Exterior Clean Bodywork",
+        "subtitle": "Streak-free rinse with G4 glass and body finish",
+        "description": "Streak-free rinse with G4 glass and body finish",
+        "category": "Craft",
+        "image": "detail-3.webp",
+        "aspect": "wide",
+        "placements": ["gallery"],
+        "active": true
+      },
+      {
+        "id": "dt-13",
+        "title": "Microfiber Buffing & Finish",
+        "subtitle": "Final touch inspection before vehicle handover",
+        "description": "Final touch inspection before vehicle handover",
+        "category": "Craft",
+        "image": "detail-13.webp",
+        "aspect": "tall",
+        "placements": ["gallery"],
+        "active": true
+      },
+      {
+        "id": "dt-15",
+        "title": "Engine Bay Cleanse",
+        "subtitle": "ChemX C2 all-purpose degreaser on mechanical assemblies",
+        "description": "ChemX C2 all-purpose degreaser on mechanical assemblies",
+        "category": "Details",
+        "image": "detail-15.webp",
+        "aspect": "square",
+        "placements": ["gallery"],
+        "active": true
+      },
+      {
+        "id": "home-ed-13",
+        "title": "Burgundy classic coupe",
+        "subtitle": "Burgundy classic coupe",
+        "description": "Burgundy classic coupe",
+        "category": "Vehicles",
+        "image": "editorial-13.webp",
+        "aspect": "square",
+        "placements": ["home"],
+        "active": true
+      },
+      {
+        "id": "home-dt-11",
+        "title": "Violet sports car",
+        "subtitle": "Violet sports car",
+        "description": "Violet sports car",
+        "category": "Vehicles",
+        "image": "detail-11.webp",
+        "aspect": "wide",
+        "placements": ["home"],
+        "active": true
+      },
+      {
+        "id": "home-ed-14",
+        "title": "Silver SUV",
+        "subtitle": "Silver SUV",
+        "description": "Silver SUV",
+        "category": "Vehicles",
+        "image": "editorial-14.webp",
+        "aspect": "wide",
+        "placements": ["home"],
+        "active": true
+      },
+      {
+        "id": "home-dt-12",
+        "title": "Classic coupe in a garage",
+        "subtitle": "Classic coupe in a garage",
+        "description": "Classic coupe in a garage",
+        "category": "Craft",
+        "image": "detail-12.webp",
+        "aspect": "square",
+        "placements": ["home"],
+        "active": true
+      },
+      {
+        "id": "home-ed-15",
+        "title": "Leather interior",
+        "subtitle": "Leather interior",
+        "description": "Leather interior",
+        "category": "Details",
+        "image": "editorial-15.webp",
+        "aspect": "square",
+        "placements": ["home"],
+        "active": true
+      },
+      {
+        "id": "home-dt-14",
+        "title": "Teal sports car on the coast",
+        "subtitle": "Teal sports car on the coast",
+        "description": "Teal sports car on the coast",
+        "category": "Vehicles",
+        "image": "detail-14.webp",
+        "aspect": "wide",
+        "placements": ["home"],
+        "active": true
+      }
+    ]
+  },
+  "footer": {
+    "description": "A specialist supplier of professional automotive care products, concentrated cleaners, and commercial supply solutions.",
+    "commercialRegistration": "7054513028",
+    "vatNumber": "314834518600003",
+    "bankName": "Alinma Bank",
+    "iban": "SA1305000068207583708000"
+  }
+}

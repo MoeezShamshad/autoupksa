@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/accordion";
 import { SITE, whatsappUrl } from "@/lib/site";
 import { useLocale } from "@/lib/i18n";
+import { trackAnalyticsEvent } from "@/lib/analytics";
 import { Reveal } from "@/components/Reveal";
 
 export const Route = createFileRoute("/contact")({
@@ -112,6 +113,7 @@ function ContactPage() {
             `Inquiry / Requirements:\n${form.message}`,
           ].join("\n");
 
+    trackAnalyticsEvent("whatsapp_inquiry");
     window.open(whatsappUrl(b2bMsg), "_blank", "noopener,noreferrer");
   };
 

@@ -12,6 +12,7 @@ import {
 import { PRODUCTS, type Service } from "@/lib/catalog";
 import { useCatalogVersion } from "@/lib/catalog-provider";
 import { useCart } from "@/lib/cart";
+import { trackAnalyticsEvent } from "@/lib/analytics";
 
 const SERVICE_RECOMMENDATIONS: Record<string, string> = {
   "cleaning-essentials": "lifelines-waterless-car-wash",
@@ -74,6 +75,7 @@ export function ServiceCard({ s, index }: { s: Service; index: number }) {
   const recProduct = PRODUCTS.find((p) => p.slug === recSlug) ?? PRODUCTS[0]!;
 
   const handleAdd = () => {
+    trackAnalyticsEvent("add_to_cart", [recProduct.slug]);
     add({
       slug: recProduct.slug,
       name: recProduct.name,
