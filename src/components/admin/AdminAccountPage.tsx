@@ -1,4 +1,5 @@
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
+import { Link } from "@tanstack/react-router";
 import { ChevronRight, Eye, EyeOff, ShieldCheck, UserRound } from "lucide-react";
 import { toast } from "sonner";
 
@@ -245,7 +246,7 @@ export function AdminAccountPage({ page }: { page: AccountPage }) {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <div className="mb-2 flex items-center gap-1.5 text-xs text-slate-500">
-            <a href="/admin" className="hover:text-slate-900">Admin</a>
+            <Link to="/admin" className="hover:text-slate-900">Admin</Link>
             <ChevronRight className="h-3 w-3" />
             <span>Admin Account</span>
             <ChevronRight className="h-3 w-3" />
@@ -253,19 +254,19 @@ export function AdminAccountPage({ page }: { page: AccountPage }) {
           </div>
           <h2 className="text-2xl font-semibold tracking-tight text-slate-900">{labels[page]}</h2>
         </div>
-        <a href="/admin" className="text-sm font-medium text-slate-600 hover:text-slate-900">← Back to Admin Account</a>
+        <Link to="/admin" className="text-sm font-medium text-slate-600 hover:text-slate-900">← Back to Admin Account</Link>
       </div>
 
       <nav aria-label="Admin account pages" className="flex flex-wrap gap-2">
         {(["profile", "username", "email", "password", "security"] as const).map((item) => (
-          <a
+          <Link
             key={item}
-            href={`/admin/account/${item}`}
+            to={`/admin/account/${item}`}
             aria-current={page === item ? "page" : undefined}
             className={`rounded-full border px-3 py-1.5 text-xs font-medium transition ${page === item ? "border-slate-900 bg-slate-900 text-white" : "border-slate-200 bg-white text-slate-600 hover:bg-slate-50"}`}
           >
             {labels[item]}
-          </a>
+          </Link>
         ))}
       </nav>
 

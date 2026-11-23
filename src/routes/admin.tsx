@@ -288,6 +288,7 @@ export function AdminLoginScreen() {
 
 function AdminApp({ initialAdmin }: { initialAdmin: ProfileState }) {
   const location = useLocation();
+  const navigate = useNavigate();
   const [section, setSection] = useState<AdminSection>("Dashboard");
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [products, setProducts] = useState<AdminProduct[]>([]);
@@ -1782,6 +1783,9 @@ function AdminApp({ initialAdmin }: { initialAdmin: ProfileState }) {
                     openProductModal();
                   } else {
                     setSection(item);
+                    if (location.pathname.startsWith("/admin/account/")) {
+                      void navigate({ to: "/admin" });
+                    }
                   }
                   setMobileNavOpen(false);
                 }}
@@ -1855,22 +1859,22 @@ function AdminApp({ initialAdmin }: { initialAdmin: ProfileState }) {
                   className="absolute right-0 top-[calc(100%+0.75rem)] z-40 w-64 rounded-2xl border border-slate-200 bg-white p-2 text-left shadow-xl shadow-slate-900/10"
                 >
                   <p className="px-3 py-2 text-xs font-semibold uppercase tracking-wide text-slate-400">Admin Account</p>
-                  {[
+                  {([
                     ["Profile Information", "/admin/account/profile"],
                     ["Change Username", "/admin/account/username"],
                     ["Change Email", "/admin/account/email"],
                     ["Change Password", "/admin/account/password"],
                     ["Security", "/admin/account/security"],
-                  ].map(([label, href]) => (
-                    <a
+                  ] as const).map(([label, href]) => (
+                    <Link
                       key={href}
                       role="menuitem"
-                      href={href}
+                      to={href}
                       onClick={() => setShowProfileMenu(false)}
                       className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition hover:bg-slate-100 hover:text-slate-950"
                     >
                       {label}
-                    </a>
+                    </Link>
                   ))}
                   <button
                     type="button"
@@ -2312,7 +2316,7 @@ export const Route = createFileRoute("/admin")({
     const [authenticated, setAuthenticated] = useState<boolean | null>(null);
     const [adminProfile, setAdminProfile] = useState<ProfileState | null>(null);
     useEffect(() => {
-      if (location.pathname === "/admin/login") return;
+      if (location.pathname === "/admin/login" || authenticated) return;
       let active = true;
       fetch("/api/admin/session", { credentials: "same-origin" })
         .then(async (response) => {
@@ -2336,7 +2340,7 @@ export const Route = createFileRoute("/admin")({
       return () => {
         active = false;
       };
-    }, [location.pathname, navigate]);
+    }, [authenticated, location.pathname, navigate]);
     if (location.pathname === "/admin/login") return <Outlet />;
     if (authenticated === null) {
       return (
