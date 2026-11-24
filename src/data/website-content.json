@@ -364,7 +364,12 @@
     "title": "Automotive Care & Product Gallery",
     "description": "Explore our curated visual showcase of vehicle finishes, commercial product packaging, surface restoration, and professional car wash results.",
     "heroImage": "detail-14.webp",
-    "categories": ["Vehicles", "Products", "Details", "Craft"],
+    "categories": [
+      "Vehicles",
+      "Products",
+      "Details",
+      "Craft"
+    ],
     "items": [
       {
         "id": "hero-1",
@@ -374,7 +379,9 @@
         "category": "Vehicles",
         "image": "Hero1.webp",
         "aspect": "wide",
-        "placements": ["gallery"],
+        "placements": [
+          "gallery"
+        ],
         "active": true
       },
       {
@@ -385,7 +392,9 @@
         "category": "Vehicles",
         "image": "Hero2.webp",
         "aspect": "wide",
-        "placements": ["gallery"],
+        "placements": [
+          "gallery"
+        ],
         "active": true
       },
       {
@@ -396,7 +405,9 @@
         "category": "Details",
         "image": "editorial-15.webp",
         "aspect": "square",
-        "placements": ["gallery"],
+        "placements": [
+          "gallery"
+        ],
         "active": true
       },
       {
@@ -407,7 +418,9 @@
         "category": "Details",
         "image": "editorial-16.webp",
         "aspect": "tall",
-        "placements": ["gallery"],
+        "placements": [
+          "gallery"
+        ],
         "active": true
       },
       {
@@ -418,7 +431,9 @@
         "category": "Craft",
         "image": "detail-2.webp",
         "aspect": "square",
-        "placements": ["gallery"],
+        "placements": [
+          "gallery"
+        ],
         "active": true
       },
       {
@@ -429,7 +444,9 @@
         "category": "Craft",
         "image": "detail-3.webp",
         "aspect": "wide",
-        "placements": ["gallery"],
+        "placements": [
+          "gallery"
+        ],
         "active": true
       },
       {
@@ -440,7 +457,9 @@
         "category": "Craft",
         "image": "detail-13.webp",
         "aspect": "tall",
-        "placements": ["gallery"],
+        "placements": [
+          "gallery"
+        ],
         "active": true
       },
       {
@@ -451,7 +470,9 @@
         "category": "Details",
         "image": "detail-15.webp",
         "aspect": "square",
-        "placements": ["gallery"],
+        "placements": [
+          "gallery"
+        ],
         "active": true
       },
       {
@@ -462,7 +483,9 @@
         "category": "Vehicles",
         "image": "editorial-13.webp",
         "aspect": "square",
-        "placements": ["home"],
+        "placements": [
+          "home"
+        ],
         "active": true
       },
       {
@@ -473,7 +496,9 @@
         "category": "Vehicles",
         "image": "detail-11.webp",
         "aspect": "wide",
-        "placements": ["home"],
+        "placements": [
+          "home"
+        ],
         "active": true
       },
       {
@@ -484,7 +509,9 @@
         "category": "Vehicles",
         "image": "editorial-14.webp",
         "aspect": "wide",
-        "placements": ["home"],
+        "placements": [
+          "home"
+        ],
         "active": true
       },
       {
@@ -495,7 +522,9 @@
         "category": "Craft",
         "image": "detail-12.webp",
         "aspect": "square",
-        "placements": ["home"],
+        "placements": [
+          "home"
+        ],
         "active": true
       },
       {
@@ -506,7 +535,9 @@
         "category": "Details",
         "image": "editorial-15.webp",
         "aspect": "square",
-        "placements": ["home"],
+        "placements": [
+          "home"
+        ],
         "active": true
       },
       {
@@ -517,7 +548,22 @@
         "category": "Vehicles",
         "image": "detail-14.webp",
         "aspect": "wide",
-        "placements": ["home"],
+        "placements": [
+          "home"
+        ],
+        "active": true
+      },
+      {
+        "id": "52b66bbe-93fe-4985-bb15-139864584df8",
+        "title": "WhatsApp Image 2026-11-24 at 9.48.33 AM",
+        "subtitle": "",
+        "description": "",
+        "category": "Vehicles",
+        "image": "/cms-media/b5581bc0af8d6b0b7e3e9fd9.jpg",
+        "aspect": "square",
+        "placements": [
+          "gallery"
+        ],
         "active": true
       }
     ]
