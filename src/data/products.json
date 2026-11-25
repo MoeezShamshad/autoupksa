@@ -1,5 +1,34 @@
 [
   {
+    "id": "9216785a07b7ee80",
+    "slug": "lifelines-shampoo-wax-white",
+    "name": "Lifelines Shampoo Wax - White",
+    "nameAr": "شامبو واكس لايف لاينز 1 لتر ابيض",
+    "sku": "AUTO-YHN2P",
+    "category": "Car Shampoo",
+    "packageSize": "1L",
+    "catalogVariants": [
+      "1L"
+    ],
+    "packageType": "retail",
+    "code": "",
+    "short": "",
+    "usage": "قم بشطف السيارة بالماء لإزالة الأتربة السطحية\nأضف كمية مناسبة من الشامبو إلى الماء\nاغسل السيارة باستخدام إسفنجة أو قفاز غسيل\nاشطف السيارة جيدًا بالماء\nجفف السيارة للحصول على أفضل لمعان",
+    "featured": 0,
+    "price": 34,
+    "stock": 5,
+    "status": "published",
+    "image": "/cms-media/0ff370981a2e94bce1212195.jpg",
+    "images": [
+      "/cms-media/0ff370981a2e94bce1212195.jpg"
+    ],
+    "updatedAt": "2026-11-25T08:35:27.412Z",
+    "brand": "AutoUp",
+    "description": "",
+    "descriptionAr": "تنظيف فعال يزيل الأوساخ والزيوت والشحوم بسهولة\nيمنح لمعانًا واضحًا وبريقًا جذابًا بعد كل غسيل\nدرجة حموضة متعادلة pH=7 آمنة على الطلاء\nلطيف على اليدين أثناء الاستخدام\nيساعد على الحفاظ على طبقة الدهان وإطالة عمرها\nمناسب لجميع أنواع السيارات",
+    "createdAt": "2026-11-25T08:35:27.412Z"
+  },
+  {
     "id": "7c8d05efa8e6172d",
     "slug": "lifelines-chemx-c2-interior-cleaner",
     "name": "Lifelines ChemX C2 Interior Cleaner",
