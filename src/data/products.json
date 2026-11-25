@@ -532,8 +532,8 @@
   {
     "id": "lifelines-iron-remover-460ml",
     "slug": "lifelines-iron-remover-460ml",
-    "name": "Iron Remover",
-    "nameAr": "Iron Remover",
+    "name": "Lifelines Iron Remover IR",
+    "nameAr": "Iron Remover مزيل حديد ",
     "sku": "lifelines-iron-remover-460ml",
     "category": "Cleaning Chemicals",
     "packageSize": "460 ml",
@@ -543,18 +543,18 @@
     "packageType": "retail",
     "code": "",
     "short": "Iron remover in a verified 460 ml spray bottle.",
-    "usage": "Follow the directions printed on the product label.",
+    "usage": "قم بغسل السطح بالماء لإزالة الأتربة والأوساخ السطحية.\nرش مزيل صدأ الحديد مباشرة على سطح السيارة أو الجنوط وهي باردة وجافة.\nاترك المنتج لمدة 2 إلى 5 دقائق حتى يبدأ التفاعل ويتحول اللون إلى البنفسجي.\nاشطف السطح جيدًا بالماء لإزالة الرواسب المفككة.\nبعد ذلك قم بغسل السيارة باستخدام الشامبو.\nلأفضل النتائج، يفضل استخدام مزيل صدأ الحديد قبل عمليات التلميع أو تطبيق طبقات الحماية على السيارة.",
     "featured": 16,
-    "price": 0,
-    "stock": null,
+    "price": 38,
+    "stock": 5,
     "status": "published",
-    "image": "/assets/imgi_22_eb0c09eb-18c9-475e-a8e5-5723d8f937c2-500x500-Bxm4ILMLbzCpg0ZXqFjYrs9UERkf4sGuQOCr7EkN-DAXLS7-B.webp",
+    "image": "/cms-media/45fe8dbf3177814287add05f.jpg",
     "gallery": [],
-    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "updatedAt": "2026-11-25T08:17:25.421Z",
     "createdAt": "2026-01-01T00:00:00.000Z",
     "brand": "LifeLines",
-    "description": "LifeLines Iron Remover in a 460 ml spray bottle.",
-    "descriptionAr": "LifeLines Iron Remover in a 460 ml spray bottle.",
+    "description": "",
+    "descriptionAr": "إذا كنت تبحث عن مزيل صدأ الحديد فعال لإزالة الرواسب المعدنية العالقة على سيارتك، فإن مزيل حديد IRON REMOVER من متجر LIFELINES هو الحل الاحترافي الذي تحتاجه. تم تطوير هذا المنتج خصيصًا لإزالة جزيئات الحديد الناتجة عن غبار المكابح أو التلوث الصناعي والتي تلتصق بسطح السيارة والجنوط مع مرور الوقت.\n\n",
     "variants": [
       {
         "id": "lifelines-iron-remover-460ml-1",
@@ -564,6 +564,9 @@
         "price": 0,
         "stock": 0
       }
+    ],
+    "images": [
+      "/cms-media/45fe8dbf3177814287add05f.jpg"
     ]
   },
   {
