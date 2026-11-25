@@ -579,7 +579,7 @@
     "status": "published",
     "image": "/cms-media/3da4cf114708893279768d23.jpg",
     "gallery": [],
-    "updatedAt": "2026-11-25T07:51:09.686Z",
+    "updatedAt": "2026-11-25T07:51:29.404Z",
     "createdAt": "2026-01-01T00:00:00.000Z",
     "brand": "LifeLines",
     "description": "Revitalize your vehicle’s appearance and restore the shine to its metal surfaces in a flash!\n\nIntroducing the professional-grade rust remover from LifeLines (RR)—a highly effective, advanced German-engineered formula specifically designed to eliminate stubborn rust and mineral deposits. This product works with lightning speed to break down rust particles and completely remove them from iron surfaces and various automotive components, allowing you to easily and safely restore metal surfaces to their original, pristine condition.",
@@ -597,7 +597,6 @@
     "images": [
       "/cms-media/3da4cf114708893279768d23.jpg",
       "/cms-media/21cadc75efdd43362e0950ca.jpg"
-    ],
-    "salePrice": 110
+    ]
   }
 ]
