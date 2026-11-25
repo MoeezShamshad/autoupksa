@@ -542,9 +542,9 @@
       },
       {
         "id": "home-dt-14",
-        "title": "Teal sports car on the coast",
-        "subtitle": "Teal sports car on the coast",
-        "description": "Teal sports car on the coast",
+        "title": "inside look",
+        "subtitle": "",
+        "description": "",
         "category": "Products",
         "image": "/cms-media/c21f3b4d9f9806547fa7d7b8.jpg",
         "aspect": "wide",
@@ -555,11 +555,11 @@
       },
       {
         "id": "52b66bbe-93fe-4985-bb15-139864584df8",
-        "title": "WhatsApp Image 2026-11-24 at 9.48.33 AM",
+        "title": "Products Display",
         "subtitle": "",
         "description": "",
-        "category": "Vehicles",
-        "image": "/cms-media/b5581bc0af8d6b0b7e3e9fd9.jpg",
+        "category": "Products",
+        "image": "/cms-media/466fa399b1c34528f85fa47b.jpg",
         "aspect": "square",
         "placements": [
           "gallery"
@@ -568,10 +568,10 @@
       },
       {
         "id": "d0b31982-b6ee-46d4-9ad2-5180c7d3d7da",
-        "title": "Monday pic",
+        "title": "Buraidah, Store",
         "subtitle": "",
         "description": "",
-        "category": "Craft",
+        "category": "Products",
         "image": "/cms-media/0a742765ed06b0499ee13c9e.jpg",
         "aspect": "square",
         "placements": [
