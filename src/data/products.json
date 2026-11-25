@@ -458,29 +458,29 @@
   {
     "id": "lifelines-pre-wash-shampoo-1kg",
     "slug": "lifelines-pre-wash-shampoo-1kg",
-    "name": "Pre Wash Car Shampoo",
-    "nameAr": "شامبو ما قبل الغسيل",
+    "name": "Lifelines Pre Wash Car Shampoo",
+    "nameAr": "شامبو تحضيري 1 لتر",
     "sku": "lifelines-pre-wash-shampoo-1kg",
     "category": "Car Shampoo",
-    "packageSize": "1 kg",
+    "packageSize": "1L",
     "catalogVariants": [
-      "1 kg"
+      "1L"
     ],
     "packageType": "retail",
     "code": "",
     "short": "Pre-wash shampoo in a verified 1 kg bottle.",
-    "usage": "Follow the dilution and use directions printed on the product label.",
+    "usage": "رش الشامبو التحضيري على كامل سطح السيارة باستخدام رشاش أو جهاز الرغوة.\n\nالتفاعل:\n\nاترك الشامبو لمدة لا تزيد عن دقيقتين حتى يتفاعل مع الأوساخ والزيوت.\n\nالشطف:\n\nاشطف السيارة جيدًا باستخدام ماء مضغوط لإزالة الأوساخ المفككة.\n\n",
     "featured": 14,
-    "price": 0,
-    "stock": null,
+    "price": 35,
+    "stock": 5,
     "status": "published",
-    "image": "/assets/imgi_20_6c5faa3b-8ddb-464d-b3b2-923851cbe446-500x500-MU8e8ssvw5EqbExg4nsUCPi7isgckN4MrIFHuvUY-BlNNih68.webp",
+    "image": "/cms-media/8e53a55e6234d012dadc32a3.jpg",
     "gallery": [],
-    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "updatedAt": "2026-11-25T08:21:35.524Z",
     "createdAt": "2026-01-01T00:00:00.000Z",
     "brand": "LifeLines",
-    "description": "LifeLines Pre Wash Car Shampoo in a 1 kg bottle.",
-    "descriptionAr": "LifeLines Pre Wash Car Shampoo in a 1 kg bottle.",
+    "description": "",
+    "descriptionAr": "يقدم متجر LIFELINES منتج PRE WASH CAR SHAMPOO شامبو تحضيري 1 لتر كحل احترافي لإزالة الأوساخ الثقيلة قبل مرحلة الغسيل الرئيسية. هذا الشامبو التحضيري مصمم خصيصًا لتفكيك أوساخ الطريق والزيوت والشحوم المتراكمة على سطح السيارة، مما يساعد على تنظيف أكثر أمانًا ويحمي طلاء السيارة من الخدوش أثناء الغسيل.",
     "variants": [
       {
         "id": "lifelines-pre-wash-shampoo-1kg-1",
@@ -490,6 +490,9 @@
         "price": 0,
         "stock": 0
       }
+    ],
+    "images": [
+      "/cms-media/8e53a55e6234d012dadc32a3.jpg"
     ]
   },
   {
