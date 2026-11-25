@@ -573,9 +573,9 @@
     "price": 0,
     "stock": null,
     "status": "published",
-    "image": "/assets/imgi_19_0385406c-2c3d-4ab7-a3fc-1704ee12ce6a-500x500-zLtbRBuI8yxMR17Ga5NauoICRuBbWOq0hTc13XF0-Ba2DFMlA.webp",
+    "image": "/cms-media/3da4cf114708893279768d23.jpg",
     "gallery": [],
-    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "updatedAt": "2026-11-25T07:21:57.505Z",
     "createdAt": "2026-01-01T00:00:00.000Z",
     "brand": "LifeLines",
     "description": "LifeLines Professional Rust Remover RR in a 5 L container.",
@@ -589,6 +589,10 @@
         "price": 0,
         "stock": 0
       }
+    ],
+    "images": [
+      "/cms-media/3da4cf114708893279768d23.jpg",
+      "/cms-media/21cadc75efdd43362e0950ca.jpg"
     ]
   }
 ]
