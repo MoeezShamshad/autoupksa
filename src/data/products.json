@@ -492,8 +492,8 @@
   {
     "id": "lifelines-chemx-d2-500ml",
     "slug": "lifelines-chemx-d2-500ml",
-    "name": "ChemX D2 Dashboard Polish",
-    "nameAr": "ChemX D2 Dashboard Polish",
+    "name": "Lifelines ChemX D2 Dashboard Polish",
+    "nameAr": "ChemX D2 ملمع ومرطب طبللون ",
     "sku": "ChemX-D2-500ml",
     "category": "Interior Cleaners",
     "packageSize": "500 ml",
@@ -503,18 +503,18 @@
     "packageType": "retail",
     "code": "ChemX D2",
     "short": "Dashboard polish in a verified 500 ml bottle.",
-    "usage": "Follow the directions printed on the product label.",
+    "usage": "التخفيف (اختياري):\nللحصول على أقصى لمعة: استخدم المنتج بدون تخفيف (كما هو).\nللحصول على لمعة طبيعية: قم بالتخفيف بنسبة 1:1 (جزء من المنتج مقابل جزء من الماء).",
     "featured": 15,
-    "price": 0,
-    "stock": null,
+    "price": 28,
+    "stock": 5,
     "status": "published",
-    "image": "/assets/imgi_35_38190e6b-4e92-439b-b543-9f91846c6d0a-500x500-MtQDKaypgVMaWVQcgLYzkOx6ta6zUpUkOb0OAySO-BJUaYv89.webp",
+    "image": "/cms-media/bf9ff131662ea677097f4d7e.jpg",
     "gallery": [],
-    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "updatedAt": "2026-11-25T08:15:38.471Z",
     "createdAt": "2026-01-01T00:00:00.000Z",
     "brand": "LifeLines",
-    "description": "LifeLines ChemX D2 Dashboard Polish in a 500 ml bottle.",
-    "descriptionAr": "LifeLines ChemX D2 Dashboard Polish in a 500 ml bottle.",
+    "description": "",
+    "descriptionAr": "المصمم خصيصاً ليمنح الأجزاء الداخلية لسيارتك لمعاناً عميقاً وغنياً يدوم طويلاً. يخلق هذا المنتج طبقة حماية على جميع الأسطح البلاستيكية والمطاطية الداخلية، وبالأخص لوحة القيادة (التابلوه)، معيداً لها مظهرها الجديد.",
     "variants": [
       {
         "id": "lifelines-chemx-d2-500ml-1",
@@ -524,6 +524,9 @@
         "price": 0,
         "stock": 0
       }
+    ],
+    "images": [
+      "/cms-media/bf9ff131662ea677097f4d7e.jpg"
     ]
   },
   {
