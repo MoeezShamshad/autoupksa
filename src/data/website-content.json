@@ -545,7 +545,7 @@
         "title": "Teal sports car on the coast",
         "subtitle": "Teal sports car on the coast",
         "description": "Teal sports car on the coast",
-        "category": "Vehicles",
+        "category": "Products",
         "image": "/cms-media/c21f3b4d9f9806547fa7d7b8.jpg",
         "aspect": "wide",
         "placements": [
@@ -560,6 +560,19 @@
         "description": "",
         "category": "Vehicles",
         "image": "/cms-media/b5581bc0af8d6b0b7e3e9fd9.jpg",
+        "aspect": "square",
+        "placements": [
+          "gallery"
+        ],
+        "active": true
+      },
+      {
+        "id": "d0b31982-b6ee-46d4-9ad2-5180c7d3d7da",
+        "title": "Monday pic",
+        "subtitle": "",
+        "description": "",
+        "category": "Craft",
+        "image": "/cms-media/0a742765ed06b0499ee13c9e.jpg",
         "aspect": "square",
         "placements": [
           "gallery"
