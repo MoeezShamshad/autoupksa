@@ -378,8 +378,8 @@
   {
     "id": "lifelines-o2-solvent-500ml",
     "slug": "lifelines-o2-solvent-500ml",
-    "name": "O2 Solvent Tire Polish",
-    "nameAr": "ملمع الإطارات بالمذيب O2",
+    "name": "Lifelines O2 Solvent Tire Polish",
+    "nameAr": "O2 ملمع كفرات لايف لاينز ",
     "sku": "O2-500ml",
     "category": "Exterior Cleaners",
     "packageSize": "500 ml",
@@ -389,18 +389,18 @@
     "packageType": "retail",
     "code": "O2",
     "short": "O2 tire polish in a verified 500 ml bottle.",
-    "usage": "Follow the directions printed on the product label.",
+    "usage": "التحضير: نظف الإطارات جيداً وتأكد من جفافها تماما قبل تطبيق الملمع.\nالتطبيق: رش المنتج على الإطار.\nالتوزيع: وزّع المنتج بالتساوي باستخدام إسفنجة مخصصة للحصول على تغطية كاملة.",
     "featured": 12,
-    "price": 0,
-    "stock": null,
+    "price": 39,
+    "stock": 5,
     "status": "published",
-    "image": "/assets/imgi_11_4f1f3ac3-aebb-400c-b0de-e1ae1de0caab-500x500-HQgb89xy4fBVsvZiFmNggqEvhcjHG8v9KooUCtYb-DSsYr8tB.webp",
+    "image": "/cms-media/c4143f37733533f378990afe.jpg",
     "gallery": [],
-    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "updatedAt": "2026-11-25T08:13:28.548Z",
     "createdAt": "2026-01-01T00:00:00.000Z",
     "brand": "LifeLines",
-    "description": "LifeLines O2 Solvent Tire Polish in a 500 ml bottle.",
-    "descriptionAr": "LifeLines O2 Solvent Tire Polish in a 500 ml bottle.",
+    "description": "",
+    "descriptionAr": "هو المنتج المثالي لمنح إطارات سيارتك لمعة عميقة وجذابة مع حماية تدوم طويلاً. يتميز هذا الملمع بتركيبته القوية والفعالة التي صُممت خصيصاً لتوفير طبقة حماية متينة مقاومة للأوساخ والماء، مما يضمن أن تظل إطارات سيارتك بمظهرها الجديد لأطول فترة ممكنة. إنه الخيار الأمثل للحصول على تلميع إطارات احترافي.\"",
     "variants": [
       {
         "id": "lifelines-o2-solvent-500ml-1",
@@ -410,6 +410,9 @@
         "price": 0,
         "stock": 0
       }
+    ],
+    "images": [
+      "/cms-media/c4143f37733533f378990afe.jpg"
     ]
   },
   {
