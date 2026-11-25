@@ -116,28 +116,28 @@
   {
     "id": "lifelines-chemx-c6-25l",
     "slug": "lifelines-chemx-c6-25l",
-    "name": "ChemX C6 Chemical Degreaser",
-    "nameAr": "مزيل الشحوم الكيميائي ChemX C6",
+    "name": "Lifelines ChemX C6 Degreaser 25L",
+    "nameAr": "ChemX C6 مزيل شحوم وأوساخ عنيدة - 25 لتر",
     "sku": "ChemX-C6-25L",
     "category": "Cleaning Chemicals",
-    "packageSize": "25 L",
+    "packageSize": "25L",
     "catalogVariants": [
-      "25 L"
+      "25L"
     ],
     "packageType": "other-commercial",
     "code": "ChemX C6",
-    "short": "Professional chemical degreaser in a 25 L commercial container.",
-    "usage": "Follow the dilution and use directions printed on the product label.",
+    "short": "LifeLines ChemX C6 chemical degreaser in a 25 L commercial container. Follow the directions printed on the product label.",
+    "usage": "المنطقة المراد تنظيفها نسبة التخفيف (المنتج: الماء) ملاحظات الاستخدام\n\nالمحركات/الجنوط 1 : 5 للاستخدام على الأوساخ والشحوم شديدة الالتصاق.\n\nكراسي (أقمشة/مخمل) 1 : 10 لتنظيف الفرش وإزالة البقع الداخلية.\n\nجلد/بلاستيك/ديكورات 1 : 15 – 1 : 20 للتنظيف الآمن للأسطح الحساسة في المقصورة الداخلية.",
     "featured": 19,
-    "price": 0,
-    "stock": null,
+    "price": 250,
+    "stock": 10,
     "status": "published",
     "image": "/assets/WhatsApp%20Image%202026-11-01%20at%2012.00.44%20AM-Boyfvtay.jpeg",
     "gallery": [],
-    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "updatedAt": "2026-11-25T07:59:49.008Z",
     "createdAt": "2026-01-01T00:00:00.000Z",
     "brand": "LifeLines",
-    "description": "LifeLines ChemX C6 chemical degreaser in a 25 L commercial container. Follow the directions printed on the product label.",
+    "description": "",
     "descriptionAr": "مزيل الشحوم الكيميائي ChemX C6 من LifeLines في عبوة تجارية سعة 25 لترًا. اتبع التعليمات المدونة على ملصق المنتج.",
     "variants": [
       {
