@@ -1,0 +1,668 @@
+[
+  {
+    "id": "lifelines-colour-wax-shampoo-rose",
+    "slug": "lifelines-colour-wax-shampoo-rose",
+    "name": "Colour Wax Shampoo — Rose",
+    "nameAr": "شامبو الشمع الملون — الورد",
+    "sku": "lifelines-colour-wax-shampoo-rose",
+    "category": "Car Shampoo",
+    "packageSize": "20 L",
+    "catalogVariants": [
+      "20 L"
+    ],
+    "packageType": "gallon",
+    "code": "",
+    "short": "Same advanced wax shampoo formula in a signature rose fragrance.",
+    "usage": "Mix 1 litre with 100 litres of water for hand washing, or 1 litre with 150 litres for in-pump use. Leave on surface for 3 minutes, then rinse thoroughly and dry.",
+    "featured": 2,
+    "price": 0,
+    "stock": null,
+    "status": "published",
+    "image": "/assets/product-colour-wax-shampoo-rose-G9HyDSBN.webp",
+    "gallery": [],
+    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "brand": "LifeLines",
+    "description": "LifeLines Colour Wax Shampoo (Rose) preserves the car paint and gives it an attractive luster that lasts for a long time. Phosphate-free, concentrate formula — removes dirt, pH neutral, quick drying.",
+    "descriptionAr": "يحافظ شامبو الشمع الملون من LifeLines برائحة الورد على طلاء السيارة ويمنحه لمعاناً جذاباً يدوم طويلاً. تركيبة مركزة خالية من الفوسفات ومتعادلة الحموضة، تزيل الأوساخ وتجف بسرعة.",
+    "variants": [
+      {
+        "id": "lifelines-colour-wax-shampoo-rose-1",
+        "name": "Colour Wax Shampoo — Rose",
+        "sku": "lifelines-colour-wax-shampoo-rose",
+        "packageSize": "20 L",
+        "price": 0,
+        "stock": 0
+      }
+    ]
+  },
+  {
+    "id": "lifelines-pre-wash-shampoo",
+    "slug": "lifelines-pre-wash-shampoo",
+    "name": "Pre Wash Shampoo 20 Litres",
+    "nameAr": "شامبو ما قبل الغسيل 20 لترًا",
+    "sku": "lifelines-pre-wash-shampoo",
+    "category": "Car Shampoo",
+    "packageSize": "20 L",
+    "catalogVariants": [
+      "20 L"
+    ],
+    "packageType": "gallon",
+    "code": "",
+    "short": "High-performance pre-wash for automatic and manual car wash systems.",
+    "usage": "Automatic car wash: 40–50 ml per car. Manual: 1 litre of shampoo to 100 litres of water. Dilute, spray onto the car, leave for no more than 2 minutes to react with dirt, then rinse thoroughly with water.",
+    "featured": 1,
+    "price": 0,
+    "stock": null,
+    "status": "published",
+    "image": "/assets/Pre%20Wash%20Shampoo%2020%20Litres-B7bQPtjQ.jpeg",
+    "gallery": [],
+    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "brand": "LifeLines",
+    "description": "LifeLines Pre Wash Car Shampoo is a high-performance shampoo designed for use in automatic car wash systems and manual car wash systems. It effectively removes dirt, oil and road films, leaving the surface clean and ready for further treatment. High lubrication to reduce friction; easy to rinse; suitable for all types of vehicles.",
+    "descriptionAr": "شامبو ما قبل الغسيل من LifeLines عالي الأداء ومناسب لأنظمة غسيل السيارات الآلية واليدوية. يزيل الأوساخ والزيوت وطبقة الطريق بفاعلية، ويترك السطح نظيفاً وجاهزاً للمعالجة التالية. يوفر انزلاقاً يساعد على تقليل الاحتكاك، وسهل الشطف ومناسب لجميع أنواع المركبات.",
+    "variants": [
+      {
+        "id": "lifelines-pre-wash-shampoo-1",
+        "name": "Pre Wash Shampoo 20 Litres",
+        "sku": "lifelines-pre-wash-shampoo",
+        "packageSize": "20 L",
+        "price": 0,
+        "stock": 0
+      }
+    ]
+  },
+  {
+    "id": "lifelines-waterless-car-wash",
+    "slug": "lifelines-waterless-car-wash",
+    "name": "Waterless Car Cleaner",
+    "nameAr": "منظف سيارات دون ماء",
+    "sku": "lifelines-waterless-car-wash",
+    "category": "Car Shampoo",
+    "packageSize": "20 KG",
+    "catalogVariants": [
+      "20 KG"
+    ],
+    "packageType": "gallon",
+    "code": "",
+    "short": "Wash your car without water — cleans, shines and protects in one step.",
+    "usage": "Spray the product directly on the surface of the car from the outside, leave for 30 seconds, then wipe with a microfiber towel (preferably wet).",
+    "featured": 3,
+    "price": 0,
+    "stock": null,
+    "status": "published",
+    "image": "/assets/waterless%20Car%20Cleaner-DOqduX1j.jpeg",
+    "gallery": [],
+    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "brand": "LifeLines",
+    "description": "LifeLines Waterless Car Cleaner is a distinct and unique formula that has a high ability to break up dirt and remove it with ease. The formula also contains Wax to preserve the car's paint and give it a distinctive shine. Reduces water use and waste. Environmentally friendly.",
+    "descriptionAr": "منظف السيارات دون ماء من LifeLines بتركيبة مميزة تساعد على تفكيك الأوساخ وإزالتها بسهولة. يحتوي أيضاً على الشمع للمساعدة في حماية طلاء السيارة ومنحها لمعاناً مميزاً. يقلل استهلاك المياه والهدر، وهو خيار ملائم للبيئة.",
+    "variants": [
+      {
+        "id": "lifelines-waterless-car-wash-1",
+        "name": "Waterless Car Cleaner",
+        "sku": "lifelines-waterless-car-wash",
+        "packageSize": "20 KG",
+        "price": 0,
+        "stock": 0
+      }
+    ]
+  },
+  {
+    "id": "lifelines-chemx-c2",
+    "slug": "lifelines-chemx-c2",
+    "name": "ChemX C2",
+    "nameAr": "ChemX C2",
+    "sku": "ChemX-C2-25L",
+    "category": "Cleaning Chemicals",
+    "packageSize": "25 L",
+    "catalogVariants": [
+      "25 L"
+    ],
+    "packageType": "other-commercial",
+    "code": "ChemX C2",
+    "short": "Chemical all-purpose cleaner for engines, rims, interiors and more.",
+    "usage": "First, clean the engines, rims and liners. Dilute 1 litre of the product to 5 litres of water. Spray, leave for a maximum of two minutes, then rinse thoroughly. For interior seats, leather and floors: use appropriate special brushes for tough dirt. For velvet chairs, fabrics and floor mats: dilute 1 litre of product in 10 litres of water.",
+    "featured": 5,
+    "price": 0,
+    "stock": null,
+    "status": "published",
+    "image": "/assets/WhatsApp%20Image%202026-11-01%20at%2012.00.45%20AM-PwdUKfDD.jpeg",
+    "gallery": [],
+    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "brand": "LifeLines",
+    "description": "LifeLines ChemX C2 is a Chemical All-Purpose Cleaner. It cleans engines, rims, linings, interior seats, leather and car floors according to the recommended dilution. An advanced American formula that preserves paint and car interior according to the manufacturer's recommended instructions.",
+    "descriptionAr": "منظف ChemX C2 من LifeLines متعدد الاستخدامات؛ ينظف المحركات والجنوط والبطانات والمقاعد الداخلية والجلد وأرضيات السيارات وفق نسب التخفيف الموصى بها. تركيبة أمريكية متطورة، تُستخدم بما يتوافق مع تعليمات الشركة المصنّعة للمحافظة على الطلاء والمقصورة.",
+    "variants": [
+      {
+        "id": "lifelines-chemx-c2-1",
+        "name": "ChemX C2",
+        "sku": "ChemX-C2-25L",
+        "packageSize": "25 L",
+        "price": 0,
+        "stock": 0
+      }
+    ]
+  },
+  {
+    "id": "lifelines-chemx-c6-25l",
+    "slug": "lifelines-chemx-c6-25l",
+    "name": "ChemX C6 Chemical Degreaser",
+    "nameAr": "مزيل الشحوم الكيميائي ChemX C6",
+    "sku": "ChemX-C6-25L",
+    "category": "Cleaning Chemicals",
+    "packageSize": "25 L",
+    "catalogVariants": [
+      "25 L"
+    ],
+    "packageType": "other-commercial",
+    "code": "ChemX C6",
+    "short": "Professional chemical degreaser in a 25 L commercial container.",
+    "usage": "Follow the dilution and use directions printed on the product label.",
+    "featured": 19,
+    "price": 0,
+    "stock": null,
+    "status": "published",
+    "image": "/assets/WhatsApp%20Image%202026-11-01%20at%2012.00.44%20AM-Boyfvtay.jpeg",
+    "gallery": [],
+    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "brand": "LifeLines",
+    "description": "LifeLines ChemX C6 chemical degreaser in a 25 L commercial container. Follow the directions printed on the product label.",
+    "descriptionAr": "مزيل الشحوم الكيميائي ChemX C6 من LifeLines في عبوة تجارية سعة 25 لترًا. اتبع التعليمات المدونة على ملصق المنتج.",
+    "variants": [
+      {
+        "id": "lifelines-chemx-c6-25l-1",
+        "name": "ChemX C6 Chemical Degreaser",
+        "sku": "ChemX-C6-25L",
+        "packageSize": "25 L",
+        "price": 0,
+        "stock": 0
+      }
+    ]
+  },
+  {
+    "id": "lifelines-f55-wax",
+    "slug": "lifelines-f55-wax",
+    "name": "F55 Final Touch Wax",
+    "nameAr": "شمع اللمسة النهائية F55",
+    "sku": "F55-20L",
+    "category": "Car Wax & Polish",
+    "packageSize": "20 L",
+    "catalogVariants": [
+      "20 L"
+    ],
+    "packageType": "gallon",
+    "code": "F55",
+    "short": "Post-wash shine wax — instant gloss, no residue, dust-resistant.",
+    "usage": "After washing or during drying, spray an appropriate amount of product onto a clean, soft cloth. Wipe the car's surface in a circular motion for a perfect shine.",
+    "featured": 6,
+    "price": 0,
+    "stock": null,
+    "status": "published",
+    "image": "/assets/WhatsApp%20Image%202026-11-01%20at%2012.00.46%20AM-DkqUbPEX.jpeg",
+    "gallery": [],
+    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "brand": "LifeLines",
+    "description": "LifeLines F55 Final Touch provides an exceptional final shine to cars after washing. Leaves the car's surface glossy and radiant while reducing dust and stain adhesion. Delivers instant shine. Easy to use after washing. Leaves no residue or unwanted marks. Protects the paint and reduces dust adhesion.",
+    "descriptionAr": "يمنح F55 Final Touch من LifeLines السيارة لمعاناً نهائياً مميزاً بعد الغسيل. يترك السطح لامعاً ومشرقاً، ويساعد على الحد من التصاق الغبار والبقع. سهل الاستخدام بعد الغسيل، ولا يترك بقايا أو آثاراً غير مرغوبة.",
+    "variants": [
+      {
+        "id": "lifelines-f55-wax-1",
+        "name": "F55 Final Touch Wax",
+        "sku": "F55-20L",
+        "packageSize": "20 L",
+        "price": 0,
+        "stock": 0
+      }
+    ]
+  },
+  {
+    "id": "lifelines-chemx-d2",
+    "slug": "lifelines-chemx-d2",
+    "name": "ChemX D2",
+    "nameAr": "ChemX D2",
+    "sku": "ChemX-D2-20KG",
+    "category": "Interior Cleaners",
+    "packageSize": "20 KG",
+    "catalogVariants": [
+      "20 KG"
+    ],
+    "packageType": "other-commercial",
+    "code": "ChemX D2",
+    "short": "Dashboard polish for vinyl, leather and plastic — long-lasting shine.",
+    "usage": "Shake the container before each use. Dilute 1:1 or use as-is for best results. For optimal results, apply the product evenly with a sponge and allow it to dry.",
+    "featured": 7,
+    "price": 0,
+    "stock": null,
+    "status": "published",
+    "image": "/assets/WhatsApp%20Image%202026-11-01%20at%2012.00.46%20AM%20(2)-ubEZqu7n.jpeg",
+    "gallery": [],
+    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "brand": "LifeLines",
+    "description": "LifeLines ChemX D2 Dashboard Polish produces a deep, rich, long-lasting shine in all interior plastic and rubber surfaces, especially the dashboard. ChemX D2 will give you the desired results time after time. Suitable for Vinyl, Leather and Plastic surfaces. Cleans, conditions and protects.",
+    "descriptionAr": "يمنح ملمع لوحة القيادة ChemX D2 من LifeLines الأسطح الداخلية البلاستيكية والمطاطية، ولا سيما لوحة القيادة، لمعاناً غنياً يدوم طويلاً. مناسب للفينيل والجلد والبلاستيك، وينظف الأسطح ويعتني بها ويحميها.",
+    "variants": [
+      {
+        "id": "lifelines-chemx-d2-1",
+        "name": "ChemX D2",
+        "sku": "ChemX-D2-20KG",
+        "packageSize": "20 KG",
+        "price": 0,
+        "stock": 0
+      }
+    ]
+  },
+  {
+    "id": "lifelines-chemx-t1",
+    "slug": "lifelines-chemx-t1",
+    "name": "ChemX T1",
+    "nameAr": "ChemX T1",
+    "sku": "ChemX-T1-20KG",
+    "category": "Exterior Cleaners",
+    "packageSize": "20 KG",
+    "catalogVariants": [
+      "20 KG"
+    ],
+    "packageType": "other-commercial",
+    "code": "ChemX T1",
+    "short": "Tire polish for deep, rich, long-lasting shine on rubber surfaces.",
+    "usage": "For best results, apply to a dry and clean surface. Spray evenly at all surfaces and let the product dry away from dust.",
+    "featured": 8,
+    "price": 0,
+    "stock": null,
+    "status": "published",
+    "image": "/assets/WhatsApp%20Image%202026-11-01%20at%2012.00.45%20AM%20(2)-2vAl0_YG.jpeg",
+    "gallery": [],
+    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "brand": "LifeLines",
+    "description": "LifeLines ChemX T1 Tire Polish produces a deep, rich, long-lasting shine in all exterior plastic and rubber surfaces. New or old. ChemX T1 will give you the desired results time after time. Ready to use without any dilution.",
+    "descriptionAr": "يمنح ملمع الإطارات ChemX T1 من LifeLines الأسطح الخارجية البلاستيكية والمطاطية، الجديدة أو القديمة، لمعاناً غنياً يدوم طويلاً. جاهز للاستخدام دون تخفيف.",
+    "variants": [
+      {
+        "id": "lifelines-chemx-t1-1",
+        "name": "ChemX T1",
+        "sku": "ChemX-T1-20KG",
+        "packageSize": "20 KG",
+        "price": 0,
+        "stock": 0
+      }
+    ]
+  },
+  {
+    "id": "lifelines-o2-solvent",
+    "slug": "lifelines-o2-solvent",
+    "name": "O2 Solvent Tire Polish",
+    "nameAr": "ملمع الإطارات بالمذيب O2",
+    "sku": "O2-20L",
+    "category": "Exterior Cleaners",
+    "packageSize": "20 L",
+    "catalogVariants": [
+      "20 L"
+    ],
+    "packageType": "gallon",
+    "code": "O2",
+    "short": "Powerful solvent tire polish for deep shine and long-lasting protection.",
+    "usage": "1. Clean the tires thoroughly and ensure they are completely dry. 2. Spray the product onto the tire. 3. Spread it evenly using a sponge. For external use only. Flammable — keep away from heat and sparks.",
+    "featured": 9,
+    "price": 0,
+    "stock": null,
+    "status": "published",
+    "image": "/assets/WhatsApp%20Image%202026-11-01%20at%2012.00.46%20AM%20(1)-Bq5jSl7b.jpeg",
+    "gallery": [],
+    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "brand": "LifeLines",
+    "description": "LifeLines O2 Solvent is a powerful and effective tire polish that gives your car tires a deep shine and long-lasting protection, designed to resist dirt and water. Contains petroleum solvents, silicone oils and added stabilisers.",
+    "descriptionAr": "ملمع الإطارات O2 Solvent من LifeLines فعال وقوي، يمنح الإطارات لمعاناً عميقاً وحماية طويلة الأمد ومقاومة للأوساخ والماء. يحتوي على مذيبات بترولية وزيوت سيليكون ومواد مثبتة.",
+    "variants": [
+      {
+        "id": "lifelines-o2-solvent-1",
+        "name": "O2 Solvent Tire Polish",
+        "sku": "O2-20L",
+        "packageSize": "20 L",
+        "price": 0,
+        "stock": 0
+      }
+    ]
+  },
+  {
+    "id": "lifelines-g4-glass",
+    "slug": "lifelines-g4-glass",
+    "name": "G4 Car Glass Cleaner & Polish",
+    "nameAr": "منظف وملمع زجاج السيارات G4",
+    "sku": "G4-20L",
+    "category": "Exterior Cleaners",
+    "packageSize": "20 L",
+    "catalogVariants": [
+      "20 L"
+    ],
+    "packageType": "gallon",
+    "code": "G4",
+    "short": "Ammonia-free glass cleaner and polish — streak-free, long-lasting protection.",
+    "usage": "1. Spray the polish directly onto the glass. 2. Wipe the glass with a soft, dry cloth in circular motions. 3. For best results, avoid direct sunlight during application. Avoid contact with eyes and skin.",
+    "featured": 10,
+    "price": 0,
+    "stock": null,
+    "status": "published",
+    "image": "/assets/WhatsApp%20Image%202026-11-01%20at%2012.00.45%20AM%20(1)-BHwBrU4w.jpeg",
+    "gallery": [],
+    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "brand": "LifeLines",
+    "description": "LifeLines G4 Car Glass Cleaner & Polish is specially formulated to efficiently remove stains, dust and fingerprints while leaving a protective layer that helps prevent dust from sticking for longer. Ammonia-free formula, safe for glass surfaces. Prevents streaks and watermarks after cleaning. Long-lasting protection against dust and dirt. Fast-drying; leaves no residue.",
+    "descriptionAr": "منظف وملمع زجاج السيارات G4 من LifeLines مصمم لإزالة البقع والغبار وبصمات الأصابع بفاعلية، ويترك طبقة واقية تساعد على الحد من التصاق الغبار. تركيبة خالية من الأمونيا ومناسبة للأسطح الزجاجية، وتساعد على تجنب الخطوط وآثار الماء وتجف سريعاً دون بقايا.",
+    "variants": [
+      {
+        "id": "lifelines-g4-glass-1",
+        "name": "G4 Car Glass Cleaner & Polish",
+        "sku": "G4-20L",
+        "packageSize": "20 L",
+        "price": 0,
+        "stock": 0
+      }
+    ]
+  },
+  {
+    "id": "lifelines-chemx-c6-500ml",
+    "slug": "lifelines-chemx-c6-500ml",
+    "name": "ChemX C6",
+    "nameAr": "ChemX C6",
+    "sku": "C6-500ml",
+    "category": "Cleaning Chemicals",
+    "packageSize": "500 ml",
+    "catalogVariants": [
+      "500 ml"
+    ],
+    "packageType": "retail",
+    "code": "C6",
+    "short": "Chemical degreaser in a verified 500 ml bottle.",
+    "usage": "Follow the dilution and use directions printed on the product label.",
+    "featured": 11,
+    "price": 0,
+    "stock": null,
+    "status": "published",
+    "image": "/assets/imgi_10_adbaf30f-77cd-4723-9725-0c340de48414-500x500-ZbPENDcUWk8hs1lVpz5ILjSwIj7F3MXrAmSFQu36-DwYwLeSZ.webp",
+    "gallery": [],
+    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "brand": "LifeLines",
+    "description": "ChemX C6 chemical degreaser in a 500 ml bottle.",
+    "descriptionAr": "ChemX C6 chemical degreaser in a 500 ml bottle.",
+    "variants": [
+      {
+        "id": "lifelines-chemx-c6-500ml-1",
+        "name": "ChemX C6",
+        "sku": "C6-500ml",
+        "packageSize": "500 ml",
+        "price": 0,
+        "stock": 0
+      }
+    ]
+  },
+  {
+    "id": "lifelines-o2-solvent-500ml",
+    "slug": "lifelines-o2-solvent-500ml",
+    "name": "O2 Solvent Tire Polish",
+    "nameAr": "ملمع الإطارات بالمذيب O2",
+    "sku": "O2-500ml",
+    "category": "Exterior Cleaners",
+    "packageSize": "500 ml",
+    "catalogVariants": [
+      "500 ml"
+    ],
+    "packageType": "retail",
+    "code": "O2",
+    "short": "O2 tire polish in a verified 500 ml bottle.",
+    "usage": "Follow the directions printed on the product label.",
+    "featured": 12,
+    "price": 0,
+    "stock": null,
+    "status": "published",
+    "image": "/assets/imgi_11_4f1f3ac3-aebb-400c-b0de-e1ae1de0caab-500x500-HQgb89xy4fBVsvZiFmNggqEvhcjHG8v9KooUCtYb-DSsYr8tB.webp",
+    "gallery": [],
+    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "brand": "LifeLines",
+    "description": "LifeLines O2 Solvent Tire Polish in a 500 ml bottle.",
+    "descriptionAr": "LifeLines O2 Solvent Tire Polish in a 500 ml bottle.",
+    "variants": [
+      {
+        "id": "lifelines-o2-solvent-500ml-1",
+        "name": "O2 Solvent Tire Polish",
+        "sku": "O2-500ml",
+        "packageSize": "500 ml",
+        "price": 0,
+        "stock": 0
+      }
+    ]
+  },
+  {
+    "id": "lifelines-waterless-car-wash-480ml",
+    "slug": "lifelines-waterless-car-wash-480ml",
+    "name": "Waterless Car Wash",
+    "nameAr": "غسيل سيارات دون ماء",
+    "sku": "lifelines-waterless-car-wash-480ml",
+    "category": "Car Shampoo",
+    "packageSize": "480 ml",
+    "catalogVariants": [
+      "480 ml"
+    ],
+    "packageType": "retail",
+    "code": "",
+    "short": "Waterless car wash in a verified 480 ml bottle.",
+    "usage": "Follow the directions printed on the product label.",
+    "featured": 13,
+    "price": 0,
+    "stock": null,
+    "status": "published",
+    "image": "/assets/imgi_18_2277741b-cccd-4f7d-9444-1c89c9fcd57b-500x500-TzKStWMTy3Q1JNG5b5oLuuPts1SQG5WVFrGp4hXk-Dtmxx0it.webp",
+    "gallery": [],
+    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "brand": "LifeLines",
+    "description": "LifeLines Waterless Car Wash in a 480 ml bottle.",
+    "descriptionAr": "LifeLines Waterless Car Wash in a 480 ml bottle.",
+    "variants": [
+      {
+        "id": "lifelines-waterless-car-wash-480ml-1",
+        "name": "Waterless Car Wash",
+        "sku": "lifelines-waterless-car-wash-480ml",
+        "packageSize": "480 ml",
+        "price": 0,
+        "stock": 0
+      }
+    ]
+  },
+  {
+    "id": "lifelines-pre-wash-shampoo-1kg",
+    "slug": "lifelines-pre-wash-shampoo-1kg",
+    "name": "Pre Wash Car Shampoo",
+    "nameAr": "شامبو ما قبل الغسيل",
+    "sku": "lifelines-pre-wash-shampoo-1kg",
+    "category": "Car Shampoo",
+    "packageSize": "1 kg",
+    "catalogVariants": [
+      "1 kg"
+    ],
+    "packageType": "retail",
+    "code": "",
+    "short": "Pre-wash shampoo in a verified 1 kg bottle.",
+    "usage": "Follow the dilution and use directions printed on the product label.",
+    "featured": 14,
+    "price": 0,
+    "stock": null,
+    "status": "published",
+    "image": "/assets/imgi_20_6c5faa3b-8ddb-464d-b3b2-923851cbe446-500x500-MU8e8ssvw5EqbExg4nsUCPi7isgckN4MrIFHuvUY-BlNNih68.webp",
+    "gallery": [],
+    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "brand": "LifeLines",
+    "description": "LifeLines Pre Wash Car Shampoo in a 1 kg bottle.",
+    "descriptionAr": "LifeLines Pre Wash Car Shampoo in a 1 kg bottle.",
+    "variants": [
+      {
+        "id": "lifelines-pre-wash-shampoo-1kg-1",
+        "name": "Pre Wash Car Shampoo",
+        "sku": "lifelines-pre-wash-shampoo-1kg",
+        "packageSize": "1 kg",
+        "price": 0,
+        "stock": 0
+      }
+    ]
+  },
+  {
+    "id": "lifelines-chemx-d2-500ml",
+    "slug": "lifelines-chemx-d2-500ml",
+    "name": "ChemX D2 Dashboard Polish",
+    "nameAr": "ChemX D2 Dashboard Polish",
+    "sku": "ChemX-D2-500ml",
+    "category": "Interior Cleaners",
+    "packageSize": "500 ml",
+    "catalogVariants": [
+      "500 ml"
+    ],
+    "packageType": "retail",
+    "code": "ChemX D2",
+    "short": "Dashboard polish in a verified 500 ml bottle.",
+    "usage": "Follow the directions printed on the product label.",
+    "featured": 15,
+    "price": 0,
+    "stock": null,
+    "status": "published",
+    "image": "/assets/imgi_35_38190e6b-4e92-439b-b543-9f91846c6d0a-500x500-MtQDKaypgVMaWVQcgLYzkOx6ta6zUpUkOb0OAySO-BJUaYv89.webp",
+    "gallery": [],
+    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "brand": "LifeLines",
+    "description": "LifeLines ChemX D2 Dashboard Polish in a 500 ml bottle.",
+    "descriptionAr": "LifeLines ChemX D2 Dashboard Polish in a 500 ml bottle.",
+    "variants": [
+      {
+        "id": "lifelines-chemx-d2-500ml-1",
+        "name": "ChemX D2 Dashboard Polish",
+        "sku": "ChemX-D2-500ml",
+        "packageSize": "500 ml",
+        "price": 0,
+        "stock": 0
+      }
+    ]
+  },
+  {
+    "id": "lifelines-iron-remover-460ml",
+    "slug": "lifelines-iron-remover-460ml",
+    "name": "Iron Remover",
+    "nameAr": "Iron Remover",
+    "sku": "lifelines-iron-remover-460ml",
+    "category": "Cleaning Chemicals",
+    "packageSize": "460 ml",
+    "catalogVariants": [
+      "460 ml"
+    ],
+    "packageType": "retail",
+    "code": "",
+    "short": "Iron remover in a verified 460 ml spray bottle.",
+    "usage": "Follow the directions printed on the product label.",
+    "featured": 16,
+    "price": 0,
+    "stock": null,
+    "status": "published",
+    "image": "/assets/imgi_22_eb0c09eb-18c9-475e-a8e5-5723d8f937c2-500x500-Bxm4ILMLbzCpg0ZXqFjYrs9UERkf4sGuQOCr7EkN-DAXLS7-B.webp",
+    "gallery": [],
+    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "brand": "LifeLines",
+    "description": "LifeLines Iron Remover in a 460 ml spray bottle.",
+    "descriptionAr": "LifeLines Iron Remover in a 460 ml spray bottle.",
+    "variants": [
+      {
+        "id": "lifelines-iron-remover-460ml-1",
+        "name": "Iron Remover",
+        "sku": "lifelines-iron-remover-460ml",
+        "packageSize": "460 ml",
+        "price": 0,
+        "stock": 0
+      }
+    ]
+  },
+  {
+    "id": "lifelines-rust-remover-rr-5l",
+    "slug": "lifelines-rust-remover-rr-5l",
+    "name": "Professional Rust Remover RR",
+    "nameAr": "Professional Rust Remover RR",
+    "sku": "RR-5L",
+    "category": "Cleaning Chemicals",
+    "packageSize": "5 L",
+    "catalogVariants": [
+      "5 L"
+    ],
+    "packageType": "retail",
+    "code": "RR",
+    "short": "Professional rust remover in a verified 5 L container.",
+    "usage": "Follow the directions printed on the product label.",
+    "featured": 17,
+    "price": 0,
+    "stock": null,
+    "status": "published",
+    "image": "/assets/imgi_19_0385406c-2c3d-4ab7-a3fc-1704ee12ce6a-500x500-zLtbRBuI8yxMR17Ga5NauoICRuBbWOq0hTc13XF0-Ba2DFMlA.webp",
+    "gallery": [],
+    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "brand": "LifeLines",
+    "description": "LifeLines Professional Rust Remover RR in a 5 L container.",
+    "descriptionAr": "LifeLines Professional Rust Remover RR in a 5 L container.",
+    "variants": [
+      {
+        "id": "lifelines-rust-remover-rr-5l-1",
+        "name": "Professional Rust Remover RR",
+        "sku": "RR-5L",
+        "packageSize": "5 L",
+        "price": 0,
+        "stock": 0
+      }
+    ]
+  },
+  {
+    "id": "lifelines-shampoo-wax-1l",
+    "slug": "lifelines-shampoo-wax-1l",
+    "name": "Shampoo Wax",
+    "nameAr": "Shampoo Wax",
+    "sku": "lifelines-shampoo-wax-1l",
+    "category": "Car Shampoo",
+    "packageSize": "1 L",
+    "catalogVariants": [
+      "1 L"
+    ],
+    "packageType": "retail",
+    "code": "",
+    "short": "Shampoo wax in a verified 1 L bottle.",
+    "usage": "Follow the dilution and use directions printed on the product label.",
+    "featured": 18,
+    "price": 0,
+    "stock": null,
+    "status": "published",
+    "image": "/assets/imgi_30_220e1edb-cfd6-43ba-8003-5813d686f78e-500x500-WVvvvjZ7GPmdgUBUwOPjSOeWmvEMiLGLNZngKVZm-DiIB59U1.webp",
+    "gallery": [],
+    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "brand": "LifeLines",
+    "description": "LifeLines Shampoo Wax in a 1 L bottle.",
+    "descriptionAr": "LifeLines Shampoo Wax in a 1 L bottle.",
+    "variants": [
+      {
+        "id": "lifelines-shampoo-wax-1l-1",
+        "name": "Shampoo Wax",
+        "sku": "lifelines-shampoo-wax-1l",
+        "packageSize": "1 L",
+        "price": 0,
+        "stock": 0
+      }
+    ]
+  }
+]
