@@ -1,5 +1,34 @@
 [
   {
+    "id": "5c91f8b7577d52bb",
+    "slug": "lifelines-shampoo-wax-pink",
+    "name": "Lifelines Shampoo Wax - Pink",
+    "nameAr": "شامبو واكس لايف لاينز 1 لتر أحمر",
+    "sku": "AUTO-NS26V",
+    "category": "Car Shampoo",
+    "packageSize": "1L",
+    "catalogVariants": [
+      "1L"
+    ],
+    "packageType": "retail",
+    "code": "",
+    "short": "This car wash-and-wax effectively removes dirt, oils, and grease, restoring your vehicle’s cleanliness without compromising the paint layer. With a pH-balanced formula (pH=7), it ensures both effective cleaning and safety—both for the vehicle’s surface and for your hands during application.",
+    "usage": "قم بإزالة الأتربة والأوساخ السطحية باستخدام الماء.\nأضف كمية مناسبة من شامبو سيارات واكس إلى الماء في دلو الغسيل.\nاغسل السيارة باستخدام قفاز أو إسفنجة ناعمة.\nاشطف السيارة جيدًا بالماء.\nجفف السيارة باستخدام منشفة مايكروفايبر للحصول على لمعان مثالي.",
+    "featured": 0,
+    "price": 34,
+    "stock": 5,
+    "status": "published",
+    "image": "/cms-media/b94333d04938cf54bde6ab5d.jpg",
+    "images": [
+      "/cms-media/b94333d04938cf54bde6ab5d.jpg"
+    ],
+    "updatedAt": "2026-11-25T08:40:20.136Z",
+    "brand": "AutoUp",
+    "description": "",
+    "descriptionAr": "يعمل شامبو واكس للسيارة على إزالة الأوساخ والزيوت والشحوم بسهولة، مما يساعد على استعادة نظافة السيارة دون التأثير على طبقة الدهان. بفضل تركيبته المتوازنة بدرجة حموضة pH=7، يوفر تنظيفًا فعالًا وآمنًا في نفس الوقت، سواء على سطح السيارة أو أثناء الاستخدام باليدين.",
+    "createdAt": "2026-11-25T08:40:20.136Z"
+  },
+  {
     "id": "d68bd69cd2b3ca84",
     "slug": "lifelines-shampoo-wax-blue",
     "name": "Lifelines Shampoo Wax - Blue",
