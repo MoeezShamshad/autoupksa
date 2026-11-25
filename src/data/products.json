@@ -574,12 +574,12 @@
     "short": "",
     "usage": "الرش: رش المنتج بالتساوي ومباشرة على السطح المعدني المصاب بالصدأ.\nالانتظار: اترك المنتج على السطح لمدة تتراوح بين 2 إلى 5 دقائق (حسب شدة الصدأ وعمقه).\nالفرك: قم بفرك المنطقة جيداً باستخدام فرشاة تنظيف أو قطعة قماش مخصصة.\nالشطف: اشطف المكان بالماء جيداً لإزالة كافة البقايا. (يمكنك تكرار العملية عند الحاجة للصدأ الشديد والقديم).",
     "featured": 17,
-    "price": 0,
+    "price": 115,
     "stock": 10,
     "status": "published",
     "image": "/cms-media/3da4cf114708893279768d23.jpg",
     "gallery": [],
-    "updatedAt": "2026-11-25T07:50:27.904Z",
+    "updatedAt": "2026-11-25T07:51:09.686Z",
     "createdAt": "2026-01-01T00:00:00.000Z",
     "brand": "LifeLines",
     "description": "Revitalize your vehicle’s appearance and restore the shine to its metal surfaces in a flash!\n\nIntroducing the professional-grade rust remover from LifeLines (RR)—a highly effective, advanced German-engineered formula specifically designed to eliminate stubborn rust and mineral deposits. This product works with lightning speed to break down rust particles and completely remove them from iron surfaces and various automotive components, allowing you to easily and safely restore metal surfaces to their original, pristine condition.",
@@ -598,6 +598,6 @@
       "/cms-media/3da4cf114708893279768d23.jpg",
       "/cms-media/21cadc75efdd43362e0950ca.jpg"
     ],
-    "salePrice": 115
+    "salePrice": 110
   }
 ]
