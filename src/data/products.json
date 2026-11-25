@@ -590,42 +590,5 @@
         "stock": 0
       }
     ]
-  },
-  {
-    "id": "lifelines-shampoo-wax-1l",
-    "slug": "lifelines-shampoo-wax-1l",
-    "name": "Shampoo Wax",
-    "nameAr": "Shampoo Wax",
-    "sku": "lifelines-shampoo-wax-1l",
-    "category": "Car Shampoo",
-    "packageSize": "1 L",
-    "catalogVariants": [
-      "1 L"
-    ],
-    "packageType": "retail",
-    "code": "",
-    "short": "Shampoo wax in a verified 1 L bottle.",
-    "usage": "Follow the dilution and use directions printed on the product label.",
-    "featured": 18,
-    "price": 0,
-    "stock": null,
-    "status": "published",
-    "image": "/assets/imgi_30_220e1edb-cfd6-43ba-8003-5813d686f78e-500x500-WVvvvjZ7GPmdgUBUwOPjSOeWmvEMiLGLNZngKVZm-DiIB59U1.webp",
-    "gallery": [],
-    "updatedAt": "2026-01-01T00:00:00.000Z",
-    "createdAt": "2026-01-01T00:00:00.000Z",
-    "brand": "LifeLines",
-    "description": "LifeLines Shampoo Wax in a 1 L bottle.",
-    "descriptionAr": "LifeLines Shampoo Wax in a 1 L bottle.",
-    "variants": [
-      {
-        "id": "lifelines-shampoo-wax-1l-1",
-        "name": "Shampoo Wax",
-        "sku": "lifelines-shampoo-wax-1l",
-        "packageSize": "1 L",
-        "price": 0,
-        "stock": 0
-      }
-    ]
   }
 ]
