@@ -264,28 +264,28 @@
   {
     "id": "lifelines-o2-solvent",
     "slug": "lifelines-o2-solvent",
-    "name": "O2 Solvent Tire Polish",
-    "nameAr": "ملمع الإطارات بالمذيب O2",
+    "name": "lifelines O2 Solvent Tire Polish 20L",
+    "nameAr": "O2 ملمع إطارات زيتي 20 لتر",
     "sku": "O2-20L",
     "category": "Exterior Cleaners",
-    "packageSize": "20 L",
+    "packageSize": "20L",
     "catalogVariants": [
-      "20 L"
+      "20L"
     ],
     "packageType": "gallon",
     "code": "O2",
-    "short": "Powerful solvent tire polish for deep shine and long-lasting protection.",
-    "usage": "1. Clean the tires thoroughly and ensure they are completely dry. 2. Spray the product onto the tire. 3. Spread it evenly using a sponge. For external use only. Flammable — keep away from heat and sparks.",
+    "short": "LifeLines O2 Solvent is a powerful and effective tire polish that gives your car tires a deep shine and long-lasting protection, designed to resist dirt and water. Contains petroleum solvents, silicone oils and added stabilisers.",
+    "usage": "التنظيف والجفاف: نظف الإطارات جيداً بالماء والصابون وتأكد من جفافها تماما قبل البدء بالتطبيق.\nالرش: رش المنتج على سطح الإطار بكمية مناسبة.\nالتوزيع: استخدم إسفنجة مخصصة أو قطعة قماش لتوزيع المنتج بالتساوي على جميع أجزاء الإطار.",
     "featured": 9,
-    "price": 0,
-    "stock": null,
+    "price": 435,
+    "stock": 10,
     "status": "published",
     "image": "/assets/WhatsApp%20Image%202026-11-01%20at%2012.00.46%20AM%20(1)-Bq5jSl7b.jpeg",
     "gallery": [],
-    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "updatedAt": "2026-11-25T08:05:21.043Z",
     "createdAt": "2026-01-01T00:00:00.000Z",
     "brand": "LifeLines",
-    "description": "LifeLines O2 Solvent is a powerful and effective tire polish that gives your car tires a deep shine and long-lasting protection, designed to resist dirt and water. Contains petroleum solvents, silicone oils and added stabilisers.",
+    "description": "",
     "descriptionAr": "ملمع الإطارات O2 Solvent من LifeLines فعال وقوي، يمنح الإطارات لمعاناً عميقاً وحماية طويلة الأمد ومقاومة للأوساخ والماء. يحتوي على مذيبات بترولية وزيوت سيليكون ومواد مثبتة.",
     "variants": [
       {
