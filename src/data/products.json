@@ -561,29 +561,29 @@
   {
     "id": "lifelines-rust-remover-rr-5l",
     "slug": "lifelines-rust-remover-rr-5l",
-    "name": "Professional Rust Remover RR",
-    "nameAr": "Professional Rust Remover RR",
+    "name": "Lifelines Professional Rust Remover RR",
+    "nameAr": "مزيل الصدأ الاحترافي للسيارات والأسطح المعدنية من لايف لاينز (RR)",
     "sku": "RR-5L",
     "category": "Cleaning Chemicals",
-    "packageSize": "5 L",
+    "packageSize": "5L",
     "catalogVariants": [
-      "5 L"
+      "5L"
     ],
-    "packageType": "retail",
+    "packageType": "other-commercial",
     "code": "RR",
-    "short": "Professional rust remover in a verified 5 L container.",
-    "usage": "Follow the directions printed on the product label.",
+    "short": "",
+    "usage": "الرش: رش المنتج بالتساوي ومباشرة على السطح المعدني المصاب بالصدأ.\nالانتظار: اترك المنتج على السطح لمدة تتراوح بين 2 إلى 5 دقائق (حسب شدة الصدأ وعمقه).\nالفرك: قم بفرك المنطقة جيداً باستخدام فرشاة تنظيف أو قطعة قماش مخصصة.\nالشطف: اشطف المكان بالماء جيداً لإزالة كافة البقايا. (يمكنك تكرار العملية عند الحاجة للصدأ الشديد والقديم).",
     "featured": 17,
     "price": 0,
-    "stock": null,
+    "stock": 10,
     "status": "published",
     "image": "/cms-media/3da4cf114708893279768d23.jpg",
     "gallery": [],
-    "updatedAt": "2026-11-25T07:22:31.493Z",
+    "updatedAt": "2026-11-25T07:50:27.904Z",
     "createdAt": "2026-01-01T00:00:00.000Z",
     "brand": "LifeLines",
-    "description": "LifeLines Professional Rust Remover RR in a 5 L container.",
-    "descriptionAr": "LifeLines Professional Rust Remover RR in a 5 L container.",
+    "description": "Revitalize your vehicle’s appearance and restore the shine to its metal surfaces in a flash!\n\nIntroducing the professional-grade rust remover from LifeLines (RR)—a highly effective, advanced German-engineered formula specifically designed to eliminate stubborn rust and mineral deposits. This product works with lightning speed to break down rust particles and completely remove them from iron surfaces and various automotive components, allowing you to easily and safely restore metal surfaces to their original, pristine condition.",
+    "descriptionAr": "جدد مظهر سيارتك وأعد لمعان المعادن بلمح البصر!\n\nنقدم لك مزيل الصدأ الاحترافي من لايف لاينز (RR)، المنتج ذو التركيبة الألمانية المتطورة وعالية الفعالية والمصممة خصيصاً للقضاء على الصدأ والترسبات المعدنية المستعصية. يعمل هذا المنتج بسرعة فائقة على تفكيك جزيئات الصدأ وإزالتها تماماً من الأسطح الحديدية وأجزاء السيارات المختلفة، مما يساعدك على إرجاع السطح المعدني إلى حالته الأصلية ونظافته الأولى بكل سهولة وأمان.",
     "variants": [
       {
         "id": "lifelines-rust-remover-rr-5l-1",
@@ -597,6 +597,7 @@
     "images": [
       "/cms-media/3da4cf114708893279768d23.jpg",
       "/cms-media/21cadc75efdd43362e0950ca.jpg"
-    ]
+    ],
+    "salePrice": 115
   }
 ]
