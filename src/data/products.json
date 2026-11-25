@@ -1,42 +1,5 @@
 [
   {
-    "id": "lifelines-colour-wax-shampoo-rose",
-    "slug": "lifelines-colour-wax-shampoo-rose",
-    "name": "Colour Wax Shampoo — Rose",
-    "nameAr": "شامبو الشمع الملون — الورد",
-    "sku": "lifelines-colour-wax-shampoo-rose",
-    "category": "Car Shampoo",
-    "packageSize": "20 L",
-    "catalogVariants": [
-      "20 L"
-    ],
-    "packageType": "gallon",
-    "code": "",
-    "short": "Same advanced wax shampoo formula in a signature rose fragrance.",
-    "usage": "Mix 1 litre with 100 litres of water for hand washing, or 1 litre with 150 litres for in-pump use. Leave on surface for 3 minutes, then rinse thoroughly and dry.",
-    "featured": 2,
-    "price": 0,
-    "stock": null,
-    "status": "published",
-    "image": "/assets/product-colour-wax-shampoo-rose-G9HyDSBN.webp",
-    "gallery": [],
-    "updatedAt": "2026-01-01T00:00:00.000Z",
-    "createdAt": "2026-01-01T00:00:00.000Z",
-    "brand": "LifeLines",
-    "description": "LifeLines Colour Wax Shampoo (Rose) preserves the car paint and gives it an attractive luster that lasts for a long time. Phosphate-free, concentrate formula — removes dirt, pH neutral, quick drying.",
-    "descriptionAr": "يحافظ شامبو الشمع الملون من LifeLines برائحة الورد على طلاء السيارة ويمنحه لمعاناً جذاباً يدوم طويلاً. تركيبة مركزة خالية من الفوسفات ومتعادلة الحموضة، تزيل الأوساخ وتجف بسرعة.",
-    "variants": [
-      {
-        "id": "lifelines-colour-wax-shampoo-rose-1",
-        "name": "Colour Wax Shampoo — Rose",
-        "sku": "lifelines-colour-wax-shampoo-rose",
-        "packageSize": "20 L",
-        "price": 0,
-        "stock": 0
-      }
-    ]
-  },
-  {
     "id": "lifelines-pre-wash-shampoo",
     "slug": "lifelines-pre-wash-shampoo",
     "name": "Pre Wash Shampoo 20 Litres",
