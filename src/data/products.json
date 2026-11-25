@@ -338,8 +338,8 @@
   {
     "id": "lifelines-chemx-c6-500ml",
     "slug": "lifelines-chemx-c6-500ml",
-    "name": "ChemX C6",
-    "nameAr": "ChemX C6",
+    "name": "Lifelines ChemX C6 Degreaser ",
+    "nameAr": "ChemX C6 مزيل شحوم واوساخ ",
     "sku": "C6-500ml",
     "category": "Cleaning Chemicals",
     "packageSize": "500 ml",
@@ -349,18 +349,18 @@
     "packageType": "retail",
     "code": "C6",
     "short": "Chemical degreaser in a verified 500 ml bottle.",
-    "usage": "Follow the dilution and use directions printed on the product label.",
+    "usage": "",
     "featured": 11,
-    "price": 0,
-    "stock": null,
+    "price": 22,
+    "stock": 5,
     "status": "published",
-    "image": "/assets/imgi_10_adbaf30f-77cd-4723-9725-0c340de48414-500x500-ZbPENDcUWk8hs1lVpz5ILjSwIj7F3MXrAmSFQu36-DwYwLeSZ.webp",
+    "image": "/cms-media/38707fd1131bfa19ebb25255.jpg",
     "gallery": [],
-    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "updatedAt": "2026-11-25T08:11:30.155Z",
     "createdAt": "2026-01-01T00:00:00.000Z",
     "brand": "LifeLines",
-    "description": "ChemX C6 chemical degreaser in a 500 ml bottle.",
-    "descriptionAr": "ChemX C6 chemical degreaser in a 500 ml bottle.",
+    "description": "",
+    "descriptionAr": "C6 مزیل شحوم وأوساح عنيدة لمحركات السيارات والكغرات والجنوط والبطانات منطف شامل واحترافي من لايف لاينز مصمم لإزالة الدهون والزيوت والأوساخ العنيدة من محرك السيارة إطاراتها، جنوطها، وبطانات الرفارف، بتركيبية فعالة وأمنة\n\nتنظف وتحافظ على الأسطح المعدنية والمطاطية والبلاستيكية بدون إتلاف .",
     "variants": [
       {
         "id": "lifelines-chemx-c6-500ml-1",
@@ -370,6 +370,9 @@
         "price": 0,
         "stock": 0
       }
+    ],
+    "images": [
+      "/cms-media/38707fd1131bfa19ebb25255.jpg"
     ]
   },
   {
