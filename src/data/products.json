@@ -15,12 +15,12 @@
     "short": "High-performance pre-wash for automatic and manual car wash systems.",
     "usage": "التخفيف: قم بتخفيف الشامبو وفقاً لتعليمات التركيز أدناه.\nالتطبيق: رش الشامبو المخفف على كامل السيارة.\nالتفاعل: اتركه لمدة لا تتجاوز دقيقتين ليتفاعل مع الأوساخ.\nالشطف: اشطف السيارة جيداً بالماء المضغوط لإزالة الأوساخ المفككة.\nالتجفيف: جفف السيارة باستخدام منشفة مايكروفايبر أو جهاز تجفيف هواء.",
     "featured": 1,
-    "price": 0,
+    "price": 236,
     "stock": 10,
     "status": "published",
     "image": "/cms-media/28d56538765dc24d5591cd5a.jpg",
     "gallery": [],
-    "updatedAt": "2026-11-25T07:54:54.221Z",
+    "updatedAt": "2026-11-25T07:56:47.381Z",
     "createdAt": "2026-01-01T00:00:00.000Z",
     "brand": "LifeLines",
     "description": "LifeLines Pre Wash Car Shampoo is a high-performance shampoo designed for use in automatic car wash systems and manual car wash systems. It effectively removes dirt, oil and road films, leaving the surface clean and ready for further treatment. High lubrication to reduce friction; easy to rinse; suitable for all types of vehicles.",
@@ -35,7 +35,6 @@
         "stock": 0
       }
     ],
-    "salePrice": 236,
     "images": [
       "/cms-media/28d56538765dc24d5591cd5a.jpg"
     ]
