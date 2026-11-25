@@ -43,28 +43,28 @@
   {
     "id": "lifelines-waterless-car-wash",
     "slug": "lifelines-waterless-car-wash",
-    "name": "Waterless Car Cleaner",
-    "nameAr": "منظف سيارات دون ماء",
+    "name": "Lifelines Waterless Car Cleaner",
+    "nameAr": "غسيل بدون ماء (Waterless) 20 لتر",
     "sku": "lifelines-waterless-car-wash",
     "category": "Car Shampoo",
-    "packageSize": "20 KG",
+    "packageSize": "20L",
     "catalogVariants": [
-      "20 KG"
+      "20L"
     ],
     "packageType": "gallon",
     "code": "",
-    "short": "Wash your car without water — cleans, shines and protects in one step.",
-    "usage": "Spray the product directly on the surface of the car from the outside, leave for 30 seconds, then wipe with a microfiber towel (preferably wet).",
+    "short": "LifeLines Waterless Car Cleaner is a distinct and unique formula that has a high ability to break up dirt and remove it with ease. The formula also contains Wax to preserve the car's paint and give it a distinctive shine. Reduces water use and waste. Environmentally friendly.",
+    "usage": "رش المنتج على جزء صغير من سطح السيارة.\nاستخدم منشفة مايكروفايبر نظيفة لمسح السطح بلطف.\nقم بتبديل جوانب المنشفة أثناء الاستخدام لتجنب نقل الأوساخ.\nاستمر في تنظيف بقية أجزاء السيارة بنفس الطريقة.\nيمكن استخدام المنتج مباشرة أو تخفيفه بنسبة 1:1 كحد أقصى حسب الحاجة.",
     "featured": 3,
-    "price": 0,
-    "stock": null,
+    "price": 250,
+    "stock": 10,
     "status": "published",
     "image": "/assets/waterless%20Car%20Cleaner-DOqduX1j.jpeg",
     "gallery": [],
-    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "updatedAt": "2026-11-25T07:56:02.537Z",
     "createdAt": "2026-01-01T00:00:00.000Z",
     "brand": "LifeLines",
-    "description": "LifeLines Waterless Car Cleaner is a distinct and unique formula that has a high ability to break up dirt and remove it with ease. The formula also contains Wax to preserve the car's paint and give it a distinctive shine. Reduces water use and waste. Environmentally friendly.",
+    "description": "",
     "descriptionAr": "منظف السيارات دون ماء من LifeLines بتركيبة مميزة تساعد على تفكيك الأوساخ وإزالتها بسهولة. يحتوي أيضاً على الشمع للمساعدة في حماية طلاء السيارة ومنحها لمعاناً مميزاً. يقلل استهلاك المياه والهدر، وهو خيار ملائم للبيئة.",
     "variants": [
       {
