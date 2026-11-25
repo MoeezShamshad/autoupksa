@@ -1,5 +1,34 @@
 [
   {
+    "id": "61db4c7b55d34558",
+    "slug": "lifelines-shampoo-wax-white-20l",
+    "name": "Lifelines Shampoo Wax - White 20L",
+    "nameAr": "شامبو واكس أبيض - 20 لتر",
+    "sku": "AUTO-4L431",
+    "category": "Car Shampoo",
+    "packageSize": "20L",
+    "catalogVariants": [
+      "20L"
+    ],
+    "packageType": "gallon",
+    "code": "",
+    "short": "Initial preparation: If the vehicle is heavily soiled, first remove accumulated dirt by rinsing with water.\nManual dilution: Mix 1 liter of Lifelines shampoo with 100 liters of water.\nFor professional pump systems: Mix 1 liter with 150 liters of water capacity.\nApplication and scrubbing: After spraying the vehicle, it is recommended to scrub it if it is heavily soiled.\nRinsing: For light to moderate soiling, you may simply use a high-pressure water sprayer after letting the shampoo sit for 3 minutes.",
+    "usage": "",
+    "featured": 0,
+    "price": 140,
+    "stock": 10,
+    "status": "published",
+    "image": "/cms-media/0c426d1c20ed1c7cefc1eea2.jpg",
+    "images": [
+      "/cms-media/0c426d1c20ed1c7cefc1eea2.jpg"
+    ],
+    "updatedAt": "2026-11-25T08:46:23.783Z",
+    "brand": "AutoUp",
+    "description": "",
+    "descriptionAr": "التحضير الأولي: قم بإزالة الأوساخ المتراكمة بالماء أولاً إذا كانت شديدة.\nللتخفيف اليدوي: يمزج 1 لتر من شامبو لايف لاينز مع 100 لتر من الماء.\nللمضخات الاحترافية: يمزج 1 لتر مع 150 لتر من سعة المضخة.\nالتطبيق والفرك: بعد رش السيارة، يفضل فركها إذا كانت شديدة الاتساخ.\nالشطف: في حال الاتساخ القليل/المتوسط، يمكن استخدام مضخة الماء فقط بعد ترك الشامبو 3 دقائق.",
+    "createdAt": "2026-11-25T08:46:23.783Z"
+  },
+  {
     "id": "5f4728d039eedf45",
     "slug": "lifelines-shampoo-wax-violet",
     "name": "Lifelines Shampoo Wax - Violet ",
